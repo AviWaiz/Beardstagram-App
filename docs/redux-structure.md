@@ -36,6 +36,9 @@ Redux structure, you'll need to do the same.
 * `receiveCurrentUser`
   0. invoked from an API callback
   0. the `SessionReducer` stores `currentUser` in the application's state.
+* `receiveErrors`
+  0. invoked from an API callback
+  0. the `SessionReducer` stores `errors` in the application's state.
 * `removeCurrentUser`
   0. invoked from an API callback
   0. the `SessionReducer` removes `currentUser` from the application's state.
