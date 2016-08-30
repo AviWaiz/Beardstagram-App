@@ -14,6 +14,35 @@
  *= require_self
  */
 
+  header {
+    display: flex;
+     height: 80px;
+     top: 0;
+     align-items: center;
+     flex-direction: row;
+     justify-content: flex-end;
+     background-color: #2E2E2E;
+  }
+
+  body {
+    font-family: 'Abel', sans-serif;
+    background-image: url('https://d13yacurqjgara.cloudfront.net/users/369/screenshots/737952/lumberjack.jpg');
+    background-size: cover;
+  }
+  h1{
+    color: white;
+    font-family: signpainter;
+  }
+
+  .header-link{
+    display: flex;
+    flex-direction: row;
+    color: antiquewhite;
+    padding-right: 5px;
+    justify-content: center;
+    margin-right: auto;
+  }
+
  .login-form-container {
    display: flex;
    justify-content: center;
@@ -31,6 +60,32 @@
  }
 
  .login-form-box {
-   outline: 1px solid black;
-   padding: 20px;
+  padding: 20px;
+  color: aliceblue;
  }
+
+
+  .login-signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .signup {
+    padding: 8px 20px 8px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: limegreen;
+  }
+  .login {
+    padding: 8px 20px 8px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
 const sessionLinks = () => (
   <nav className="login-signup">
-    <Link to="/login" activeClassName="current">Login</Link>
-    &nbsp;or&nbsp;
-    <Link to="/signup" activeClassName="current">Sign up!</Link>
+    <Link to="/login" className="login" activeClassName="current">Login</Link>
+    &nbsp;&nbsp;
+    <Link to="/signup" className="signup" activeClassName="current">Sign up!</Link>
   </nav>
 );
 
