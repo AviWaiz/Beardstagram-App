@@ -4,7 +4,7 @@
 
 [heroku]: https://beardstagram-app.herokuapp.com/
 ## Minimum Viable Product
-
+trying to push heroku
 Beardstagram is a web application inspired by Instagram that will be built using Ruby on Rails and React.js. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] New account creation, login and guest/demo login
