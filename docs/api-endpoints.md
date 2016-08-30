@@ -12,9 +12,9 @@
 
 - `POST /api/users`
 - `PATCH /api/users`
-- `GET /api/users/:userId/photos`
+- `GET /api/users/:userId/`
   - this is for the user show page
-- `GET /api/users/:userId/photos/:photosId`
+
 
 
 ### Session

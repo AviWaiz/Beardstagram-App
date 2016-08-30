@@ -15,21 +15,18 @@ Redux structure, you'll need to do the same.
 ### Session API Request Actions
 
 * `signUp`
-  0. invoked from `SignupForm` `onSubmit`
+  0. invoked from `SignupForm` `onSubmit` or `onEnter={_redirectIfLoggedIn}`
   0. `POST /api/users` is called.
   0. `receiveCurrentUser` is set as the success callback.
 * `logIn`
-  0. invoked from `Navbar` `onSubmit`
+  0. invoked from `Navbar` `onSubmit` or `onEnter={_redirectIfLoggedIn}`
   0. `POST /api/session` is called.
   0. `receiveCurrentUser` is set as the callback.
 * `logOut`
   0. invoked from `Navbar` `onClick`
   0. `DELETE /api/session` is called.
   0. `removeCurrentUser` is set as the success callback.
-* `fetchCurrentUser`
-  0. invoked from `App` in `didMount`
-  0. `GET /api/session` is called.
-  0. `receiveCurrentUser` is set as the success callback.
+
 
 ### Session API Response Actions
 

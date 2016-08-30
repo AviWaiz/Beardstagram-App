@@ -14,16 +14,14 @@ _**exactly**_ match the nesting of your routes.)
     * PhotoForm(upload)
     * User Search
       * UserShowPage
-        * UserPhotoIndex
+        * PhotoIndex
           * PhotoIndexItem
-            * CommentIndex
-              * CommentIndexItem
-              * CommentForm
+    * PhotoDetail
+      * CommentIndex
+        * CommentIndexItem
+        * CommentForm
     * PhotosIndex
       * PhotoIndexItem
-        * CommentIndex
-          * CommentIndexItem
-          * CommentForm
 
 
 
@@ -34,7 +32,6 @@ _**exactly**_ match the nesting of your routes.)
   * **component** `SignupForm` **path:** `/signup`
   * **component** `PhotoForm` **path:** `/PhotoForm`
   * **component** `UserSearch` **path:** `/Search`
-    * **component** `UserShowPage` **path:** `/users/:userId`
+    * **component** `UserShowPage` **path:** `/users/:userId/`
   * **component:** `PhotosIndex` **path:** `/photos`
-    * **component:** `PhotosIndexItem` **path:** `/photos/:photoId`
-      * **component:** `CommentIndex` **path:** `/photos/:photoid/comments`
+  * **component:** `PhotosDetail` **path:** `/photos/:photoId`
