@@ -56,4 +56,4 @@ photos = Photo.create([
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668253/manuaryme_emfelh.png",
     user_id: 2
   },
-])
+]).shuffle

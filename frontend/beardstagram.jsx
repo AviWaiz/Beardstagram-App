@@ -6,14 +6,18 @@ import Root from './components/root';
 //Actions
 import configureStore from './store/store';
 // import { signUp, logIn, logOut} from './util/session_api_util';
+import { fetchPhoto, fetchPhotos} from './util/photo_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
+import { requestPhotos } from './actions/photo_actions';
 // window.signUp = signUp;
 // window.logIn = logIn;
 // window.logOut = logOut;
 // window.receiveErrors = receiveErrors;
 // window.receiveCurrentUser = receiveCurrentUser;
-
+window.fetchPhoto = fetchPhoto;
+window.fetchPhotos = fetchPhotos;
+window.requestPhotos = requestPhotos;
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {

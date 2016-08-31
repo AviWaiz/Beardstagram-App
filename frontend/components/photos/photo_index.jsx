@@ -2,19 +2,29 @@ import React  from 'react';
 import PhotoIndexItem from './photo_index_item';
 
 
-const PhotoIndex = ({photos}) => {
-  const photoKeys = Object.keys(photos);
-  return(
-    <div>
-      <h1>Photos</h1>
-      {
-        photoKeys.map( key =>(
-          <PhotoIndexItem photo={photos[key]} key={key} />
-        ))
-      }
-    </div>
-  );
-};
+class PhotoIndex extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  componentDidMount() {
+    this.props.requestPhotos();
+  }
+  render(){
+    const photos = this.props.photos;
+    console.log(photos);
+    const photoKeys = Object.keys(photos);
+    return(
+      <div>
+        <h1>Photos</h1>
+        {
+          photoKeys.map( key =>(
+            <PhotoIndexItem photo={photos[key]} key={key} />
+          ))
+        }
+      </div>
+    );
+  }
+}
 
 
 export default PhotoIndex;

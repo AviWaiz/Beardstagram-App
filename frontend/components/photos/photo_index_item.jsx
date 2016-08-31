@@ -10,7 +10,7 @@ class PhotoIndexItem extends React.Component{
     const photoUrl = photo.url;
     return (
       <div>
-        <img src={photoUrl} />
+        <img src={photoUrl}/>
       </div>
     );
   }

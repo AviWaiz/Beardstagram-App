@@ -1,37 +1,31 @@
-export const BenchConstants = {
-  RECEIVE_PS: "RECEIVE_PS",
-  RECEIVE_BENCH: "RECEIVE_BENCH",
-  REQUEST_PS: "REQUEST_PS",
-  REQUEST_BENCH: "REQUEST_BENCH",
-  CREATE_BENCH: "CREATE_BENCH",
-  CREATE_REVIEW: "CREATE_REVIEW"
+export const PhotoConstants = {
+  RECEIVE_PHOTOS: "RECEIVE_PHOTOS",
+  RECEIVE_PHOTO: "RECEIVE_PHOTO",
+  REQUEST_PHOTOS: "REQUEST_PHOTOS",
+  REQUEST_PHOTO: "REQUEST_PHOTO",
+  CREATE_PHOTO: "CREATE_PHOTO",
 };
 
-export const requestBenches = () => ({
-  type: BenchConstants.REQUEST_PS
+export const requestPhotos = () => ({
+  type: PhotoConstants.REQUEST_PHOTOS
 });
 
-export const requestBench = id => ({
-  type: BenchConstants.REQUEST_BENCH,
+export const requestPhoto = id => ({
+  type: PhotoConstants.REQUEST_PHOTO,
   id
 });
 
-export const receiveBenches = benches => ({
-  type: BenchConstants.RECEIVE_PS,
-  benches
+export const receivePhotos = photos => ({
+  type: PhotoConstants.RECEIVE_PHOTOS,
+  photos
 });
 
-export const receiveBench = bench => ({
-  type: BenchConstants.RECEIVE_BENCH,
-  bench
+export const receivePhoto = photo => ({
+  type: PhotoConstants.RECEIVE_PHOTO,
+  photo
 });
 
-export const createBench = bench => ({
-  type: BenchConstants.CREATE_BENCH,
-  bench
-});
-
-export const createReview = review => ({
-  type: BenchConstants.CREATE_REVIEW,
-  review
+export const createPhoto = photo => ({
+  type: PhotoConstants.CREATE_PHOTO,
+  photo
 });

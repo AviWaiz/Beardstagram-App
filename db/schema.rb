@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20160830225428) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "photos", ["user_id"], name: "index_photos_on_user_id", unique: true, using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "password_digest", null: false
