@@ -6,13 +6,13 @@ import Root from './components/root';
 //Actions
 import configureStore from './store/store';
 // import { signUp, logIn, logOut} from './util/session_api_util';
-import { logIn, logOut, signUp, receiveErrors,
-   receiveCurrentUser } from './actions/session_actions';
-window.signUp = signUp;
-window.logIn = logIn;
-window.logOut = logOut;
-window.receiveErrors = receiveErrors;
-window.receiveCurrentUser = receiveCurrentUser;
+// import { logIn, logOut, signUp, receiveErrors,
+//    receiveCurrentUser } from './actions/session_actions';
+// window.signUp = signUp;
+// window.logIn = logIn;
+// window.logOut = logOut;
+// window.receiveErrors = receiveErrors;
+// window.receiveCurrentUser = receiveCurrentUser;
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

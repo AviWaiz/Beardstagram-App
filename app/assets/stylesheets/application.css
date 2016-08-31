@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
-  header {
+@import "compass/css3";
+  nav {
     display: flex;
      height: 80px;
      top: 0;
@@ -30,17 +30,34 @@
     background-size: cover;
   }
   h1{
+
+  }
+  .logo {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-family: signpainter;
+    padding-left: 100px
   }
 
-  .header-link{
+  .nav-link{
     display: flex;
     flex-direction: row;
     color: antiquewhite;
     padding-right: 5px;
     justify-content: center;
     margin-right: auto;
+    text-decoration: none;
+  }
+  .nav-group{
+    text-decoration: none;
+    display: block;
+    color: white;
+    justify-content: space-around;
+    text-align: center;
+    padding: 10px;
   }
 
  .login-form-container {
@@ -79,6 +96,7 @@
     align-items: center;
     color: white;
     background-color: limegreen;
+    text-decoration: none;
   }
   .login {
     padding: 8px 20px 8px 20px;
@@ -88,4 +106,18 @@
     justify-content: center;
     align-items: center;
     color: white;
+    text-decoration: none;
+  }
+  .logout {
+    padding: 8px 20px 8px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: none;
+
   }

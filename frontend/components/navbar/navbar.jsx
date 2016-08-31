@@ -9,20 +9,19 @@ const sessionLinks = () => (
   </nav>
 );
 
-const personalGreeting = (currentUser, logOut) => (
-	<hgroup className="header-group">
-		<h2 className="header-name">Hi, {currentUser.username}!</h2>
-		<button className="header-button" onClick={logOut}>Log Out</button>
-	</hgroup>
+const loggedInNavBar = (currentUser, logOut) => (
+	<section className="login-signup">
+		<button className="logout" onClick={logOut}>Log Out</button>
+	</section>
 );
 
 
-function Greeting({currentUser, logOut}){
+function NavBar({currentUser, logOut}){
   if (currentUser){
-    return personalGreeting(currentUser, logOut);
+    return loggedInNavBar(currentUser, logOut);
   } else {
     return sessionLinks();
   }
 }
 
-export default Greeting;
+export default NavBar;

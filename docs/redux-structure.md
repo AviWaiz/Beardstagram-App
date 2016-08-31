@@ -100,7 +100,7 @@ Redux structure, you'll need to do the same.
 
 ## Comments Cycles
 
-### Commentss API Request Actions
+### Comments API Request Actions
 
 * `fetchAllComments`
   0. invoked from `CommentsIndex` `didMount`/`willReceiveProps`
