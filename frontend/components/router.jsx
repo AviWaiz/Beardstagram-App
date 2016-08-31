@@ -9,6 +9,7 @@ import requestPhotos from '../actions/photo_actions';
 
 
 class AppRouter extends React.Component {
+  
   constructor(props) {
     super(props);
     this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
