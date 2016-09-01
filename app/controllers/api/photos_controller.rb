@@ -1,6 +1,6 @@
 class Api::PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    @photos = Photo.includes(:user, comments: :user)
     render :index
   end
 
@@ -25,7 +25,7 @@ class Api::PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = Photo.includes(comments: :user).find(params[:id])
     render :show
   end
 

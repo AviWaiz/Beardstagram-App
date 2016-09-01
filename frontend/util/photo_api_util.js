@@ -17,7 +17,6 @@ export const fetchPhoto = (id, success, error) => {
 };
 
 export const createPhoto = (photo, success, error) => {
-  debugger
   $.ajax({
     method: 'POST',
     url: `api/photos`,
