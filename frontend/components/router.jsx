@@ -4,12 +4,13 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 //Components
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
-import PhotoIndexContainer from './photos/photo_container';
+import PhotoIndexContainer from './photos/photo_index/photo_container';
+import PhotoformContainer from './photos/photo_form/photo_form_container';
 import requestPhotos from '../actions/photo_actions';
 
 
 class AppRouter extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
@@ -39,6 +40,7 @@ class AppRouter extends React.Component {
         <IndexRoute component={PhotoIndexContainer} />
         <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
         <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
+        <Route path="/photos/new" component={PhotoformContainer } onEnter={this._ensureLoggedIn}/>
         </Route>
       </Router>
     );

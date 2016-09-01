@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import PhotoForm from '../photos/photo_form';
 
 const sessionLinks = () => (
   <nav className="login-signup">
@@ -10,17 +9,17 @@ const sessionLinks = () => (
   </nav>
 );
 
-const loggedInNavBar = (currentUser, logOut) => (
+const loggedInNavBar = (currentUser, logOut, createPhoto) => (
 	<section className="login-signup">
 		<button className="logout" onClick={logOut}>Log Out</button>
-    <PhotoForm />
+    <Link to="/photos/new" className="photo-form" activeClassName="current">Beard Me!</Link>
 	</section>
 );
 
 
-function NavBar({currentUser, logOut}){
+function NavBar({currentUser, logOut, createPhoto}){
   if (currentUser){
-    return loggedInNavBar(currentUser, logOut);
+    return loggedInNavBar(currentUser, logOut, createPhoto);
   } else {
     return sessionLinks();
   }

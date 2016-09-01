@@ -23,6 +23,9 @@ export default ({getState, dispatch}) => next => action => {
     case PhotoConstants.REQUEST_PHOTO:
       fetchPhoto(action.id, photoSuccess);
       break;
+    case PhotoConstants.CREATE_PHOTO:
+      createPhoto(action.photo, photoSuccess);
+      break;
     default:
       break;
   }
