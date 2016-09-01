@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PhotoForm from '../photos/photo_form';
 
 const sessionLinks = () => (
   <nav className="login-signup">
@@ -12,6 +13,7 @@ const sessionLinks = () => (
 const loggedInNavBar = (currentUser, logOut) => (
 	<section className="login-signup">
 		<button className="logout" onClick={logOut}>Log Out</button>
+    <PhotoForm />
 	</section>
 );
 

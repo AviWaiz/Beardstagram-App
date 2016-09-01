@@ -15,3 +15,13 @@ export const fetchPhoto = (id, success, error) => {
     error
   });
 };
+
+export const createPhoto = (photo, success, error) => {
+  $.ajax({
+    method: 'GET',
+    url: `api/photos`,
+    data: photo,
+    success,
+    error
+  });
+};

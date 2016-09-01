@@ -51,6 +51,23 @@
     font-family: signpainter;
     padding-left: 100px
   }
+  .upload-form{
+    display: flex;
+    padding: 8px 20px 8px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: none;
+  }
+
+  button .upload-button{
+    text-decoration: none;
+  }
 
   .nav-link{
     display: flex;
