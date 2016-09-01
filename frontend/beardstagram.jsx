@@ -9,7 +9,7 @@ import configureStore from './store/store';
 import { fetchPhoto, fetchPhotos} from './util/photo_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
-import { requestPhotos } from './actions/photo_actions';
+import { requestPhotos, requestPhoto } from './actions/photo_actions';
 // window.signUp = signUp;
 // window.logIn = logIn;
 // window.logOut = logOut;
@@ -18,6 +18,7 @@ import { requestPhotos } from './actions/photo_actions';
 window.fetchPhoto = fetchPhoto;
 window.fetchPhotos = fetchPhotos;
 window.requestPhotos = requestPhotos;
+window.requestPhoto = requestPhoto;
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
