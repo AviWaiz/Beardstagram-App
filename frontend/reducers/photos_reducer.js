@@ -6,7 +6,7 @@ const PhotoReducer = function(state = {}, action){
     case PhotoConstants.RECEIVE_PHOTOS:
       return action.photos;
     case PhotoConstants.RECEIVE_PHOTO:
-      const newPhoto ={[action.photo.id]: action.photo};
+      const newPhoto ={[action.photo]: action.photo};
       return merge({}, state, newPhoto);
     default:
       return state;

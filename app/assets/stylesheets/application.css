@@ -148,3 +148,37 @@
     background: none;
 
   }
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    outline: black 1px solid;
+    padding: 5px 30px 10px 30px;
+  }
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    outline: black 1px solid;
+    padding: 5px 30px 10px 30px;
+  }
+  .new-photo-title {
+    text-align: center;
+  }
+  .button-holder {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  input.photo-field {
+    margin: 10px;
+    padding: 2px;
+  }
+
+  label.photo-field {
+    width: 125px;
+    display: inline-block;
+  }
+  .new-photo-button {
+    margin: 5px;
+  }
