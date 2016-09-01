@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token_uniqueness
 
   has_many :photos
+  has_many :comments
+  
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)

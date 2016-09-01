@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: photos
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  title      :string           not null
+#  body       :string           not null
 #  user_id    :integer          not null
-#  url        :string
+#  photo_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Photo < ActiveRecord::Base
-  validates :title, :user_id, :url, presence: true
+class Comment < ActiveRecord::Base
+  validates :user_id, :photo_id, :body, presence: true
 
   belongs_to :user
-  has_many :comments
+  belongs_to :photo
+  
 end

@@ -182,3 +182,15 @@
   .new-photo-button {
     margin: 5px;
   }
+  .photo-form{
+    padding: 8px 20px 8px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: none;
+  }
