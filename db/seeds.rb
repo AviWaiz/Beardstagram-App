@@ -41,11 +41,7 @@ photos = Photo.create([
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/75e3c45f2018c2ab363e8500ad5dcb16_rxrhcp.jpg",
     user_id: 2
   },
-  {
-    title: "Test",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/download_mwkiui.jpg",
-    user_id: 3
-  },
+
   {
     title: "Test",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668713/download_1_iodm94.jpg",
@@ -56,4 +52,39 @@ photos = Photo.create([
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668253/manuaryme_emfelh.png",
     user_id: 2
   },
-]).shuffle
+])
+
+
+
+comments = Comment.create([
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 2,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 3,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 2
+  },
+  {
+    body: "hello world",
+    user_id: 2,
+    photo_id: 2
+  },
+  {
+    body: "hello world",
+    user_id: 3,
+    photo_id: 2
+  }
+])
