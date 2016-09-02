@@ -1,2 +1,5 @@
 json.extract! user, :id, :username
-json.photos user.photos
+
+json.photos do
+  json.partial! 'api/photos/photo', collection: user.photos, as: :photo
+end

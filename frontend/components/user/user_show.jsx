@@ -12,24 +12,26 @@ class UserShow extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     this.props.requestUser(nextProps.params.id);
+    this.newUserId = nextProps.params.id;
   }
+
   render(){
     const users = this.props.users;
-    if (!isEmpty(users)) {
-      // const photos = users[this.props.params.id].photos;
-
+    if (!isEmpty(users) && (Object.keys(users)[0] === this.newUserId)) {
+      const photos = users[this.props.params.id].photos;
       return(
         <div>
           <h1>Photos</h1>
-          {/* {
+          {
             photos.map( photo =>(
               <PhotoIndexItem photo={photo} key={photo.id} />
             ))
-          } */}
+          }
         </div>
       );
     }
-    else {return( <div>hello</div>);}
+    else {
+      return( <div></div>);}
   }
 }
 

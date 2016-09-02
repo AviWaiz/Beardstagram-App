@@ -7,7 +7,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 // import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos } from './util/photo_api_util';
-import { fetchUser } from './util/user_api_util';
+import { fetchUser, fetchUsers } from './util/user_api_util';
 import { removeComment, createComment } from './util/comment_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
@@ -19,6 +19,7 @@ import { requestPhotos, requestPhoto } from './actions/photo_actions';
 // window.receiveCurrentUser = receiveCurrentUser;
 window.fetchPhoto = fetchPhoto;
 window.fetchUser = fetchUser;
+window.fetchUsers = fetchUsers;
 window.removeComment = removeComment;
 window.createComment = createComment;
 window.fetchPhotos = fetchPhotos;
