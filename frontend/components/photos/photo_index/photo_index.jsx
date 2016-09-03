@@ -17,7 +17,7 @@ class PhotoIndex extends React.Component{
         <h1>Photos</h1>
         {
           photoKeys.map( key =>(
-            <PhotoIndexItem photo={photos[key]} key={key} requestPhoto={requestPhoto}/>
+            <PhotoIndexItem photo={photos[key]} key={key} requestPhoto={requestPhoto} removeComment={removeComment}/>
           ))
         }
       </div>

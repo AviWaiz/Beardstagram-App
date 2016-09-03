@@ -3,11 +3,12 @@ import { PhotoConstants } from '../actions/photo_actions';
 import { UserConstants } from '../actions/user_actions';
 
 const PhotoReducer = function(state = {}, action){
-  let newPhotos;
+  let newPhotos = {};
   let newPhoto;
   switch(action.type){
     case PhotoConstants.RECEIVE_PHOTOS:
-      newPhotos = merge({}, state, action.photos);
+      action.photos.forEach( photo => ( newPhotos[photo.id] = photo))
+      newPhotos = merge({}, state, newPhotos);
       return newPhotos;
     case PhotoConstants.RECEIVE_PHOTO:
       newPhoto ={[action.photo.id]: action.photo};

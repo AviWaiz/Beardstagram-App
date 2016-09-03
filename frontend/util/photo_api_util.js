@@ -39,6 +39,9 @@ export const removeComment = (id, success) => {
   $.ajax({
     type: 'DELETE',
     url: `api/comments/${id}`,
-    success
+    success,
+    error: () => {
+      console.log("comment error");
+    }
   });
 };
