@@ -34,9 +34,6 @@ export default ({getState, dispatch}) => next => action => {
     case PhotoConstants.CREATE_COMMENT:
       createComment(action.comment, commentSucces);
       break;
-    case PhotoConstants.REMOVE_COMMENT:
-      removeComment(action.id, photoSuccess);
-      break;
     default:
       break;
   }

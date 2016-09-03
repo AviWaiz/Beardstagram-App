@@ -10,7 +10,7 @@ const PhotoReducer = function(state = {}, action){
       newPhotos = merge({}, state, action.photos);
       return newPhotos;
     case PhotoConstants.RECEIVE_PHOTO:
-      newPhoto ={[action.photo]: action.photo};
+      newPhoto ={[action.photo.id]: action.photo};
       return merge({}, state, newPhoto);
     case UserConstants.RECEIVE_USER:
       newPhotos = merge({}, state, action.user.photos);

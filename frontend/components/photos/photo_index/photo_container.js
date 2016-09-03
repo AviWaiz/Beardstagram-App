@@ -3,7 +3,7 @@ import PhotoIndex  from './photo_index';
 import { requestPhotos, requestPhoto } from '../../../actions/photo_actions';
 
 const mapStateToProps = state => {
-  debugger
+  
   return(
     {photos: state.photos}
   )

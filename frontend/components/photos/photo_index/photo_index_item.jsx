@@ -5,6 +5,7 @@ class PhotoIndexItem extends React.Component{
   constructor(props){
     super(props);
   }
+
   render(){
     const photo = this.props.photo;
     const photoUrl = photo.url;
