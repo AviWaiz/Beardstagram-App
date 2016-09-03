@@ -1,12 +1,16 @@
 import { connect }  from 'react-redux';
 import PhotoIndex  from './photo_index';
-import { requestPhotos } from '../../../actions/photo_actions';
+import { requestPhotos, requestPhoto } from '../../../actions/photo_actions';
 
-const mapStateToProps = state => ({
-  photos: state.photos
-});
+const mapStateToProps = state => {
+  debugger
+  return(
+    {photos: state.photos}
+  )
+};
 const mapDispatchToProps = dispatch => ({
-  requestPhotos: () => dispatch(requestPhotos())
+  requestPhotos: () => dispatch(requestPhotos()),
+  requestPhoto: (id) => dispatch(requestPhoto(id))
 });
 
 export default connect(

@@ -25,3 +25,20 @@ export const createPhoto = (photo, success, error) => {
     error
   });
 };
+
+export const createComment = (comment, success) => {
+  $.ajax({
+    type: 'POST',
+    url: 'api/comments',
+    data: {comment: comment},
+    success
+  });
+};
+
+export const removeComment = (id, success) => {
+  $.ajax({
+    type: 'DELETE',
+    url: `api/comments/${id}`,
+    success
+  });
+};
