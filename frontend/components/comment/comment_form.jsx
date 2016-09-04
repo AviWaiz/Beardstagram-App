@@ -21,6 +21,7 @@ class CommentForm extends React.Component{
     e.preventDefault();
     const comment = Object.assign({}, this.state);
     this.props.createComment(comment);
+    this.setState({body: ""});
   }
 
   render(){

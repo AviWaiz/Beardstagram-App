@@ -24,7 +24,7 @@ class UserShow extends React.Component{
           <h1>Photos</h1>
           {
             photos.map( photo =>(
-              <PhotoIndexItem photo={photo} key={photo.id} />
+              <PhotoIndexItem photo={photo} key={photo.id} removeCommentAction={this.props.removeCommentAction} />
             ))
           }
         </div>

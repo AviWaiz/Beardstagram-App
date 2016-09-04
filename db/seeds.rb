@@ -64,6 +64,46 @@ comments = Comment.create([
   },
   {
     body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
+    user_id: 1,
+    photo_id: 1
+  },
+  {
+    body: "hello world",
     user_id: 2,
     photo_id: 1
   },
