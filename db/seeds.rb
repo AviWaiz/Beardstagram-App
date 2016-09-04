@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.destroy_all
 Photo.destroy_all
+Comment.destroy_all
+Follow.destroy_all
+
 
 users = User.create([
   { username: 'Avinoam', password: '1234567'},
@@ -57,36 +60,6 @@ photos = Photo.create([
 
 
 comments = Comment.create([
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
   {
     body: "hello world",
     user_id: 1,

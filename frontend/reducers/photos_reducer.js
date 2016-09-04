@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import { PhotoConstants } from '../actions/photo_actions';
 import { UserConstants } from '../actions/user_actions';
+import {SessionConstants} from '../actions/session_actions';
 
 const PhotoReducer = function(state = {}, action){
   let newPhotos = {};
@@ -16,8 +17,10 @@ const PhotoReducer = function(state = {}, action){
       return merge({}, state, newPhoto);
     case UserConstants.RECEIVE_USER:
       action.user.photos.forEach( photo => ( newPhotos[photo.id] = photo))
-      newPhotos = Object.assign({}, state, newPhotos);
-      return newPhotos;
+      return Object.assign({}, state, newPhotos);
+    case SessionConstants.RECEIVE_CURRENT_USER:
+      action.currentUser.photos.forEach( photo => ( newPhotos[photo.id] = photo))
+      return Object.assign({}, state, newPhotos);
     case PhotoConstants.RECEIVE_COMMENT:
       newPhoto = merge({}, state[action.comment.photo_id]);
       newPhoto.comments.push(action.comment);

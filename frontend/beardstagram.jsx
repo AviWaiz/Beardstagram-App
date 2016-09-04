@@ -6,7 +6,7 @@ import Root from './components/root';
 //Actions
 import configureStore from './store/store';
 import merge from 'lodash/merge';
-// import { signUp, logIn, logOut} from './util/session_api_util';
+import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
 import { fetchUser, fetchUsers } from './util/user_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
@@ -25,6 +25,7 @@ window.requestPhotos = requestPhotos;
 window.requestPhoto = requestPhoto;
 window.removeComment = removeComment;
 window.merge = merge;
+window.logIn = logIn;
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

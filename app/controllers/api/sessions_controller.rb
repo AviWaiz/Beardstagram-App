@@ -1,13 +1,13 @@
 class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_credentails(
+    @user = User.includes(:followees).find_by_credentails(
     params[:user][:username],
     params[:user][:password])
 
     if @user
       login(@user)
-      render "api/users/show"
+      render :show
     else
       render(
       json: ["Invalid username/password combination"],

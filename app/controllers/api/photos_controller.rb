@@ -1,6 +1,7 @@
 class Api::PhotosController < ApplicationController
+
   def index
-    @photos = Photo.includes(:user, comments: :user)
+    @photos = current_user ? current_user.flatten_photos : Photo.includes(:user, comments: :user)
     render :index
   end
 

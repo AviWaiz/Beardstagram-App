@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
   has_many :followers, through: :in_follows, source: :follower
   has_many :followees, through: :out_follows, source: :followee
 
+  def flatten_photos
+    self.followees.map do |follower|
+      follower.photos
+    end.flatten
+  end
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password

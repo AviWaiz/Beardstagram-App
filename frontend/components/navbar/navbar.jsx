@@ -11,7 +11,7 @@ const sessionLinks = () => (
 
 const loggedInNavBar = (currentUser, logOut, createPhoto) => (
 	<section className="login-signup">
-		<button className="logout" onClick={logOut}>Log Out</button>
+		<Link to="/" className="logout" onClick={logOut}>Log Out</Link>
     <Link to="/photos/new" className="photo-form" activeClassName="current">Beard Me!</Link>
 	</section>
 );
