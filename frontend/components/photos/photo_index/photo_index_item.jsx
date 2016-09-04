@@ -10,7 +10,10 @@ class PhotoIndexItem extends React.Component{
   render(){
     const photo = this.props.photo;
     const photoUrl = photo.url;
-    const comments = photo.comments.map((comment) => (<Comment removeComment={removeComment} comment={comment} key={comment.id} />));
+    const comments = photo.comments.map((comment) => (
+      <Comment removeCommentAction={this.props.removeCommentAction}
+               comment={comment}
+               key={comment.id} />));
     return (
       <div>
         <img src={photoUrl}/>

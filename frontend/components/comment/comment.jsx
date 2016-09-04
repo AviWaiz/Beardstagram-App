@@ -7,8 +7,7 @@ class Comment extends React.Component{
   }
 
   deleteComment() {
-    debugger
-    this.props.removeComment(this.props.comment.id);
+    this.props.removeCommentAction(this.props.comment.id);
   }
 
   render(){

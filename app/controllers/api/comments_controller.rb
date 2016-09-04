@@ -13,13 +13,12 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    def destroy
-      @comment = Comment.find(params[:id])
-      if @comment
-        @comment.destroy
-      end
-      @photo = Photo.includes(comments: :user).find(@comment.photo_id)
+    @comment = Comment.find(params[:id])
+    if @comment
+      @comment.destroy
     end
+    @photo = Photo.includes(comments: :user).find(@comment.photo_id)
+    render :show
   end
 
   private

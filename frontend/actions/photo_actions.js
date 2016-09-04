@@ -6,7 +6,8 @@ export const PhotoConstants = {
   CREATE_PHOTO: "CREATE_PHOTO",
   CREATE_COMMENT: "CREATE_COMMENT",
   REMOVE_COMMENT: "REMOVE_COMMENT",
-  RECEIVE_COMMENT: "RECEIVE_COMMENT"
+  RECEIVE_COMMENT: "RECEIVE_COMMENT",
+  DELETE_COMMENT: "DELETE_COMMENT"
 };
 
 export const requestPhotos = () => ({
@@ -42,7 +43,11 @@ export const receiveComment = comment => ({
     comment
 });
 
-export const removeComment = id => ({
+export const removeCommentAction = id => ({
     type: PhotoConstants.REMOVE_COMMENT,
     id
+});
+export const deleteComment = comment => ({
+    type: PhotoConstants.DELETE_COMMENT,
+    comment
 });

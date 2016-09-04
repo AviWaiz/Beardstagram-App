@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 //Actions
 import configureStore from './store/store';
+import merge from 'lodash/merge';
 // import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
 import { fetchUser, fetchUsers } from './util/user_api_util';
@@ -23,6 +24,7 @@ window.fetchPhotos = fetchPhotos;
 window.requestPhotos = requestPhotos;
 window.requestPhoto = requestPhoto;
 window.removeComment = removeComment;
+window.merge = merge;
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
