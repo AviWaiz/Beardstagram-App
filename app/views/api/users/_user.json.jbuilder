@@ -1,4 +1,7 @@
 json.extract! user, :id, :username
+
+json.following_users user.followees
+
 json.photos do
   json.array!(user.photos) do |photo|
     json.id photo.id
