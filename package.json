@@ -38,5 +38,9 @@
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
+  },
+  "devDependencies": {
+    "logger": "0.0.1",
+    "redux-logger": "^2.6.1"
   }
 }

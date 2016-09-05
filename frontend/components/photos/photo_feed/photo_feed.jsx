@@ -6,9 +6,9 @@ class PhotoFeed extends React.Component{
   constructor(props){
     super(props);
   }
-  componentDidMount() {
-    this.props.requestPhotos();
-  }
+  // componentDidMount(){
+  //   this.props.receiveCurrentUser(this.props.currentUser)
+  // }
   render(){
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);

@@ -2,6 +2,7 @@ import { SessionConstants,
          receiveCurrentUser,
          receiveErrors } from '../actions/session_actions';
 import {logIn, logOut, signUp} from '../util/session_api_util.js';
+
 export default ({getState, dispatch}) => next => action => {
   const successCallback = user => dispatch(receiveCurrentUser(user));
   const errorCallback = xhr => {

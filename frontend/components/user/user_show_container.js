@@ -4,7 +4,6 @@ import { removeCommentAction } from '../../actions/photo_actions';
 import UserShow  from './user_show';
 
 const mapStateToProps = state => ({
-  users: state.users,
   photos: state.photos
 });
 
