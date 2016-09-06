@@ -6,9 +6,7 @@ class PhotoIndex extends React.Component{
   constructor(props){
     super(props);
   }
-  componentDidMount() {
-    this.props.requestPhotos();
-  }
+
   render(){
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);

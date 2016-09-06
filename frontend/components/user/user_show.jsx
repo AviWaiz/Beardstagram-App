@@ -7,14 +7,6 @@ class UserShow extends React.Component{
   constructor(props){
     super(props);
   }
-  // componentDidMount(){
-  //   debugger
-  //   this.props.requestUser(this.props.params.id);
-  // }
-  // componentWillReceiveProps(nextProps){
-  //   this.props.requestUser(nextProps.params.id);
-  //   this.newUserId = nextProps.params.id;
-  // }
 
   render(){
     const photos = this.props.photos
