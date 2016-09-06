@@ -2,7 +2,7 @@ export const ModalStyle = {
     overlay : {
       position        : "fixed",
       backgroundColor : 'rgba(30,30,30,0.85)',
-      zIndex          : 10,
+      zIndex          : "10",
       display         : "flex",
       justifyContent  : 'center',
       alignItems      : 'center',

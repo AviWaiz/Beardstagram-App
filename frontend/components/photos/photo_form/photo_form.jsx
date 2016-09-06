@@ -1,7 +1,7 @@
 import React  from 'react';
 import { withRouter, hashHistory } from 'react-router';
 import Modal from 'react-modal';
-import ModalStyle from '../../../util/modal_style';
+import {ModalStyle} from '../../../util/modal_style';
 
 class PhotoForm extends React.Component{
   constructor(props){
@@ -31,6 +31,7 @@ class PhotoForm extends React.Component{
     e.preventDefault();
     window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
       if(!error){
+        console.log(results[0]);
         this.setState({url: results[0].url});
       }
     });
@@ -55,22 +56,28 @@ class PhotoForm extends React.Component{
     if (this.state.url) {
       image = <img src={this.state.url} width="100" height="100" />
     }
+
     return (
-      <div className="upload-form">
+      <div >
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle}>
-        <h3 className="new-photo-title">Upload a picture!!!</h3>
-        <button className="upload-button" onClick={this.upload}>Upload new image!</button>
+      <form onSubmit={this.handleSubmit}
+            className="photo-form-box">
+        <h3 className="new-photo-title">Add a Beard</h3>
+        <button className="upload-button"
+                onClick={this.upload}>
+                <i className="material-icons">backup</i>
+        </button>
         <div>
           {image}
         </div>
-        <form onSubmit={this.handleSubmit}>
+
         <label className="photo-field">title</label>
            <input type="text" value={this.state.title}
              onChange={this.update("title")} className="photo-field"/>
            <div className="button-holder">
-             <input type="submit" value="Create Photo" className="new-photo-button"/>
+             <input className="demo" type="submit" value="Create Photo"/>
            </div>
         </form>
         </Modal>
