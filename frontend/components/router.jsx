@@ -40,6 +40,11 @@ class AppRouter extends React.Component {
     }
   }
 
+  _openModalAndRedirectIfLoggedIn(nextState, replace){
+    // this._redirectIfLoggedIn(nextState, replace);
+    
+  }
+
   _photoFeed(nextState, replace){
     this._ensureLoggedIn(nextState, replace);
     const currentUser = this.context.store.getState().session.currentUser

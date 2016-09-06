@@ -1,5 +1,7 @@
 import React  from 'react';
-import { withRouter } from 'react-router';
+import { withRouter, hashHistory } from 'react-router';
+import Modal from 'react-modal';
+import ModalStyle from '../../../util/modal_style';
 
 class PhotoForm extends React.Component{
   constructor(props){
@@ -8,11 +10,23 @@ class PhotoForm extends React.Component{
     this.state = {
       title: '',
       user_id: this.props.currentUser.id,
-      url: ''
+      url: '',
+      modalOpen: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToIndex = this.navigateToIndex.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
+		this.redirectToIntro = this.redirectToIntro.bind(this);
+
   }
+  onModalClose() {
+	  this.setState({modalOpen: false});
+		this.redirectToIntro();
+	}
+
+	redirectToIntro() {
+	  hashHistory.push('/');
+	}
   upload(e) {
     e.preventDefault();
     window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
@@ -30,17 +44,26 @@ class PhotoForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const photo = Object.assign({}, this.state);
+    const photo = Object.assign({}, {title: this.state.title,
+                                     userId: this.state.user_id,
+                                     url: this.state.url});
     this.props.createPhoto(photo);
     this.navigateToIndex();
   }
   render(){
+    let image;
+    if (this.state.url) {
+      image = <img src={this.state.url} width="100" height="100" />
+    }
     return (
       <div className="upload-form">
+      <Modal isOpen={this.state.modalOpen}
+						 onRequestClose={this.onModalClose}
+						 style={ModalStyle}>
         <h3 className="new-photo-title">Upload a picture!!!</h3>
         <button className="upload-button" onClick={this.upload}>Upload new image!</button>
         <div>
-          <img src={this.state.url ? this.state.url : ""} width="100" height="100"/>
+          {image}
         </div>
         <form onSubmit={this.handleSubmit}>
         <label className="photo-field">title</label>
@@ -50,8 +73,7 @@ class PhotoForm extends React.Component{
              <input type="submit" value="Create Photo" className="new-photo-button"/>
            </div>
         </form>
-
-
+        </Modal>
       </div>
     );
   }

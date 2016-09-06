@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onModalClose = this.onModalClose.bind(this);
+		this.redirectToIntro = this.redirectToIntro.bind(this);
 	}
 
 	componentDidUpdate(){
@@ -20,12 +21,14 @@ class SessionForm extends React.Component {
 	}
 	onModalClose() {
 	  this.setState({modalOpen: false});
-		// this.redirectToIntro();
+		if (!this.props.loggedIn){
+			this.redirectToIntro();
+		}
 	}
 
-	// redirectToIntro() {
-	//   hashHistory.push('/');
-	// }
+	redirectToIntro() {
+	  hashHistory.push('/');
+	}
 
 
 	redirectIfLoggedIn(){
@@ -40,7 +43,6 @@ class SessionForm extends React.Component {
 
 	handleSubmit(e){
 		e.preventDefault();
-		this.onModalClose();
 		const user = {username: this.state.username, password: this.state.password};
 		this.props.processForm({user});
 	}
@@ -79,14 +81,14 @@ class SessionForm extends React.Component {
 					{ this.renderErrors() }
 					<div className="login-form">
 
-						<label> Username:
+						<label className="form-field"> Username:
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
 								className="login-input" />
 						</label>
 
-						<label> Password:
+						<label className="form-field"> Password:
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}

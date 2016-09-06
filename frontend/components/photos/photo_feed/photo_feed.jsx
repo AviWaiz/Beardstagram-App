@@ -12,7 +12,6 @@ class PhotoFeed extends React.Component{
     const photoKeys = Object.keys(photos);
     return(
       <div>
-        <h1>Photos</h1>
         {
           photoKeys.map( key =>(
             <PhotoIndexItem photo={photos[key]}
