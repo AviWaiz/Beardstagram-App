@@ -172,7 +172,7 @@
     will-change: opacity, transform;
     transition: all .3s ease-out;
   }
-  }
+  
   .logout {
     padding: 8px 20px 8px 20px;
     margin-left: 10px;
