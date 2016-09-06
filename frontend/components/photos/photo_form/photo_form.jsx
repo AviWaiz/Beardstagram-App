@@ -1,7 +1,7 @@
 import React  from 'react';
 import { withRouter, hashHistory } from 'react-router';
 import Modal from 'react-modal';
-import {ModalStyle} from '../../../util/modal_style';
+import { ModalStyle2 } from '../../../util/modal_style';
 
 class PhotoForm extends React.Component{
   constructor(props){
@@ -9,7 +9,7 @@ class PhotoForm extends React.Component{
     this.upload = this.upload.bind(this);
     this.state = {
       title: '',
-      user_id: this.props.currentUser.id,
+      user_id: this.props.currentUser.user.id,
       url: '',
       modalOpen: true
     };
@@ -25,7 +25,7 @@ class PhotoForm extends React.Component{
 	}
 
 	redirectToIntro() {
-	  hashHistory.push('/');
+	  hashHistory.push('/photos');
 	}
   upload(e) {
     e.preventDefault();
@@ -40,14 +40,15 @@ class PhotoForm extends React.Component{
     return e => this.setState({[property]: e.target.value});
   }
   navigateToIndex() {
-    this.props.router.push("/");
+    this.props.router.push("/photos");
   }
 
   handleSubmit(e){
     e.preventDefault();
-    const photo = Object.assign({}, {title: this.state.title,
-                                     userId: this.state.user_id,
-                                     url: this.state.url});
+    debugger;
+    const photo = {title: this.state.title,
+                  user_id: this.state.user_id,
+                  url: this.state.url};
     this.props.createPhoto(photo);
     this.navigateToIndex();
   }
@@ -61,7 +62,7 @@ class PhotoForm extends React.Component{
       <div >
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
-						 style={ModalStyle}>
+						 style={ModalStyle2}>
       <form onSubmit={this.handleSubmit}
             className="photo-form-box">
         <h3 className="new-photo-title">Add a Beard</h3>

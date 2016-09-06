@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import Modal from 'react-modal';
-import { ModalStyle } from '../../util/modal_style';
+import { ModalStyle1 } from '../../util/modal_style';
 
 class SessionForm extends React.Component {
 	constructor(props){
@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
 			<div >
 			<Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
-						 style={ModalStyle}>
+						 style={ModalStyle1}>
 				<form onSubmit={this.handleSubmit}
 				 			 className="login-form-box">
 					Welcome to Beardstagram!

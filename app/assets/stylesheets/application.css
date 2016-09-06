@@ -132,7 +132,7 @@
    margin-bottom: 16px!important;
    display: flex;
    flex-direction: column;
-   color: #444!inherit;
+   color: #444 !important;
    text-decoration: none!important;
  }
 
