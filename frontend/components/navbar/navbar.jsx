@@ -5,7 +5,7 @@ const sessionLinks = () => (
   <nav className="login-signup">
     <Link to="/login" className="login" activeClassName="current">Login</Link>
     &nbsp;&nbsp;
-    <Link to="/signup" className="signup" activeClassName="current">Sign up!</Link>
+    <Link to="/signup" className="signup" activeClassName="current">Venture!</Link>
   </nav>
 );
 

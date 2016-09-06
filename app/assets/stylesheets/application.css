@@ -13,12 +13,11 @@
  *= require_tree .
  *= require_self
  */
-
-   html {
+  * {
+   box-sizing: border-box;
+  }
+  html {
     background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
   }
 
@@ -30,11 +29,12 @@
     flex-direction: row;
     justify-content: flex-end;
     visibility: visible;
+    letter-spacing: .1em;
   }
 
   body {
     min-height: 100%;
-    font: 14px/30px Roboto,Helvetica,Arial,sans-serif;
+    font: 20px/30px Roboto,Helvetica,Arial,sans-serif;
     color: #848484;
     -webkit-font-smoothing: antialiased;
   }
@@ -50,7 +50,8 @@
     justify-content: center;
     color: white;
     font-family: signpainter;
-    padding-left: 100px
+    font-size: 35px;
+    padding-left: 60px
   }
   .upload-form{
     display: flex;
@@ -115,26 +116,62 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-  .signup {
-    padding: 8px 20px 8px 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: limegreen;
+  .signup, .submit, .photo-form{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    border: none;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
     text-decoration: none;
+    color: #fff;
+    background-color: #32cd32;
+    text-align: center;
+    letter-spacing: .5px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: all .3s ease-out;
+  }
+  .signup:hover, .submit:hover, .photo-form:hover {
+    background-color: #34e034;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+  }
+  .login:hover {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+    opacity: 0.9
   }
   .login {
-    padding: 8px 20px 8px 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    border: none;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
     text-decoration: none;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: all .3s ease-out;
+  }
   }
   .logout {
     padding: 8px 20px 8px 20px;
@@ -183,7 +220,7 @@
   .new-photo-button {
     margin: 5px;
   }
-  .photo-form{
+  /*.photo-form{
     padding: 8px 20px 8px 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -194,4 +231,4 @@
     text-decoration: none;
     border: none;
     background: none;
-  }
+  }*/
