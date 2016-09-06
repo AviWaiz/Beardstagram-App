@@ -15,7 +15,7 @@
  */
 
    html {
-    background: url('https://d13yacurqjgara.cloudfront.net/users/369/screenshots/737952/lumberjack.jpg') no-repeat center center fixed;
+    background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -24,18 +24,19 @@
 
   nav {
     display: flex;
-     height: 80px;
-     top: 0;
-     align-items: center;
-     flex-direction: row;
-     justify-content: flex-end;
-     background-color: #2E2E2E;
+    height: 80px;
+    top: 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    visibility: visible;
   }
 
   body {
-    font-family: 'Abel', sans-serif;
-
-    background-size: cover;
+    min-height: 100%;
+    font: 14px/30px Roboto,Helvetica,Arial,sans-serif;
+    color: #848484;
+    -webkit-font-smoothing: antialiased;
   }
   img{
     width: 400px;
