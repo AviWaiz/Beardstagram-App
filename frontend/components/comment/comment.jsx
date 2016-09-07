@@ -15,6 +15,7 @@ class Comment extends React.Component{
       <li onClick={this.deleteComment} >
         {this.props.comment.body}
       </li>
+
     );
   }
 };
