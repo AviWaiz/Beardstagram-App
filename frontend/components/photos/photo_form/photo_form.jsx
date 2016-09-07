@@ -13,13 +13,14 @@ class PhotoForm extends React.Component{
       title: '',
       user_id: this.props.currentUser.user.id,
       url: '',
-      modalOpen: true
+      modalOpen: true,
+      x: '',
+      y: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToIndex = this.navigateToIndex.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
-
   }
   onModalClose() {
 	  this.setState({modalOpen: false});
@@ -29,6 +30,13 @@ class PhotoForm extends React.Component{
 	redirectToIntro() {
 	  hashHistory.push('/photos');
 	}
+  beardPosition(x, y) {
+    return (x, y)=> (
+      this.setState({x: x, y: y})
+    )
+    debugger
+    console.log(this.state);
+  }
   upload(e) {
     e.preventDefault();
     window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
@@ -55,11 +63,6 @@ class PhotoForm extends React.Component{
     this.navigateToIndex();
   }
   render(){
-    let image;
-    // if (this.state.url) {
-    //   image = <img draggable="true" src={this.state.url} width="200" height="200" />
-    // }
-
     return (
       <div >
       <Modal isOpen={this.state.modalOpen}
@@ -73,8 +76,8 @@ class PhotoForm extends React.Component{
                 <i className="material-icons">backup</i>
         </button>
         <div className="photo-in-modal">
-          {/* {image} */}
-          <PhotoEdit url={this.state.url} />
+
+          <PhotoEdit url={this.state.url} beardPosition={this.beardPosition}/>
         </div>
 
         <label className="photo-field">title</label>

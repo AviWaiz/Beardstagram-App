@@ -8,39 +8,37 @@ class PhotoEdit extends React.Component {
     this.dragEnd = this.dragEnd.bind(this);
   }
   dragStart(e){
-    console.log("start");
-    console.log(e);
+    // console.log("start");
+    // console.log(e);
   }
   dragEnd(e){
-    console.log("end");
-    console.log(e);
+    // console.log("end");
+    // console.log(e);
+    debugger
+    this.props.beardPosition(e.evt.layerX, e.evt.layerY)
   }
   render() {
     const imageObj1 = new Image();
     imageObj1.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473049176/gibseoa6m077y1pxbd0z.png';
     const imageObj2 = new Image();
     imageObj2.src = this.props.url;
-    return (
-      <div>
-      <Stage width={300} height={300}>
-        <Layer>
-            <Kimage  image={imageObj2} width="300" height="300"/>
-            <Kimage  draggable image={imageObj1} onDragStart={this.dragStart} onDragEnd={this.dragEnd} width="85" height="85"/>
-        </Layer>
-      </Stage>
-      </div>
-    );
+    if (this.props.url) {
+      return (
+        <div>
+        <Stage width={300} height={300}>
+          <Layer>
+              <Kimage  image={imageObj2} width="300" height="300"/>
+              <Kimage  draggable image={imageObj1} onDragStart={this.dragStart} onDragEnd={this.dragEnd} width="85" height="85"/>
+          </Layer>
+        </Stage>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 
-// const MyShape2 = () => {
-//   const imageObj = new Image();
-//   imageObj.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473014156/kkxsapv5oc4fylyxcjpq.jpg';
-//
-//   return (
-//
-//   );
-// }
 export default PhotoEdit;
 
 //

@@ -222,9 +222,14 @@
     transition: all .3s ease-out;
     text-decoration: none;
   }
-  .signup:hover, .submit:hover, .photo-form:hover{
+  .signup:hover, .submit:hover, .photo-form:hover {
     background-color: #34e034;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+  }
+  .photo-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .upload-button:hover {
@@ -256,7 +261,7 @@
     will-change: opacity, transform;
     transition: all .3s ease-out;
   }
-  .demo:hover {
+  .demo:hover, .logout:hover {
     background-color: #2bd4b4;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   }
@@ -311,6 +316,7 @@
     z-index: 1;
     will-change: opacity, transform;
     transition: all .3s ease-out;
+    background-color: #32cdb0;
   }
 
 
