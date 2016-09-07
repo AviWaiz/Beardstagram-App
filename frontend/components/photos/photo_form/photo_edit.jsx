@@ -14,7 +14,6 @@ class PhotoEdit extends React.Component {
   dragEnd(e){
     // console.log("end");
     // console.log(e);
-    debugger
     this.props.beardPosition(e.evt.layerX, e.evt.layerY)
   }
   render() {

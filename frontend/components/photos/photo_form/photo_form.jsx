@@ -21,6 +21,7 @@ class PhotoForm extends React.Component{
     this.navigateToIndex = this.navigateToIndex.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
+		this.beardPosition = this.beardPosition.bind(this);
   }
   onModalClose() {
 	  this.setState({modalOpen: false});
@@ -31,10 +32,7 @@ class PhotoForm extends React.Component{
 	  hashHistory.push('/photos');
 	}
   beardPosition(x, y) {
-    return (x, y)=> (
-      this.setState({x: x, y: y})
-    )
-    debugger
+    this.setState({x: x, y: y})
     console.log(this.state);
   }
   upload(e) {

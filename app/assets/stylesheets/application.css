@@ -17,8 +17,8 @@
    box-sizing: border-box;
   }*/
   html {
-    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;*/
-    background-size: cover;
+    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;
+    background-size: cover;*/
   }
 
   nav {
@@ -42,6 +42,10 @@
    }
    .cursor-x {
      cursor: ew-resize;
+   }
+   .app{
+     background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;
+     background-size: cover;
    }
    .react-draggable strong {
      background: #ddd;
