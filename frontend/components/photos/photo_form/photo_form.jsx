@@ -3,7 +3,7 @@ import { withRouter, hashHistory } from 'react-router';
 import Modal from 'react-modal';
 import { ModalStyle2 } from '../../../util/modal_style';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
-
+import PhotoEdit from './photo_edit';
 
 class PhotoForm extends React.Component{
   constructor(props){
@@ -55,11 +55,10 @@ class PhotoForm extends React.Component{
     this.navigateToIndex();
   }
   render(){
-    let imageObj1 = new Image();
-    let imageObj2 = new Image();
-    if (this.state.url) {
-      imageObj1.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473049176/gibseoa6m077y1pxbd0z.png';
-    }
+    let image;
+    // if (this.state.url) {
+    //   image = <img draggable="true" src={this.state.url} width="200" height="200" />
+    // }
 
     return (
       <div >
@@ -73,8 +72,9 @@ class PhotoForm extends React.Component{
                 onClick={this.upload}>
                 <i className="material-icons">backup</i>
         </button>
-        <div>
-          {image}
+        <div className="photo-in-modal">
+          {/* {image} */}
+          <PhotoEdit url={this.state.url} />
         </div>
 
         <label className="photo-field">title</label>
@@ -86,53 +86,29 @@ class PhotoForm extends React.Component{
         </form>
         </Modal>
       </div>
+
     );
   }
 }
 
 
-class PhotoEdit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.dragStart = this.dragStart.bind(this);
-    this.dragEnd = this.dragEnd.bind(this);
-  }
-  dragStart(e){
-    console.log("start");
-    console.log(e);
-  }
-  dragEnd(e){
-    console.log("end");
-    console.log(e);
-  }
-  render() {
-    const imageObj = new Image();
-    imageObj.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473049176/gibseoa6m077y1pxbd0z.png';
-    return (
-      <Stage width={700} height={700}>
-        <Layer>
-            <MyShape2/>
-            <Kimage draggable image={imageObj}
-                    onDragStart={this.dragStart}
-                    onDragEnd={this.dragEnd}
-                    width="100"
-                    height="100" />
-        </Layer>
-      </Stage>
-    );
-  }
-}
-
-const MyShape2 = () => {
+const MyShape = () => {
   const imageObj = new Image();
-  imageObj.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473014156/kkxsapv5oc4fylyxcjpq.jpg';
-
+  imageObj.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473049176/gibseoa6m077y1pxbd0z.png';
   return (
-     <Kimage  image={imageObj} width="500" height="500"/>
+     <Kimage  draggable image={imageObj} width="100" height="100"/>
   );
 }
 
-
+// function App() {
+//     return (
+//       <Stage width={700} height={700}>
+//         <Layer>
+//             <MyShape/>
+//         </Layer>
+//       </Stage>
+//     );
+// }
 
 
 
