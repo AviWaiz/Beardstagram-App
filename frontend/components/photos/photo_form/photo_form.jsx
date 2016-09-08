@@ -24,22 +24,20 @@ class PhotoForm extends React.Component{
 		this.beardPosition = this.beardPosition.bind(this);
   }
   onModalClose() {
-	  this.setState({modalOpen: false});
-		this.redirectToIntro();
+	  this.setState({modalOpen: false})
+		this.redirectToIntro()
 	}
 
 	redirectToIntro() {
-	  hashHistory.push('/photos');
+	  hashHistory.push('/photos')
 	}
   beardPosition(x, y) {
     this.setState({x: x, y: y})
-    console.log(this.state);
   }
   upload(e) {
     e.preventDefault();
     window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
       if(!error){
-        console.log(results[0]);
         this.setState({url: results[0].url});
       }
     });
@@ -53,10 +51,12 @@ class PhotoForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
     const photo = {title: this.state.title,
                   user_id: this.state.user_id,
-                  url: this.state.url};
+                  url: this.state.url,
+                  x: this.state.x,
+                  y:this.state.y};
+                  debugger
     this.props.createPhoto(photo);
     this.navigateToIndex();
   }
@@ -93,23 +93,8 @@ class PhotoForm extends React.Component{
 }
 
 
-const MyShape = () => {
-  const imageObj = new Image();
-  imageObj.src = 'http://res.cloudinary.com/drql6e2wm/image/upload/v1473049176/gibseoa6m077y1pxbd0z.png';
-  return (
-     <Kimage  draggable image={imageObj} width="100" height="100"/>
-  );
-}
 
-// function App() {
-//     return (
-//       <Stage width={700} height={700}>
-//         <Layer>
-//             <MyShape/>
-//         </Layer>
-//       </Stage>
-//     );
-// }
+
 
 
 

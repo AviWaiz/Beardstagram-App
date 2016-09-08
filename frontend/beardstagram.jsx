@@ -12,7 +12,7 @@ import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
 import { fetchUser, fetchUsers } from './util/user_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
-import { requestPhotos, requestPhoto } from './actions/photo_actions';
+import { requestPhotos, requestPhoto, createPhoto } from './actions/photo_actions';
 // window.signUp = signUp;
 // window.logIn = logIn;
 // window.logOut = logOut;
@@ -24,6 +24,7 @@ window.fetchUsers = fetchUsers;
 window.fetchPhotos = fetchPhotos;
 window.requestPhotos = requestPhotos;
 window.requestPhoto = requestPhoto;
+window.createPhoto = createPhoto;
 window.removeComment = removeComment;
 window.merge = merge;
 window.logIn = logIn;

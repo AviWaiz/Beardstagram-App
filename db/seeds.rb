@@ -22,7 +22,9 @@ photos = Photo.create([
   {
     title: "Test",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668811/images_3_katu0s.jpg",
-    user_id: 1
+    user_id: 1,
+    x: 288,
+    y: 294
   },
   {
     title: "Test",

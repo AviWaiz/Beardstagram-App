@@ -13,8 +13,7 @@ class PhotoEdit extends React.Component {
   }
   dragEnd(e){
     // console.log("end");
-    // console.log(e);
-    this.props.beardPosition(e.evt.layerX, e.evt.layerY)
+    this.props.beardPosition(e.target.attrs.x, e.target.attrs.y)
   }
   render() {
     const imageObj1 = new Image();
@@ -24,9 +23,9 @@ class PhotoEdit extends React.Component {
     if (this.props.url) {
       return (
         <div>
-        <Stage width={300} height={300}>
+        <Stage width={400} height={400}>
           <Layer>
-              <Kimage  image={imageObj2} width="300" height="300"/>
+              <Kimage  image={imageObj2} width="400" height="400"/>
               <Kimage  draggable image={imageObj1} onDragStart={this.dragStart} onDragEnd={this.dragEnd} width="85" height="85"/>
           </Layer>
         </Stage>

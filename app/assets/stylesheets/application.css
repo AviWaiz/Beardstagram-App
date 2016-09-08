@@ -17,8 +17,8 @@
    box-sizing: border-box;
   }*/
   html {
-    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473119700/photo-1449674836064-31362349a0fe_wn7bms.jpg') no-repeat center center fixed;
-    background-size: cover;*/
+    background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
+    background-size: cover;
   }
 
   nav {
@@ -190,6 +190,7 @@
    width: 100%;
    display: flex;
    flex-direction: column;
+   align-items: center;
    text-decoration: none!important;
  }
 

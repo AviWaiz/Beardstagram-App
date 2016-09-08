@@ -16,6 +16,8 @@ if @user
       json.title photo.title
       json.url photo.url
       json.user_id photo.user_id
+      json.x photo.x
+      json.y photo.y
       json.comments photo.comments
     end
   end
