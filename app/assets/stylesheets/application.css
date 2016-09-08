@@ -17,7 +17,7 @@
    box-sizing: border-box;
   }*/
   html {
-    background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
+    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;*/
     background-size: cover;
   }
 
@@ -351,6 +351,18 @@
     align-items: baseline;
   }
 
+  .beard-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+  }
+  .icon-button {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+
+  }
   .photo-in-modal {
     display: flex;
     flex-direction: row;

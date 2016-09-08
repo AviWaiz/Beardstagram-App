@@ -1,5 +1,5 @@
 import React from 'react';
-import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
+import {Layer, Shape, Stage, Image as Kimage, Circle} from "react-konva";
 
 class PhotoEdit extends React.Component {
   constructor(props) {
@@ -27,6 +27,12 @@ class PhotoEdit extends React.Component {
           <Layer>
               <Kimage  image={imageObj2} width="400" height="400"/>
               <Kimage  draggable image={imageObj1} onDragStart={this.dragStart} onDragEnd={this.dragEnd} width="85" height="85"/>
+              <Circle x="85" y="85"
+                      radius="8"
+                      stroke="#666"
+                      fill="#ddd"
+                      draggable={false}
+                      dragOnTop={false} />
           </Layer>
         </Stage>
         </div>
