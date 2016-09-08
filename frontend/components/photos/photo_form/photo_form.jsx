@@ -15,13 +15,16 @@ class PhotoForm extends React.Component{
       url: '',
       modalOpen: true,
       x: '',
-      y: ''
+      y: '',
+      beardWidth: '',
+      beardHeight: '',
+      iconUrl: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToIndex = this.navigateToIndex.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
-		this.beardPosition = this.beardPosition.bind(this);
+		this.beardPositionAndSize = this.beardPositionAndSize.bind(this);
   }
   onModalClose() {
 	  this.setState({modalOpen: false})
@@ -31,8 +34,8 @@ class PhotoForm extends React.Component{
 	redirectToIntro() {
 	  hashHistory.push('/photos')
 	}
-  beardPosition(x, y) {
-    this.setState({x: x, y: y})
+  beardPositionAndSize(x, y, beardWidth, beardHeight, iconUrl) {
+    this.setState({x: x, y: y, beardWidth: beardWidth, beardHeight: beardHeight, iconUrl: iconUrl})
   }
   upload(e) {
     e.preventDefault();
@@ -51,12 +54,14 @@ class PhotoForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const photo = {title: this.state.title,
-                  user_id: this.state.user_id,
-                  url: this.state.url,
-                  x: this.state.x,
-                  y:this.state.y};
-                  debugger
+    const photo = { title: this.state.title,
+                    user_id: this.state.user_id,
+                    url: this.state.url,
+                    x: this.state.x,
+                    y: this.state.y,
+                    beardWidth: this.state.beardWidth,
+                    beardHeight: this.state.beardHeight,
+                    icon_url: this.state.iconUrl };
     this.props.createPhoto(photo);
     this.navigateToIndex();
   }
@@ -75,7 +80,7 @@ class PhotoForm extends React.Component{
         </button>
         <div className="photo-in-modal">
 
-          <PhotoEdit url={this.state.url} beardPosition={this.beardPosition}/>
+          <PhotoEdit url={this.state.url} beardPositionAndSize={this.beardPositionAndSize}/>
         </div>
 
         <label className="photo-field">title</label>

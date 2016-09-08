@@ -62,7 +62,7 @@ class AppRouter extends React.Component {
         <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
         <Route path="/users/:id" component={ UserShowContainer } onEnter={this._userShow} />
         <Route path="/photos/new" component={ PhotoformContainer } onEnter={this._ensureLoggedIn}/>
-        <Route path="/photos/edit_test" component={ PhotoEditTest } />
+        {/* <Route path="/photos/edit_test" component={ PhotoEditTest } /> */}
         </Route>
       </Router>
     );

@@ -39,13 +39,16 @@ ActiveRecord::Schema.define(version: 20160904172355) do
   add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.integer  "user_id",    null: false
+    t.string   "title"
+    t.integer  "user_id",     null: false
     t.string   "url"
     t.integer  "x"
     t.integer  "y"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "beardWidth"
+    t.integer  "beardHeight"
+    t.string   "icon_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree

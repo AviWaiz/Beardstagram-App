@@ -14,6 +14,9 @@ json.photos do
     json.user_id photo.user_id
     json.x photo.x
     json.y photo.y
+    json.beardWidth photo.beardWidth
+    json.beardHeight photo.beardHeight
+    json.icon_url photo.icon_url
     json.comments photo.comments
   end
 end
