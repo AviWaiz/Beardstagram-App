@@ -8,6 +8,7 @@ class PhotoIndex extends React.Component{
   }
 
   render(){
+    debugger
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
     return(
@@ -17,7 +18,8 @@ class PhotoIndex extends React.Component{
             <PhotoIndexItem photo={photos[key]}
              key={key}
              requestPhoto={this.props.requestPhoto}
-             removeCommentAction={this.props.removeCommentAction}/>
+             removeCommentAction={this.props.removeCommentAction}
+             currentUser={this.props.currentUser} />
           ))
         }
       </div>

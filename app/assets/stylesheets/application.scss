@@ -17,11 +17,15 @@
    box-sizing: border-box;
   }*/
   html {
-    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
-    background-size: cover;*/
+    background-color: #e6eef1;
   }
   .background  {
-
+    &.show{
+      background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      z-index: 0;
+    }
   }
   nav {
     display: flex;
@@ -29,7 +33,7 @@
     top: 0;
     align-items: center;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     visibility: visible;
     letter-spacing: .1em;
   }
@@ -123,7 +127,7 @@
   .upload-button{
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     border: none;
-    border-radius: 2px;
+    border-radius: 10px;
     height: 55.5px;
     width: 55.5px;
     outline: 0;
@@ -149,12 +153,8 @@
 
 
   .nav-link{
-    display: flex;
-    flex-direction: row;
     color: antiquewhite;
     padding-right: 5px;
-    justify-content: center;
-    margin-right: auto;
     text-decoration: none;
   }
   .nav-group{
@@ -201,11 +201,19 @@
  .comments {
    display: flex;
    flex-direction: column;
-   justify-content: flex-start;;
+   justify-content: flex-start;
+   color: #26a69a;
+   margin: 0.5rem 0 1rem 0;
+   border: 1px solid #e0e0e0;
+   border-radius: 2px;
+   overflow: hidden;
+   position: relative;
+   flex-wrap: wrap;
  }
  .list-comment{
    list-style: none;
-   text-decoration: none
+   text-decoration: none;
+   border-bottom: 1px solid #e0e0e0;
  }
  .login-input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px rgb(244, 244, 244) inset !important;
@@ -234,12 +242,23 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding-right: 20px
+    padding-right: 20px;
+    width: 60%;
+  }
+  .logout-beardme-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 20px;
+    width: 60%;
+  }
+  .logout-beardme {
+    justify-content: flex-end;
   }
   .signup, .submit, .photo-form{
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     height: 36px;
     line-height: 36px;
     outline: 0;
@@ -268,7 +287,7 @@
   }
   .photo-index {
     display: flex;
-    flex-direction: column;;
+    flex-direction: row;
     justify-content: center;
     margin-left: 40px;
     margin-right: 40px;
@@ -276,18 +295,22 @@
     margin-top: 15px;
     flex-wrap: wrap;
   }
+  .title {
+    color:  #ee6e73;
+  }
 
   .index-item{
     width: 700px;
     height:400px;
     margin: 15px;
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.16),0 10px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 10px 10px 5px rgba(0,0,0,0.16),0 10px 10px 5px rgba(0,0,0,0.12);
     border-radius: 20px;
     display: flex;
     flex-direction: row;
+    background-color: #fff;
   }
   .index-item:hover{
-    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.18),0 10px 20px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px 10px rgba(0,0,0,0.18),0 10px 20px 10px rgba(0,0,0,0.2);
   }
 
   a.form-question{
@@ -301,7 +324,7 @@
   .demo {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     height: 36px;
     line-height: 36px;
     outline: 0;
@@ -334,7 +357,7 @@
   }
   .login {
     border: none;
-    border-radius: 2px;
+    border-radius: 10px;
     height: 36px;
     line-height: 36px;
     outline: 0;
@@ -359,7 +382,7 @@
   .logout {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     height: 36px;
     line-height: 36px;
     outline: 0;
@@ -383,6 +406,32 @@
   }
 
 
+  .search-form {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  border: none;
+  border-radius: 5px;
+  height: 36px;
+  line-height: 36px;
+  outline: 0;
+  padding: 0 1rem;
+  text-decoration: none;
+  color: #fff;
+  text-align: left;
+  letter-spacing: .5px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+  z-index: 1;
+  will-change: opacity, transform;
+  transition: all .3s ease-out;
+  background: #fff;
+}
+
+
   .new-photo-title {
     text-align: center;
   }
@@ -402,6 +451,7 @@
   }
   .new-photo-button {
     margin: 5px;
+    border-radius: 5px;
   }
   .form-field {
     display: flex;
@@ -419,7 +469,7 @@
     width: 50px;
     height: 50px;
     padding: 5px;
-
+    border-radius: 10px;
   }
   .photo-in-modal {
     display: flex;

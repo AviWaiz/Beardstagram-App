@@ -17,6 +17,7 @@ class SessionForm extends React.Component {
 		this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
 		this.logInQuestion = this.logInQuestion.bind(this);
+		this.demoLogin = this.demoLogin.bind(this);
 	}
 
 	componentDidUpdate(){
@@ -78,6 +79,43 @@ class SessionForm extends React.Component {
 		);
 	}
 
+	demoLogin(e){
+		e.preventDefault();
+		let username = this.DEMO_USERNAME.split("").slice();
+		this.fillUsername(username)
+	}
+
+	fillUsername(username) {
+		let password = this.DEMO_PASSWORD.split("").slice();
+		if (username.length > 0) {
+			setTimeout(() => {
+		    this.setState({
+					username: this.state.username + username.shift()
+				});
+
+				this.fillUsername(username);
+				}, 100);
+			} else {
+				this.fillPassword(password)
+			}
+		}
+
+	fillPassword(password) {
+		if (password.length > 0) {
+			setTimeout(() => {
+		    this.setState({
+					password: this.state.password + password.shift()
+				});
+
+				this.fillPassword(password);
+				}, 100);
+			} else {
+				let e = { preventDefault: function() {}};
+				this.handleSubmit(e);
+			}
+		}
+
+
 	render() {
 		return (
 			<div >
@@ -106,7 +144,7 @@ class SessionForm extends React.Component {
 						<br />
 
 						<input className="submit" type="submit" value="Submit" />
-						<button className="demo" type="submit" value="Demo" >Demo</button>
+						<button className="demo" type="submit" value="Demo"  onClick={this.demoLogin}>Demo</button>
 					</div>
 				</form>
 				</Modal>

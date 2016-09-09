@@ -15,7 +15,8 @@ class PhotoIndexItem extends React.Component{
     const comments = photo.comments.map((comment) => (
       <Comment removeCommentAction={this.props.removeCommentAction}
                comment={comment}
-               key={comment.id} />));
+               key={comment.id}
+               currentUser={this.props.currentUser} />));
 
     const imageObj1 = new Image();
     imageObj1.src = photoUrl;
@@ -38,9 +39,9 @@ class PhotoIndexItem extends React.Component{
         </Stage>
         <div className="index-item-fields">
           <div className="title">{photo.title}</div>
-            <div className="comments">{comments}
+            {/* <div className="comments">{comments}
               <CommentFormContainer photoId={photo.id}/>
-            </div>
+            </div> */}
           </div>
         </div>
       )

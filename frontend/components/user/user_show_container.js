@@ -4,7 +4,8 @@ import { removeCommentAction } from '../../actions/photo_actions';
 import UserShow  from './user_show';
 
 const mapStateToProps = state => ({
-  photos: state.photos
+  photos: state.photos,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

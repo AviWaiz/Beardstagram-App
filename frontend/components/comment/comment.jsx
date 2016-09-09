@@ -11,13 +11,21 @@ class Comment extends React.Component{
   }
 
   render(){
-    return (
-      <li className="list-comment">
-        {this.props.comment.body}
-        <button onClick={this.deleteComment}>x</button>
-      </li>
-
-    );
+    
+    if (this.props.currentUser.user.id === this.props.comment.user_id) {
+      return (
+        <li className="list-comment">
+          {this.props.comment.body}
+          <button onClick={this.deleteComment}>x</button>
+        </li>
+      );
+    } else{
+      return (
+        <li className="list-comment">
+          {this.props.comment.body}
+        </li>
+      );
+    }
   }
 };
 

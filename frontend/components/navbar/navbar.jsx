@@ -4,17 +4,21 @@ import Search from '../user/search';
 
 const SessionLinks = () => (
   <nav className="login-signup">
+  <div>
     <Link to="/login" className="login" activeClassName="current">Login</Link>
     &nbsp;&nbsp;
     <Link to="/signup" className="signup" activeClassName="current">Venture!</Link>
+    </div>
   </nav>
 );
 
 const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, users}) => (
-	<section className="login-signup">
+	<section className="logout-beardme-search">
     <Search searchUsers={searchUsers} users={users} />
-		<Link to="/" className="logout" onClick={logOut}>LogOut</Link>
-    <Link to="/photos/new" className="photo-form" activeClassName="current">Beard Me!</Link>
+    <div className="logout-beardme">
+      <Link to="/" className="logout" onClick={logOut}>LogOut</Link>
+      <Link to="/photos/new" className="photo-form" activeClassName="current">Beard Me!</Link>
+    </div>
 	</section>
 );
 

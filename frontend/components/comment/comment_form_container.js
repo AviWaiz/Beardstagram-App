@@ -3,7 +3,7 @@ import CommentForm  from './comment_form';
 import { createComment } from '../../actions/photo_actions';
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

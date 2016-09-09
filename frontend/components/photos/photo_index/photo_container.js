@@ -3,7 +3,8 @@ import PhotoIndex  from './photo_index';
 import { requestPhotos, requestPhoto, removeCommentAction } from '../../../actions/photo_actions';
 
 const mapStateToProps = state => ({
-  photos: state.photos
+  photos: state.photos,
+  currentUser: state.session.currentUser
 });
 const mapDispatchToProps = dispatch => ({
   requestPhotos: () => dispatch(requestPhotos()),

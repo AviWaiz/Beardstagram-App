@@ -38,10 +38,10 @@ class Search extends React.Component{
       })
     }
     return (
-      <div className="search-form">
+      <div className="search">
         <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.username}
-              onChange={this.update('username')} className="comment-field" placeholder="Search User"/>
+            <input className="search-form" type="text" value={this.state.username}
+              onChange={this.update('username')} placeholder="SEARCH USER"/>
         </form>
         {results}
       </div>

@@ -13,7 +13,7 @@ Follow.destroy_all
 
 users = User.create([
   { username: 'Avinoam', password: '1234567'},
-  { username: 'a', password: '1234567'},
+  { username: 'Guest', password: '12345678'},
   { username: 'Avi', password: 'Waizman'},
 
 ])
