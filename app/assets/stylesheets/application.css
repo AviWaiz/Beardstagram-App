@@ -17,11 +17,11 @@
    box-sizing: border-box;
   }*/
   html {
-
+    /*background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
+    background-size: cover;*/
   }
-  body  {
-    background: url('http://res.cloudinary.com/drql6e2wm/image/upload/v1473345462/photo-1449674836064-31362349a0fe_cmulxk.jpg') no-repeat center center fixed;
-    background-size: cover;
+  .background  {
+
   }
   nav {
     display: flex;
@@ -182,11 +182,20 @@
 
  .login-input {
     width: 100%;
+    border: none;
+    border-bottom: 2px solid;
+    background-color: transparent;
+    transition: border 1s;
+    margin-bottom: 25px;
+    outline: none;
  }
-
+ .login-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(244, 244, 244) inset !important;
+  }
  .login-form-box, .photo-form-box  {
    text-align: center;
    color: #444;
+   width: 100%;
  }
  .photo-form-box {
    width: 100%;
@@ -196,7 +205,13 @@
    text-decoration: none!important;
  }
 
-
+  .form-question{
+    font-size: x-large;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+  }
   .login-signup {
     display: flex;
     flex-direction: row;
@@ -238,7 +253,10 @@
     flex-direction: column;
     align-items: center;
   }
-
+  a.form-question{
+    color: #32cdb0;
+    padding: 10px
+  }
   .upload-button:hover {
     background-color: #fb8375;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);

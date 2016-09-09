@@ -8,9 +8,9 @@ import SessionFormContainer from './session_form/session_form_container';
 import PhotoIndexContainer from './photos/photo_index/photo_container';
 import PhotoformContainer from './photos/photo_form/photo_form_container';
 import PhotoFeedContainer from './photos/photo_feed/photo_feed_container';
-import PhotoEditTest from './photos/photo_form/photo_edit_testing';
 import requestPhotos from '../actions/photo_actions';
 import UserShowContainer from './user/user_show_container';
+import { Home } from './home';
 import { receiveCurrentUser } from '../actions/session_actions';
 import { requestUser } from '../actions/user_actions';
 
@@ -62,7 +62,6 @@ class AppRouter extends React.Component {
         <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
         <Route path="/users/:id" component={ UserShowContainer } onEnter={this._userShow} />
         <Route path="/photos/new" component={ PhotoformContainer } onEnter={this._ensureLoggedIn}/>
-        {/* <Route path="/photos/edit_test" component={ PhotoEditTest } /> */}
         </Route>
       </Router>
     );

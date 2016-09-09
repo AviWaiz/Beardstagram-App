@@ -11,9 +11,12 @@ class SessionForm extends React.Component {
 			password: "",
 			modalOpen: true
 		};
+		this.DEMO_USERNAME = "Guest"
+		this.DEMO_PASSWORD = "Guest"
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
+		this.logInQuestion = this.logInQuestion.bind(this);
 	}
 
 	componentDidUpdate(){
@@ -49,9 +52,17 @@ class SessionForm extends React.Component {
 
 	navLink(){
 		if (this.props.formType === "login") {
-			return <Link to="/signup">sign up instead</Link>;
+			return <Link className="form-question" to="/signup">Sign Up</Link>;
 		} else {
-			return <Link to="/login">log in instead</Link>;
+			return <Link className="form-question" to="/login">Login</Link>;
+		}
+	}
+
+	logInQuestion() {
+		if (this.props.formType === "login") {
+			return <div className="form-question">Got an account?</div>
+		} else {
+			return <div className="form-question">Dont have an account?</div>
 		}
 	}
 
@@ -75,25 +86,23 @@ class SessionForm extends React.Component {
 						 style={ModalStyle1}>
 				<form onSubmit={this.handleSubmit}
 				 			 className="login-form-box">
-					Welcome to Beardstagram!
 					<br/>
-					Please { this.props.formType } or { this.navLink() }
-					{ this.renderErrors() }
-					<div className="login-form">
 
-						<label className="form-field"> Username:
+					<div className="login-form">
+							{ this.logInQuestion() }  { this.navLink() }
+							{ this.renderErrors() }
+
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
-								className="login-input" />
-						</label>
+								className="login-input"
+								placeholder="username" />
 
-						<label className="form-field"> Password:
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
-								className="login-input" />
-						</label>
+								className="login-input"
+								placeholder="password" />
 						<br />
 
 						<input className="submit" type="submit" value="Submit" />
