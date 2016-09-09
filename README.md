@@ -13,29 +13,30 @@ Beardstagram is a web application inspired by Instagram that will be built using
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-  - [ ] Description for Photos
-  - [ ] Upload, edit, and delete Photos
+  - [ ] title for Photos
+  - [ ] Upload, edit, Photos
   - [ ] Users can comment on photos of users that they follow
 - [ ] Photos Feed
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
   - [ ] User's Photos Feed has photos of other users that user is following
-- [ ] likes
+- [ ] Beardstagram(drag and drop beard icons on pictures)
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
+  - [ ] User's Photos Feed has photos of other users that user is following
 - [ ] follows/search
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
 - [ ] Bonus
-  - [ ] Beardstagram(drag and drop beard icons on pictures)
   - [ ] follow suggestions
   - [ ] user search
   - [ ] tags
   - [ ] Direct messaging
   - [ ] hashtags
+  - [ ] likes
 
 ## Implementation Timeline
 

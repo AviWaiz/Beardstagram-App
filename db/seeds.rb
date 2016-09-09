@@ -20,40 +20,50 @@ users = User.create([
 
 photos = Photo.create([
   {
-    title: "Test",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668811/images_3_katu0s.jpg",
+    title: "Check it out I grow a beard",
     user_id: 1,
-    x: 288,
-    y: 294
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473446738/qspmeedkggwhuc3icfqw.jpg",
+    x: 189,
+    y: 153,
+    beardWidth: 115,
+    beardHeight: 115,
+    icon_url: "freepik-beard01.png"
   },
   {
-    title: "Test",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668715/the_beard__by_stalkingmeat-d3hlhnv_inj8ys.jpg",
-    user_id: 2
+    title: "Try the Beard me button",
+    user_id: 1,
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473446738/qspmeedkggwhuc3icfqw.jpg",
+    x: 189,
+    y: 153,
+    beardWidth: 115,
+    beardHeight: 115,
+    icon_url: "freepik-beard04.png"
   },
   {
-    title: "Test",
+    title: "Title",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668715/tumblr_nfwfhx10ww1rhfl7ko1_1280_nbrmhn.gif",
     user_id: 3
   },
   {
-    title: "Test",
+    title: "Title",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/schick-free-your-skin-animal-beards-designboom-03_d2lxtg.jpg",
     user_id: 1
   },
   {
-    title: "Test",
+    title: "Title",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/75e3c45f2018c2ab363e8500ad5dcb16_rxrhcp.jpg",
     user_id: 2
   },
 
   {
-    title: "Test",
+    title: "Title",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668713/download_1_iodm94.jpg",
     user_id: 1
   },
   {
-    title: "Test",
+    title: "Title",
     url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668253/manuaryme_emfelh.png",
     user_id: 2
   },
@@ -63,45 +73,36 @@ photos = Photo.create([
 
 comments = Comment.create([
   {
-    body: "hello world",
+    body: "Sick Beard, did you use the Beard me button?",
     user_id: 1,
     photo_id: 1
   },
   {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 1,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
-    user_id: 2,
-    photo_id: 1
-  },
-  {
-    body: "hello world",
+    body: "wow",
     user_id: 3,
     photo_id: 1
   },
   {
-    body: "hello world",
+    body: "love it",
+    user_id: 3,
+    photo_id: 1
+  },
+  {
+    body: "Sick Beard, did you use the Beard me button?",
     user_id: 1,
     photo_id: 2
   },
   {
-    body: "hello world",
-    user_id: 2,
+    body: "wow",
+    user_id: 3,
     photo_id: 2
   },
   {
-    body: "hello world",
+    body: "love it",
     user_id: 3,
     photo_id: 2
-  }
+  },
+
 ])
 
 follows = Follow.create([

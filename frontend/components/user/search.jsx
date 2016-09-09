@@ -43,7 +43,7 @@ class Search extends React.Component{
             <input className="search-form" type="text" value={this.state.username}
               onChange={this.update('username')} placeholder="SEARCH USER"/>
         </form>
-        {results}
+        <ul className="search-results">{results}</ul>
       </div>
     );
   }

@@ -39,9 +39,9 @@ class PhotoIndexItem extends React.Component{
         </Stage>
         <div className="index-item-fields">
           <div className="title">{photo.title}</div>
-            {/* <div className="comments">{comments}
+            <div className="comments">{comments}
               <CommentFormContainer photoId={photo.id}/>
-            </div> */}
+            </div>
           </div>
         </div>
       )
