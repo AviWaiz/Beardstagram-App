@@ -12,7 +12,6 @@ class PhotoIndex extends React.Component{
     const photoKeys = Object.keys(photos);
     return(
       <div className="photo-index">
-        <h1>Photos</h1>
         {
           photoKeys.map( key =>(
             <PhotoIndexItem photo={photos[key]}

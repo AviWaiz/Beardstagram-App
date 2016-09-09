@@ -12,8 +12,9 @@ class Comment extends React.Component{
 
   render(){
     return (
-      <li onClick={this.deleteComment} >
+      <li className="list-comment">
         {this.props.comment.body}
+        <button onClick={this.deleteComment}>x</button>
       </li>
 
     );

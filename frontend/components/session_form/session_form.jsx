@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
 			modalOpen: true
 		};
 		this.DEMO_USERNAME = "Guest"
-		this.DEMO_PASSWORD = "Guest"
+		this.DEMO_PASSWORD = "12345678"
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
@@ -106,7 +106,7 @@ class SessionForm extends React.Component {
 						<br />
 
 						<input className="submit" type="submit" value="Submit" />
-						<button className="demo" type="submit" value="Demo">Demo</button>
+						<button className="demo" type="submit" value="Demo" >Demo</button>
 					</div>
 				</form>
 				</Modal>

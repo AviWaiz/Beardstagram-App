@@ -86,6 +86,7 @@
     width: 400px;
     height: 400px;
     background-image: none;
+    border-radius: 14px;
   }
   .logo {
     margin-right: auto;
@@ -170,7 +171,7 @@
    justify-content: center;
  }
 
- .login-form {
+ .login-form, .comment-form {
    padding: 0.01em 16px;
    margin-top: 16px!important;
    margin-bottom: 16px!important;
@@ -188,6 +189,23 @@
     transition: border 1s;
     margin-bottom: 25px;
     outline: none;
+ }
+ .comment{
+   width: 100%;
+   border: none;
+   background-color: transparent;
+   transition: border 1s;
+   margin-bottom: 25px;
+   outline: none;
+ }
+ .comments {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;;
+ }
+ .list-comment{
+   list-style: none;
+   text-decoration: none
  }
  .login-input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px rgb(244, 244, 244) inset !important;
@@ -250,9 +268,28 @@
   }
   .photo-index {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column;;
+    justify-content: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
   }
+
+  .index-item{
+    width: 700px;
+    height:400px;
+    margin: 15px;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.16),0 10px 10px 0 rgba(0,0,0,0.12);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  .index-item:hover{
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.18),0 10px 20px 0 rgba(0,0,0,0.2);
+  }
+
   a.form-question{
     color: #32cdb0;
     padding: 10px
