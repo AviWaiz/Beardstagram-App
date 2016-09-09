@@ -7,7 +7,17 @@ export const fetchUser = (id, success) => {
   });
 };
 
-export const fetchUsers = (success) => {  
+export const search = (query, success) => {
+  $.ajax({
+    type: 'GET',
+    url: 'api/users/search',
+    data: {query: query},
+    success
+  });
+};
+
+
+export const fetchUsers = (success) => {
   $.ajax({
     type: 'GET',
     url: `api/users`,

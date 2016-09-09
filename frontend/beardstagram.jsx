@@ -9,7 +9,7 @@ import configureStore from './store/store';
 import merge from 'lodash/merge';
 import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
-import { fetchUser, fetchUsers } from './util/user_api_util';
+import { fetchUser, fetchUsers, search } from './util/user_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
 import { requestPhotos, requestPhoto, createPhoto } from './actions/photo_actions';
@@ -26,6 +26,7 @@ window.requestPhotos = requestPhotos;
 window.requestPhoto = requestPhoto;
 window.createPhoto = createPhoto;
 window.removeComment = removeComment;
+window.search = search;
 window.merge = merge;
 window.logIn = logIn;
 

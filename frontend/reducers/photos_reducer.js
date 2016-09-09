@@ -20,7 +20,7 @@ const PhotoReducer = function(state = {}, action){
       return newPhotos;
     case SessionConstants.RECEIVE_CURRENT_USER:
       action.currentUser.photos.forEach( photo => ( newPhotos[photo.id] = photo))
-      return Object.assign({}, state, newPhotos);
+      return Object.assign({}, newPhotos);
     case PhotoConstants.RECEIVE_COMMENT:
       newPhoto = merge({}, state[action.comment.photo_id]);
       newPhoto.comments.push(action.comment);

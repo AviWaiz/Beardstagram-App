@@ -6,11 +6,6 @@ import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
 class PhotoIndexItem extends React.Component{
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
   }
 
   render(){
@@ -27,7 +22,6 @@ class PhotoIndexItem extends React.Component{
 
     const imageObj2 = new Image();
     if (photo.x && photo.y && photo.beardWidth && photo.beardHeight && photo.icon_url) {
-      debugger
       let x = (photo.x).toString();
       let y = (photo.y).toString();
       let beardWidth = photo.beardWidth.toString();

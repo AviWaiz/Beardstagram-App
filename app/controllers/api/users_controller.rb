@@ -12,6 +12,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @users = User.where("username ~ ?", params[:query])
+    else
+      @users = User.none
+    end
+    render :index
+  end
+
   def show
     @user = User.find(params[:id])
     render "api/users/show"
