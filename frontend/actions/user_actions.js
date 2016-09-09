@@ -2,12 +2,18 @@ export const UserConstants = {
   RECEIVE_USERS: "RECEIVE_USERS",
   REQUEST_USERS: "REQUEST_USERS",
   RECEIVE_USER: "RECEIVE_USER",
-  REQUEST_USER: "REQUEST_USER"
+  REQUEST_USER: "REQUEST_USER",
+  SEARCH_USERS: "SEARCH_USERS"
 };
 
 export const receiveUser = (user) => ({
     type: UserConstants.RECEIVE_USER,
     user
+});
+
+export const searchUsers = (username) => ({
+    type: UserConstants.SEARCH_USERS,
+    username
 });
 
 

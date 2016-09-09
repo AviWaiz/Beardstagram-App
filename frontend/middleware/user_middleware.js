@@ -1,11 +1,13 @@
 // API Util
 import { fetchUser,
-         fetchUsers
+         fetchUsers,
+         search
        } from '../util/user_api_util';
 // Action
 import { receiveUser,
          receiveUsers,
-         UserConstants
+         UserConstants,
+         searchUsers
        } from '../actions/user_actions';
 
 
@@ -19,6 +21,9 @@ export default ({getState, dispatch}) => next => action => {
       break;
     case UserConstants.REQUEST_USERS:
       fetchUsers(action, receiveUsersSuccess);
+      break;
+    case UserConstants.SEARCH_USERS:
+      search(action.username, receiveUsersSuccess);
       break;
     default:
       break;
