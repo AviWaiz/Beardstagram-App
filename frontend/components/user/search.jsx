@@ -12,11 +12,10 @@ class Search extends React.Component{
   }
 
   update(property){
-    return e => this.setState({[property]: e.target.value})
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    this.props.searchUsers(nextState.username)
+    return e =>{
+      this.setState({[property]: e.target.value})
+      this.props.searchUsers(e.target.value)
+    }
   }
 
   handleSubmit(e){
@@ -27,24 +26,24 @@ class Search extends React.Component{
   }
 
   render(){
-    // let results;
-    // if (this.props.users){
-    //   let users = this.props.users;
-    //   let userKeys = Object.keys(users);
-    //   results = userKeys.map((key) => {
-    //     return( <li key={users[key].username}>
-    //               <Link to={`/users/${users[key].id}`}>{users[key].username}</Link>
-    //             </li>
-    //     );
-    //   })
-    // }
+    let results;
+    if (this.props.users){
+      let users = this.props.users;
+      let userKeys = Object.keys(users);
+      results = userKeys.map((key) => {
+        return( <li key={users[key].username}>
+                  <Link to={`/users/${users[key].id}`}>{users[key].username}</Link>
+                </li>
+        );
+      })
+    }
     return (
       <div className="search-form">
         <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.username}
               onChange={this.update('username')} className="comment-field" placeholder="Search User"/>
         </form>
-        {/* {results} */}
+        {results}
       </div>
     );
   }
