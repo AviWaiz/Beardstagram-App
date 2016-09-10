@@ -17,6 +17,7 @@ json.photos do
     json.beardWidth photo.beardWidth
     json.beardHeight photo.beardHeight
     json.icon_url photo.icon_url
+    json.created_at photo.created_at
     json.comments do
       json.array!(photo.comments) do |comment|
         json.body comment.body

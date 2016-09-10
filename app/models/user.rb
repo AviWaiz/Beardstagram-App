@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   def flatten_photos
     self.followees.map do |follower|
       follower.photos
-    end.flatten.concat(self.photos)
+    end.flatten.concat(self.photos).sort_by &:created_at
   end
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
