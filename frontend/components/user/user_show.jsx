@@ -9,21 +9,27 @@ class UserShow extends React.Component{
   }
 
   render(){
-    const photos = this.props.photos
+    const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
+    const photosSorted = photoKeys.map( key => (photos[key])).sort(
+      (photo1, photo2) => {
+          if (photo1.created_at > photo2.created_at) return -1;
+          if (photo1.created_at < photo2.created_at) return 1;
+          return 0;
+      });
     return(
-        <div>
-          <h1>Photos</h1>
-          {
-            photoKeys.map( key =>(
-              <PhotoIndexItem photo={photos[key]}
-                              key={key}
-                              removeCommentAction={this.props.removeCommentAction}
-                              currentUser={this.props.currentUser} />
-            ))
-          }
-        </div>
-      );
+      <div className="photo-index">
+        {
+          photosSorted.map( photo =>(
+            <PhotoIndexItem photo={photo}
+             key={photo.id}
+             requestPhoto={this.props.requestPhoto}
+             removeCommentAction={this.props.removeCommentAction}
+             currentUser={this.props.currentUser}/>
+          ))
+        }
+      </div>
+    );
   }
 }
 

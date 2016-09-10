@@ -11,7 +11,6 @@ class PhotoIndexItem extends React.Component{
   render(){
     const photo = this.props.photo;
     const photoUrl = photo.url;
-    const iconUrl = photo.icon_url;
     const commentsSorted = photo.comments.sort((comment1, comment2) => {
       if (comment1.created_at > comment2.created_at) return 1;
       if (comment1.created_at < comment2.created_at) return -1;
