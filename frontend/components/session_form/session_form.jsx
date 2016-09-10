@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link, hashHistory, withRouter } from 'react-router';
 import Modal from 'react-modal';
 import { ModalStyle1 } from '../../util/modal_style';
 
@@ -18,6 +18,7 @@ class SessionForm extends React.Component {
 		this.redirectToIntro = this.redirectToIntro.bind(this);
 		this.logInQuestion = this.logInQuestion.bind(this);
 		this.demoLogin = this.demoLogin.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidUpdate(){
@@ -33,7 +34,6 @@ class SessionForm extends React.Component {
 	redirectToIntro() {
 	  hashHistory.push('/');
 	}
-
 
 	redirectIfLoggedIn(){
 		if (this.props.loggedIn){
@@ -79,8 +79,15 @@ class SessionForm extends React.Component {
 		);
 	}
 
-	demoLogin(e){
+	handleClick(e) {
+		debugger
 		e.preventDefault();
+		this.props.router.push(`/login`);
+		this.demoLogin();
+	}
+
+
+	demoLogin(){
 		let username = this.DEMO_USERNAME.split("").slice();
 		this.fillUsername(username)
 	}
@@ -144,7 +151,7 @@ class SessionForm extends React.Component {
 						<br />
 
 						<input className="submit" type="submit" value="Submit" />
-						<button className="demo" type="submit" value="Demo"  onClick={this.demoLogin}>Demo</button>
+						<button className="demo" type="submit" value="Demo"  onClick={this.handleClick}>Demo</button>
 					</div>
 				</form>
 				</Modal>
@@ -154,4 +161,4 @@ class SessionForm extends React.Component {
 
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
