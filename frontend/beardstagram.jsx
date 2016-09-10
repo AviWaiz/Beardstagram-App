@@ -15,7 +15,7 @@ import { fetchUser, fetchUsers, search } from './util/user_api_util';
 import { requestPhotos, requestPhoto, createPhoto } from './actions/photo_actions';
 // window.signUp = signUp;
 // window.logIn = logIn;
-// window.logOut = logOut;
+window.logOut = logOut;
 // window.receiveErrors = receiveErrors;
 // window.receiveCurrentUser = receiveCurrentUser;
 window.fetchPhoto = fetchPhoto;
