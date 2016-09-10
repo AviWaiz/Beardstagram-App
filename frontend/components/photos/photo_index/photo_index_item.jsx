@@ -12,7 +12,12 @@ class PhotoIndexItem extends React.Component{
     const photo = this.props.photo;
     const photoUrl = photo.url;
     const iconUrl = photo.icon_url;
-    const comments = photo.comments.map((comment) => (
+    const commentsSorted = photo.comments.sort((comment1, comment2) => {
+      if (comment1.created_at > comment2.created_at) return 1;
+      if (comment1.created_at < comment2.created_at) return -1;
+      return 0;
+    });
+    const comments = commentsSorted.map((comment) => (
       <Comment removeCommentAction={this.props.removeCommentAction}
                comment={comment}
                key={comment.id}
@@ -20,7 +25,6 @@ class PhotoIndexItem extends React.Component{
 
     const imageObj1 = new Image();
     imageObj1.src = photoUrl;
-
     const imageObj2 = new Image();
     if (photo.x && photo.y && photo.beardWidth && photo.beardHeight && photo.icon_url) {
       let x = (photo.x).toString();
