@@ -47,7 +47,7 @@ class PhotoIndexItem extends React.Component{
             </div>
           </div>
         </div>
-      )
+      );
       } else {
       return(
         <div className="index-item">

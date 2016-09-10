@@ -22,26 +22,26 @@ class PhotoEdit extends React.Component {
                                     e.target.attrs.y,
                                     this.state.beardWidth,
                                     this.state.beardHeight,
-                                    this.state.iconUrl)
+                                    this.state.iconUrl);
   }
   increaseX(e) {
     e.preventDefault();
-    this.setState({beardWidth: this.state.beardWidth + 10})
+    this.setState({beardWidth: this.state.beardWidth + 10});
   }
   increaseY(e) {
     e.preventDefault();
-    this.setState({beardHeight: this.state.beardHeight + 10})
+    this.setState({beardHeight: this.state.beardHeight + 10});
   }
   decreaseX(e) {
     e.preventDefault();
-    this.setState({beardWidth: this.state.beardWidth - 10})
+    this.setState({beardWidth: this.state.beardWidth - 10});
   }
   decreaseY(e) {
     e.preventDefault();
-    this.setState({beardHeight: this.state.beardHeight - 10})
+    this.setState({beardHeight: this.state.beardHeight - 10});
   }
   changeIcon(url) {
-    this.setState({iconUrl: url})
+    this.setState({iconUrl: url});
   }
   render() {
     const imageObj1 = new Image();

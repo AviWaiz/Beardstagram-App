@@ -10,7 +10,9 @@
   <script type="text/javascript">
     window.CLOUDINARY_OPTIONS = {
       cloud_name: "<%=ENV['CLOUD_NAME']%>",
-      upload_preset: "<%= ENV['UPLOAD_PRESET'] %>"
+      upload_preset: "<%= ENV['UPLOAD_PRESET'] %>",
+      theme: "minimal",
+      cropping: 'server'
     };
   </script>
 </head>

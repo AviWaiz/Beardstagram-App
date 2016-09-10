@@ -21,7 +21,7 @@ export default class Icon extends React.Component {
     let defaults = {
       height: height || 100,
       width: width || 100,
-      backgroundColor: 'gray'
+      backgroundColor: 'none'
     };
 
     let important = {

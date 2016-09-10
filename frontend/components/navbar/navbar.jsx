@@ -35,9 +35,9 @@ class NavBar extends React.Component{
                       createPhoto={this.props.createPhoto}
                       searchUsers={this.props.searchUsers}
                       users={this.props.users} />
-      )
+      );
     } else {
-      return <SessionLinks />
+      return <SessionLinks />;
     }
   }
 }
