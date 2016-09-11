@@ -8,7 +8,6 @@ class PhotoIndex extends React.Component{
   }
 
   render(){
-    debugger
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
     return(

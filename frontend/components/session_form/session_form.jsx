@@ -80,7 +80,6 @@ class SessionForm extends React.Component {
 	}
 
 	handleClick(e) {
-		debugger
 		e.preventDefault();
 		this.props.router.push(`/login`);
 		this.demoLogin();

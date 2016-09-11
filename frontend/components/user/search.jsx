@@ -7,15 +7,15 @@ class Search extends React.Component{
     this.state =
     {
       username: ''
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(property){
     return e =>{
-      this.setState({[property]: e.target.value})
-      this.props.searchUsers(e.target.value)
-    }
+      this.setState({[property]: e.target.value});
+      this.props.searchUsers(e.target.value);
+    };
   }
 
   handleSubmit(e){
@@ -31,22 +31,28 @@ class Search extends React.Component{
       let users = this.props.users;
       let userKeys = Object.keys(users);
       results = userKeys.map((key) => {
-        return( <li key={users[key].username}>
-                  <Link to={`/users/${users[key].id}`}>{users[key].username}</Link>
-                </li>
+        return(
+          <li key={users[key].username}>
+            <Link to={`/users/${users[key].id}`}>
+                {users[key].username}
+            </Link>
+          </li>
         );
-      })
+      });
     }
     return (
       <div className="search">
         <form onSubmit={this.handleSubmit}>
-            <input className="search-form" type="text" value={this.state.username}
-              onChange={this.update('username')} placeholder="SEARCH USER"/>
+            <input className="search-form"
+                   type="text"
+                   value={this.state.username}
+                   onChange={this.update('username')}
+                   placeholder="SEARCH USER"/>
         </form>
         <ul className="search-results">{results}</ul>
       </div>
     );
   }
-};
+}
 
 export default Search;

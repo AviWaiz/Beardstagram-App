@@ -7,7 +7,7 @@ export default class Icon extends React.Component {
   }
 
   handleClick() {
-    this.props.changeIcon(this.props.src);
+    if(this.props.changeIcon) return this.props.changeIcon(this.props.src);
   }
 
   render() {

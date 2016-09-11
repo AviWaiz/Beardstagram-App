@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import NavBarContainer from './navbar/navbar_container';
-import Icon from './photos/photo_form/icon';
 
 class App extends React.Component {
   constructor(props){
@@ -28,14 +27,9 @@ class App extends React.Component {
     return(
       <div id='background' className="background">
         <nav className="nav_bar">
-          <Link to="/" className="nav-link"><h1 className="logo">BeardStagram</h1></Link>
-          <Link to="/photos" className="nav-link">
-          <h1 className="logo">
-            <Icon className="icons"
-                  src='feed_icon.png'
-                  width={36}
-                  height={36}
-                  changeIcon={this.changeIcon}/>
+          <Link to="/" className="nav-link">
+            <h1 className="logo">
+              BeardStagram
             </h1>
           </Link>
           <NavBarContainer />

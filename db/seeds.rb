@@ -25,48 +25,11 @@ photos = Photo.create([
     url:
      "http://res.cloudinary.com/drql6e2wm/image/upload/v1473446738/qspmeedkggwhuc3icfqw.jpg",
     x: 189,
-    y: 153,
+    y: 114,
     beardWidth: 115,
     beardHeight: 115,
-    icon_url: "freepik-beard01.png"
-  },
-  {
-    title: "Try the Beard me button",
-    user_id: 1,
-    url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473446738/qspmeedkggwhuc3icfqw.jpg",
-    x: 189,
-    y: 153,
-    beardWidth: 115,
-    beardHeight: 115,
-    icon_url: "freepik-beard04.png"
-  },
-  {
-    title: "Title",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668715/tumblr_nfwfhx10ww1rhfl7ko1_1280_nbrmhn.gif",
-    user_id: 3
-  },
-  {
-    title: "Title",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/schick-free-your-skin-animal-beards-designboom-03_d2lxtg.jpg",
-    user_id: 1
-  },
-  {
-    title: "Title",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668714/75e3c45f2018c2ab363e8500ad5dcb16_rxrhcp.jpg",
-    user_id: 2
-  },
-
-  {
-    title: "Title",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668713/download_1_iodm94.jpg",
-    user_id: 1
-  },
-  {
-    title: "Title",
-    url: "http://res.cloudinary.com/drql6e2wm/image/upload/v1472668253/manuaryme_emfelh.png",
-    user_id: 2
-  },
+    icon_url: "b0.png"
+  }
 ])
 
 

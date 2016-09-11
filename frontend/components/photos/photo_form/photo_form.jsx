@@ -27,15 +27,15 @@ class PhotoForm extends React.Component{
 		this.beardPositionAndSize = this.beardPositionAndSize.bind(this);
   }
   onModalClose() {
-	  this.setState({modalOpen: false})
-		this.redirectToIntro()
+	  this.setState({modalOpen: false});
+		this.redirectToIntro();
 	}
 
 	redirectToIntro() {
-	  hashHistory.push('/photos')
+	  hashHistory.push('/photos');
 	}
   beardPositionAndSize(x, y, beardWidth, beardHeight, iconUrl) {
-    this.setState({x: x, y: y, beardWidth: beardWidth, beardHeight: beardHeight, iconUrl: iconUrl})
+    this.setState({x: x, y: y, beardWidth: beardWidth, beardHeight: beardHeight, iconUrl: iconUrl});
   }
   upload(e) {
     e.preventDefault();
