@@ -20,6 +20,39 @@ users = User.create([
 
 photos = Photo.create([
   {
+    title: "Roy's Beard",
+    user_id: 1,
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14322537_10153842683461304_1221319818637273910_n_qbvadz.jpg",
+
+  },
+  {
+    title: "Business Beard",
+    user_id: 1,
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14238197_10153841467901304_254298978886254322_n_uh7ofx.jpg",
+
+  },
+  {
+    title: "Hipster Beard!!",
+    user_id: 1,
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14264960_10153841466281304_1355392582794354718_n_vja9l6.jpg",
+
+  },
+  {
+    title: "Five O'clock shadow",
+    user_id: 1,
+    url:
+     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14316904_10153842683656304_5376260785447710248_n_eefrun.jpg",
+  },
+  {
+  title: "For Science",
+  user_id: 1,
+  url:
+   "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14322641_10153842783781304_1454675832509839794_n_lc4qsf.jpg",
+  },
+  {
     title: "Check it out I grow a beard",
     user_id: 1,
     url:
