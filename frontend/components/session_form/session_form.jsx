@@ -11,8 +11,8 @@ class SessionForm extends React.Component {
 			password: "",
 			modalOpen: true
 		};
-		this.DEMO_USERNAME = "Guest"
-		this.DEMO_PASSWORD = "12345678"
+		this.DEMO_USERNAME = "Guest";
+		this.DEMO_PASSWORD = "12345678";
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onModalClose = this.onModalClose.bind(this);
 		this.redirectToIntro = this.redirectToIntro.bind(this);
@@ -47,7 +47,10 @@ class SessionForm extends React.Component {
 
 	handleSubmit(e){
 		e.preventDefault();
-		const user = {username: this.state.username, password: this.state.password};
+		const user = {
+									username: this.state.username,
+			 						password: this.state.password
+								 };
 		this.props.processForm({user});
 	}
 
@@ -61,9 +64,9 @@ class SessionForm extends React.Component {
 
 	logInQuestion() {
 		if (this.props.formType === "login") {
-			return <div className="form-question">Got an account?</div>
+			return <div className="form-question">Got an account?</div>;
 		} else {
-			return <div className="form-question">Dont have an account?</div>
+			return <div className="form-question">Dont have an account?</div>;
 		}
 	}
 
@@ -82,13 +85,14 @@ class SessionForm extends React.Component {
 	handleClick(e) {
 		e.preventDefault();
 		this.props.router.push(`/login`);
+		this.setState({username: "", password: ""});
 		this.demoLogin();
 	}
 
 
 	demoLogin(){
 		let username = this.DEMO_USERNAME.split("").slice();
-		this.fillUsername(username)
+		this.fillUsername(username);
 	}
 
 	fillUsername(username) {
@@ -102,7 +106,7 @@ class SessionForm extends React.Component {
 				this.fillUsername(username);
 				}, 100);
 			} else {
-				this.fillPassword(password)
+				this.fillPassword(password);
 			}
 		}
 
@@ -149,8 +153,13 @@ class SessionForm extends React.Component {
 								placeholder="password" />
 						<br />
 
-						<input className="submit" type="submit" value="Submit" />
-						<button className="demo" type="submit" value="Demo"  onClick={this.handleClick}>Demo</button>
+						<input className="submit"
+						 			 type="submit"
+									 value="Submit" />
+						<button className="demo"
+						 				type="submit"
+									  value="Demo"
+									  onClick={this.handleClick}>Demo</button>
 					</div>
 				</form>
 				</Modal>

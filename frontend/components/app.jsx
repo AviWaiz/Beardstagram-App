@@ -32,7 +32,7 @@ class App extends React.Component {
               BeardStagram
             </h1>
           </Link>
-          <NavBarContainer />
+          <NavBarContainer location={this.props.location}/>
           </nav>
           {this.props.children}
       </div>

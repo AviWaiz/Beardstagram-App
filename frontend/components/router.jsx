@@ -43,13 +43,13 @@ class AppRouter extends React.Component {
 
   _photoFeed(nextState, replace){
     this._ensureLoggedIn(nextState, replace);
-    const currentUser = this.context.store.getState().session.currentUser
+    const currentUser = this.context.store.getState().session.currentUser;
     this.context.store.dispatch(receiveCurrentUser(currentUser));
   }
 
   _userShow(nextState, replace) {
     this._ensureLoggedIn(nextState, replace);
-    const userId = nextState.params.id
+    const userId = nextState.params.id;
     this.context.store.dispatch(requestUser(userId));
   }
 

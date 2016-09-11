@@ -23,40 +23,39 @@ photos = Photo.create([
     title: "Roy's Beard",
     user_id: 1,
     url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14322537_10153842683461304_1221319818637273910_n_qbvadz.jpg",
-
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636498/14322537_10153842683461304_1221319818637273910_n_c7bxdj.jpg",
   },
   {
     title: "Business Beard",
     user_id: 1,
     url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14238197_10153841467901304_254298978886254322_n_uh7ofx.jpg",
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636495/14238197_10153841467901304_254298978886254322_n_eqiruy.jpg",
 
   },
   {
     title: "Hipster Beard!!",
     user_id: 1,
     url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14264960_10153841466281304_1355392582794354718_n_vja9l6.jpg",
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636495/14264960_10153841466281304_1355392582794354718_n_ktad4c.jpg",
 
   },
   {
     title: "Five O'clock shadow",
     user_id: 1,
     url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14316904_10153842683656304_5376260785447710248_n_eefrun.jpg",
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636495/14316904_10153842683656304_5376260785447710248_n_n0ldxt.jpg",
   },
   {
   title: "For Science",
   user_id: 1,
   url:
-   "http://res.cloudinary.com/drql6e2wm/image/upload/v1473561809/14322641_10153842783781304_1454675832509839794_n_lc4qsf.jpg",
+   "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636495/14322641_10153842783781304_1454675832509839794_n_dlqfu3.jpg",
   },
   {
     title: "Check it out I grow a beard",
     user_id: 1,
     url:
-     "http://res.cloudinary.com/drql6e2wm/image/upload/v1473446738/qspmeedkggwhuc3icfqw.jpg",
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636534/perfectly-timed-funny-cat-pictures-5_phaopn.jpg",
     x: 189,
     y: 114,
     beardWidth: 115,

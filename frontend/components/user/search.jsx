@@ -1,14 +1,17 @@
 import React  from 'react';
-import {Link} from 'react-router';
+import {Link, withRouter} from 'react-router';
 
 class Search extends React.Component{
   constructor(props){
     super(props);
     this.state =
     {
-      username: ''
+      username: '',
     };
+    this.results= null;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.matches = this.matches.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   update(property){
@@ -18,27 +21,38 @@ class Search extends React.Component{
     };
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    const userusername = this.state.username;
-    this.props.searchUsers(userusername);
+  clearSearch() {
     this.setState({username: ""});
   }
 
-  render(){
-    let results;
+  matches() {
     if (this.props.users){
       let users = this.props.users;
       let userKeys = Object.keys(users);
-      results = userKeys.map((key) => {
+      this.results = userKeys.map((key) => {
         return(
           <li key={users[key].username}>
-            <Link to={`/users/${users[key].id}`}>
+            <Link to={`/users/${users[key].id}`} onClick={this.clearSearch}>
                 {users[key].username}
             </Link>
           </li>
         );
       });
+    }
+  }
+
+
+  handleSubmit(e){
+    e.preventDefault();
+    const firstResult = this.props.users[0];
+    this.props.router.push(`users/${firstResult.id}`);
+    this.setState({username: ""});
+  }
+
+  render(){
+    this.matches();
+    if (!this.state.username){
+      this.results = null;
     }
     return (
       <div className="search">
@@ -49,10 +63,10 @@ class Search extends React.Component{
                    onChange={this.update('username')}
                    placeholder="SEARCH USER"/>
         </form>
-        <ul className="search-results">{results}</ul>
+        <ul className="search-results">{this.results}</ul>
       </div>
     );
   }
 }
 
-export default Search;
+export default withRouter(Search);
