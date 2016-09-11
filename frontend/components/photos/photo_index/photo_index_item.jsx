@@ -59,7 +59,7 @@ class PhotoIndexItem extends React.Component{
               </div>
             </div>
           </div>
-      )
+      );
     }
   }
 }

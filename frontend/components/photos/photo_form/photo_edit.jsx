@@ -54,17 +54,29 @@ class PhotoEdit extends React.Component {
     if(this.props.url){
       return (
         <div className="side-bar">
-          <button onClick={this.increaseX}>
-            Width<i className="material-icons">keyboard_arrow_up</i>
+          <button className="beard-toggle" onClick={this.increaseX}>
+            Width                <Icon className="icons"
+                                  src='uparrow.png'
+                                  width={28}
+                                  height={28}/>
           </button>
-          <button onClick={this.decreaseX}>
-            Width<i className="material-icons">keyboard_arrow_down</i>
+          <button className="beard-toggle" onClick={this.decreaseX}>
+            Width                <Icon className="icons"
+                                  src='downarrow.png'
+                                  width={28}
+                                  height={28}/>
           </button>
-          <button onClick={this.increaseY}>
-            Height<i className="material-icons">keyboard_arrow_up</i>
+          <button className="beard-toggle" onClick={this.increaseY}>
+            Height                <Icon className="icons"
+                                  src='uparrow.png'
+                                  width={28}
+                                  height={28}/>
           </button>
-          <button onClick={this.decreaseY}>
-            Height<i className="material-icons">keyboard_arrow_down</i>
+          <button className="beard-toggle" onClick={this.decreaseY}>
+            Height                <Icon className="icons"
+                                  src='downarrow.png'
+                                  width={28}
+                                  height={28}/>
           </button>
 
           <br/>

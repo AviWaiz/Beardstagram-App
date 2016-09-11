@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { ModalStyle2 } from '../../../util/modal_style';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
 import PhotoEdit from './photo_edit';
+import Icon from './icon';
 
 class PhotoForm extends React.Component{
   constructor(props){
@@ -35,7 +36,8 @@ class PhotoForm extends React.Component{
 	  hashHistory.push('/photos');
 	}
   beardPositionAndSize(x, y, beardWidth, beardHeight, iconUrl) {
-    this.setState({x: x, y: y, beardWidth: beardWidth, beardHeight: beardHeight, iconUrl: iconUrl});
+    this.setState({x: x, y: y, beardWidth: beardWidth,
+                   beardHeight: beardHeight, iconUrl: iconUrl});
   }
   upload(e) {
     e.preventDefault();
@@ -76,7 +78,10 @@ class PhotoForm extends React.Component{
         <h3 className="new-photo-title">Add a Beard</h3>
         <button className="upload-button"
                 onClick={this.upload}>
-                <i className="material-icons">backup</i>
+                <Icon className="icons"
+                      src='upload.png'
+                      width={36}
+                      height={36}/>
         </button>
         <div className="photo-in-modal">
 
