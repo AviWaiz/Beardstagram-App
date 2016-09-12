@@ -26,15 +26,15 @@ class UserShow extends React.Component{
     if (!isEmpty(users)){
       for (let i = 0; i < users.length; i++) {
         userShow = users[0][Object.keys(users[i])[0]];
-        console.log(userShow);
-        console.log(userShow["username"]);
       }
     }
     if(userShow) {
       return(
         <div>
         <div>{userShow["username"]}</div>
-        <div>following: {userShow["following_users"].length}</div>
+        <div>Photos: {userShow["photos"].length}</div>
+        <div>following: {userShow["following"].length}</div>
+        <div>followers: {userShow["followers"].length}</div>
           <div className="photo-index">
             {
               photosSorted.map( photo =>(

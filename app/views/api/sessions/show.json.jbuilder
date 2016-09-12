@@ -4,9 +4,15 @@ if @user
 
   json.user @user
 
-  json.following_users do
-    json.array!(@user.followees) do |user|
-      json.followee_id user.id
+  json.following do
+    json.array!(@user.followees) do |followee|
+      json.followee_id followee.id
+    end
+  end
+
+  json.followers do
+    json.array!(@user.followers) do |follower|
+      json.follower_id follower.id
     end
   end
 
