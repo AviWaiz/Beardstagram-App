@@ -9,7 +9,8 @@ class SessionForm extends React.Component {
 		this.state = {
 			username: "",
 			password: "",
-			modalOpen: true
+			modalOpen: true,
+			disabled: false
 		};
 		this.DEMO_USERNAME = "Guest";
 		this.DEMO_PASSWORD = "12345678";
@@ -45,15 +46,6 @@ class SessionForm extends React.Component {
 		return e => { this.setState({[field]: e.currentTarget.value }); };
 	}
 
-	handleSubmit(e){
-		e.preventDefault();
-		const user = {
-									username: this.state.username,
-			 						password: this.state.password
-								 };
-		this.props.processForm({user});
-	}
-
 	navLink(){
 		if (this.props.formType === "login") {
 			return <Link className="form-question" to="/signup">Sign Up</Link>;
@@ -84,6 +76,7 @@ class SessionForm extends React.Component {
 
 	handleClick(e) {
 		e.preventDefault();
+		this.setState({disabled: true});
 		this.props.router.push(`/login`);
 		this.setState({username: "", password: ""});
 		this.demoLogin();
@@ -125,6 +118,16 @@ class SessionForm extends React.Component {
 			}
 		}
 
+		handleSubmit(e){
+			e.preventDefault();
+			this.setState({disabled: false});
+			const user = {
+										username: this.state.username,
+				 						password: this.state.password
+									 };
+			this.props.processForm({user});
+		}
+
 
 	render() {
 		return (
@@ -159,7 +162,8 @@ class SessionForm extends React.Component {
 						<button className="demo"
 						 				type="submit"
 									  value="Demo"
-									  onClick={this.handleClick}>Demo</button>
+									  onClick={this.handleClick}
+										disabled={this.state.disabled}>Demo</button>
 					</div>
 				</form>
 				</Modal>

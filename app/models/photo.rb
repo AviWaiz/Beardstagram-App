@@ -10,7 +10,7 @@
 #  y           :integer
 #  beardWidth  :integer
 #  beardHeight :integer
-#  icon_url    :integer
+#  icon_url    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -20,5 +20,10 @@ class Photo < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  
+  has_one(
+    :user_profile,
+    :class_name => 'User',
+    :foreign_key => :profile_id,
+    :primary_key => :id
+  )
 end

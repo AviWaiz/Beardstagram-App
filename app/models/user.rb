@@ -6,6 +6,7 @@
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
+#  profile_id      :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -24,6 +25,14 @@ class User < ActiveRecord::Base
   has_many :photos
   has_many :comments
 
+  belongs_to(
+    :profile_pic,
+    :class_name => 'Photo',
+    :foreign_key => :profile_id,
+    :primary_key => :id
+  )
+
+
   has_many :in_follows, class_name: "Follow", foreign_key: "followee_id"
   has_many :out_follows, class_name: "Follow", foreign_key: "follower_id"
   has_many :followers, through: :in_follows, source: :follower
@@ -32,8 +41,16 @@ class User < ActiveRecord::Base
   def flatten_photos
     self.followees.map do |follower|
       follower.photos
-    end.flatten.concat(self.photos).sort_by &:created_at
+    end.flatten.concat(self.photos).sort_by(&:created_at)
   end
+  
+  def photos_and_profile
+    all_photos = self.photos.map do |photo|
+      photo
+    end.concat([self.profile_pic]);
+    all_photos
+  end
+
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password

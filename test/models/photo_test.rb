@@ -10,7 +10,7 @@
 #  y           :integer
 #  beardWidth  :integer
 #  beardHeight :integer
-#  icon_url    :integer
+#  icon_url    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

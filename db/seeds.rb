@@ -12,7 +12,7 @@ Follow.destroy_all
 
 
 users = User.create([
-  { username: 'Avinoam', password: '1234567'},
+  { username: 'Avinoam', password: '1234567', profile_id: 7},
   { username: 'Guest', password: '12345678'},
   { username: 'Avi', password: 'Waizman'},
 
@@ -52,7 +52,7 @@ photos = Photo.create([
    "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636495/14322641_10153842783781304_1454675832509839794_n_dlqfu3.jpg",
   },
   {
-    title: "Check it out I grow a beard",
+    title: "Check it out I grew a beard",
     user_id: 1,
     url:
      "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636534/perfectly-timed-funny-cat-pictures-5_phaopn.jpg",
@@ -61,6 +61,17 @@ photos = Photo.create([
     beardWidth: 115,
     beardHeight: 115,
     icon_url: "b0.png"
+  },
+  {
+    title: "I grew a beard",
+    user_id: 3,
+    url:
+     "http://res.cloudinary.com/dxm3d3woc/image/upload/v1473636534/perfectly-timed-funny-cat-pictures-5_phaopn.jpg",
+    x: 189,
+    y: 114,
+    beardWidth: 115,
+    beardHeight: 115,
+    icon_url: "b7.png"
   }
 ])
 

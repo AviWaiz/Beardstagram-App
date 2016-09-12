@@ -10,7 +10,6 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :beardHeight
       t.string :icon_url
 
-
       t.timestamps null: false
     end
 

@@ -2,6 +2,7 @@ import React  from 'react';
 import { withRouter } from 'react-router';
 import PhotoIndexItem from "../photos/photo_index/photo_index_item";
 import isEmpty from "lodash/isEmpty";
+import ProfilePicture from './profile_picture';
 
 
 class UserShow extends React.Component{
@@ -31,10 +32,16 @@ class UserShow extends React.Component{
     if(userShow) {
       return(
         <div>
-        <div>{userShow["username"]}</div>
-        <div>Photos: {userShow["photos"].length}</div>
-        <div>following: {userShow["following"].length}</div>
-        <div>followers: {userShow["followers"].length}</div>
+          <div>{<ProfilePicture photo={userShow["profile_pic"]}
+                 key={userShow["profile_pic"]["id"]}
+                 requestPhoto={this.props.requestPhoto}
+                 currentUser={this.props.currentUser}/>
+               }
+          </div>
+          <div>{userShow["username"]}</div>
+          <div>Photos: {userShow["photos"].length}</div>
+          <div>following: {userShow["following"].length}</div>
+          <div>followers: {userShow["followers"].length}</div>
           <div className="photo-index">
             {
               photosSorted.map( photo =>(
