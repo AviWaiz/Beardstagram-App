@@ -3,9 +3,13 @@ import { withRouter } from 'react-router';
 import PhotoIndexItem from "../photos/photo_index/photo_index_item";
 import isEmpty from "lodash/isEmpty";
 
+
 class UserShow extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      userId: this.props.params.id
+    };
   }
 
   render(){
@@ -16,20 +20,36 @@ class UserShow extends React.Component{
           if (photo1.created_at > photo2.created_at) return -1;
           if (photo1.created_at < photo2.created_at) return 1;
           return 0;
-      });
-    return(
-      <div className="photo-index">
-        {
-          photosSorted.map( photo =>(
-            <PhotoIndexItem photo={photo}
-             key={photo.id}
-             requestPhoto={this.props.requestPhoto}
-             removeCommentAction={this.props.removeCommentAction}
-             currentUser={this.props.currentUser}/>
-          ))
-        }
-      </div>
-    );
+    });
+    const users = this.props.users;
+    let userShow;
+    if (!isEmpty(users)){
+      for (let i = 0; i < users.length; i++) {
+        userShow = users[0][Object.keys(users[i])[0]];
+        console.log(userShow);
+        console.log(userShow["username"]);
+      }
+    }
+    if(userShow) {
+      return(
+        <div>
+        <h1>{userShow["username"]}</h1>
+          <div className="photo-index">
+            {
+              photosSorted.map( photo =>(
+                <PhotoIndexItem photo={photo}
+                 key={photo.id}
+                 requestPhoto={this.props.requestPhoto}
+                 removeCommentAction={this.props.removeCommentAction}
+                 currentUser={this.props.currentUser}/>
+              ))
+            }
+          </div>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 

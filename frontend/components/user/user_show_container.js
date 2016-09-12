@@ -5,7 +5,8 @@ import UserShow  from './user_show';
 
 const mapStateToProps = state => ({
   photos: state.photos,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  users: state.users
 });
 
 const mapDispatchToProps = dispatch => ({
