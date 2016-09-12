@@ -33,11 +33,15 @@ class PhotoIndexItem extends React.Component{
       let iconUrl = photo.icon_url.toString();
       imageObj2.src = iconUrl;
       return (
-        <div className="index-item">
+      <div className="index-item">
         <Stage width={400} height={400}>
           <Layer>
               <Kimage image={imageObj1} width="400" height="400"/>
-              <Kimage image={imageObj2} width={beardWidth} height={beardHeight} x={x} y={y} />
+              <Kimage image={imageObj2}
+                      width={beardWidth}
+                      height={beardHeight}
+                      x={x}
+                      y={y} />
           </Layer>
         </Stage>
         <div className="index-item-fields">

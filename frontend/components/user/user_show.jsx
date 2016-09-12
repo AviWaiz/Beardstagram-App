@@ -33,7 +33,8 @@ class UserShow extends React.Component{
     if(userShow) {
       return(
         <div>
-        <h1>{userShow["username"]}</h1>
+        <div>{userShow["username"]}</div>
+        <div>following: {userShow["following_users"].length}</div>
           <div className="photo-index">
             {
               photosSorted.map( photo =>(
