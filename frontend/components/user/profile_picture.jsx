@@ -20,7 +20,7 @@ class ProfilePicture extends React.Component{
       imageObj2.src = iconUrl;
       return (
       <div id="profile" >
-        <Stage  width="100%" height="100%">
+        <Stage  width="400" height="400">
           <Layer>
               <Kimage image={imageObj1}
                       width="400"
