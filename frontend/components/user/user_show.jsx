@@ -38,6 +38,7 @@ class UserShow extends React.Component{
                  currentUser={this.props.currentUser}/>
                }
           </div>
+          
           <div>{userShow["username"]}</div>
           <div>Photos: {userShow["photos"].length}</div>
           <div>following: {userShow["following"].length}</div>
