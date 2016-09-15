@@ -8,7 +8,9 @@ const UserReducer = function(state = {}, action){
       const newUser = {[action.user.id]: action.user};
       return [newUser];
     case UserConstants.RECEIVE_USERS:
-      return action.users;
+      const newUsers = action.users.map((user) => {
+        return {[user.id]: user};});
+      return newUsers;
     default:
       return state;
   }

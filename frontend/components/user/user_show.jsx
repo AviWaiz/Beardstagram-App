@@ -9,10 +9,13 @@ class UserShow extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      userId: this.props.params.id
+      userId: parseInt(this.props.params.id)
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.users  = nextProps.users;
+  }
   render(){
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
@@ -22,11 +25,17 @@ class UserShow extends React.Component{
           if (photo1.created_at < photo2.created_at) return 1;
           return 0;
     });
-    const users = this.props.users;
+
     let userShow;
+    let users = this.users;
+    console.log(users);
     if (!isEmpty(users)){
       for (let i = 0; i < users.length; i++) {
-        userShow = users[0][Object.keys(users[i])[0]];
+        let user = users[i];
+        let key = Object.keys(user)[0];
+        if (this.state.userId === user[key]["id"]) {
+          userShow = user[key];
+        }
       }
     }
     if(userShow) {
@@ -38,7 +47,7 @@ class UserShow extends React.Component{
                  currentUser={this.props.currentUser}/>
                }
           </div>
-          
+
           <div>{userShow["username"]}</div>
           <div>Photos: {userShow["photos"].length}</div>
           <div>following: {userShow["following"].length}</div>

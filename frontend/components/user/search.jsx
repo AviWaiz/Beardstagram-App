@@ -1,5 +1,8 @@
 import React  from 'react';
 import {Link, withRouter} from 'react-router';
+import isEmpty from "lodash/isEmpty";
+
+
 
 class Search extends React.Component{
   constructor(props){
@@ -26,14 +29,14 @@ class Search extends React.Component{
   }
 
   matches() {
-    if (this.props.users){
-      let users = this.props.users;
-      let userKeys = Object.keys(users);
-      this.results = userKeys.map((key) => {
+    let users = this.props.users;
+    if(!isEmpty(users)){
+      this.results = users.map( (user) => {
+        let key = Object.keys(user)[0];
         return(
-          <li key={users[key].username}>
-            <Link to={`/users/${users[key].id}`} onClick={this.clearSearch}>
-                {users[key].username}
+          <li key={user[key]["username"]}>
+            <Link to={`/users/${user[key]['id']}`} onClick={this.clearSearch}>
+                {user[key]['username']}
             </Link>
           </li>
         );
