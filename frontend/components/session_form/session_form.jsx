@@ -56,9 +56,9 @@ class SessionForm extends React.Component {
 
 	logInQuestion() {
 		if (this.props.formType === "login") {
-			return <div className="form-question">Got an account?</div>;
+			return <div className="form-question">Don't have an account?</div>;
 		} else {
-			return <div className="form-question">Dont have an account?</div>;
+			return <div className="form-question">Got an account?</div>;
 		}
 	}
 
