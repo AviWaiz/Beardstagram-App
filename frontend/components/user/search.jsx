@@ -10,9 +10,11 @@ class Search extends React.Component{
     this.state =
     {
       username: '',
+      searchIndex: 0,
     };
     this.results= null;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
   }
@@ -29,9 +31,9 @@ class Search extends React.Component{
   }
 
   matches() {
-    let users = this.props.users;
-    if(!isEmpty(users)){
-      this.results = users.map( (user) => {
+    let search = this.props.search;
+    if(!isEmpty(search)){
+      this.results = search.map( (user) => {
         let key = Object.keys(user)[0];
         return(
           <li key={user[key]["username"]}>
@@ -44,11 +46,21 @@ class Search extends React.Component{
     }
   }
 
+  changeResult(e){
+    e.preventDefault();
+    if (e.keyCode === 38) {
+      this.setState({searchIndex: this.state.searchIndex ++});
+    } else if (e.keyCode === 40) {
+      this.setSate({searchIndex: this.state.searchIndex --});
+    }
+  }
 
   handleSubmit(e){
     e.preventDefault();
-    const firstResult = this.props.users[0];
-    this.props.router.push(`users/${firstResult.id}`);
+    const result = this.props.search[this.state.searchIndex];
+    const key = Object.keys(result)[0];
+    const user = result[key];
+    this.props.router.push(`users/${user.id}`);
     this.setState({username: ""});
   }
 
@@ -59,12 +71,12 @@ class Search extends React.Component{
     }
     return (
       <div className="search">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} onKeyDown={this.changeResult}>
             <input className="search-form"
                    type="text"
                    value={this.state.username}
                    onChange={this.update('username')}
-                   placeholder="SEARCH USER"/>
+                   placeholder="SEARCH USERS"/>
         </form>
         <ul className="search-results">{this.results}</ul>
       </div>

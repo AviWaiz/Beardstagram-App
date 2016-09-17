@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { logOut } from '../../actions/session_actions';
-import { searchUsers } from '../../actions/user_actions';
+import { searchUsers } from '../../actions/search_actions';
 import NavBar from './navbar';
 
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  users: state.users
+  search: state.search
 });
 
 const mapDispatchToProps = dispatch => ({

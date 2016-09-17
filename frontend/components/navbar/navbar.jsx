@@ -18,7 +18,7 @@ const SessionLinks = () => (
   </nav>
 );
 
-const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, users, location}) => (
+const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, search, location}) => (
 	<section className="logout-beardme-search">
     <Link to="/photos" className="nav-link">
       <h1 className="logo">
@@ -28,7 +28,7 @@ const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, users, l
               height={36}/>
       </h1>
     </Link>
-    <Search searchUsers={searchUsers} users={users} location={location} />
+    <Search searchUsers={searchUsers} search={search} location={location} />
     <div className="logout-beardme">
       <Link to="/" className="logout" onClick={logOut}>LogOut</Link>
       <Link to="/photos/new"
@@ -44,7 +44,6 @@ const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, users, l
 class NavBar extends React.Component{
   constructor(props){
     super(props);
-
   }
   render(){
     if (this.props.currentUser){
@@ -52,7 +51,7 @@ class NavBar extends React.Component{
                       logOut={this.props.logOut}
                       createPhoto={this.props.createPhoto}
                       searchUsers={this.props.searchUsers}
-                      users={this.props.users}
+                      search={this.props.search}
                       location={this.props.location} />
       );
     } else {

@@ -11,11 +11,6 @@ export const receiveUser = (user) => ({
     user
 });
 
-export const searchUsers = (username) => ({
-    type: UserConstants.SEARCH_USERS,
-    username
-});
-
 
 export const requestUser = (id) => ({
     type: UserConstants.REQUEST_USER,
