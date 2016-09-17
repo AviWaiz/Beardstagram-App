@@ -8,15 +8,10 @@ import ProfilePicture from './profile_picture';
 class UserShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      userId: parseInt(this.props.params.id)
-    };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.users  = nextProps.users;
-  }
   render(){
+    this.userId = parseInt(this.props.params.id);
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
     const photosSorted = photoKeys.map( key => (photos[key])).sort(
@@ -27,14 +22,16 @@ class UserShow extends React.Component{
     });
 
     let userShow;
-    let users = this.users;
-    console.log(users);
+    let users = this.props.users;
     if (!isEmpty(users)){
       for (let i = 0; i < users.length; i++) {
         let user = users[i];
         let key = Object.keys(user)[0];
-        if (this.state.userId === user[key]["id"]) {
+        if (this.userId === user[key]["id"]) {
+          console.log(user);
+          console.log(this.userId);
           userShow = user[key];
+          console.log(userShow);
         }
       }
     }
@@ -66,7 +63,7 @@ class UserShow extends React.Component{
         </div>
       );
     } else {
-      return <div></div>;
+      return <div>no Photos</div>;
     }
   }
 }
