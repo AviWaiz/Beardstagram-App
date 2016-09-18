@@ -28,10 +28,7 @@ class UserShow extends React.Component{
         let user = users[i];
         let key = Object.keys(user)[0];
         if (this.userId === user[key]["id"]) {
-          console.log(user);
-          console.log(this.userId);
           userShow = user[key];
-          console.log(userShow);
         }
       }
     }

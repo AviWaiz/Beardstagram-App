@@ -7,6 +7,7 @@ import Root from './components/root';
 //Actions
 import configureStore from './store/store';
 import merge from 'lodash/merge';
+import isEmpty from 'lodash/isEmpty';
 import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
 import { fetchUser, fetchUsers } from './util/user_api_util';
@@ -29,6 +30,7 @@ window.createPhoto = createPhoto;
 window.removeComment = removeComment;
 window.search = search;
 window.merge = merge;
+window.isEmpty = isEmpty;
 window.logIn = logIn;
 
 document.addEventListener('DOMContentLoaded', () => {

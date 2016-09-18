@@ -7,9 +7,14 @@ import { searchUsers,
          SearchConstants
        } from '../actions/search_actions';
 
+import isEmpty from 'lodash/isEmpty';
 
 export default ({getState, dispatch}) => next => action => {
-  const receiveSearchSuccess = data => dispatch(receiveSearch(data));
+  const receiveSearchSuccess = (data) => {
+    return (
+      isEmpty(data) ? dispatch(receiveSearch({})) : dispatch(receiveSearch(data))
+    );
+  };
   const result = next(action);
   switch(action.type){
     case SearchConstants.SEARCH_USERS:
