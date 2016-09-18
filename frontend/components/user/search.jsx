@@ -17,6 +17,7 @@ class Search extends React.Component{
     this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
+    this.setResultHover = this.setResultHover.bind(this);
   }
 
   update(property){
@@ -31,9 +32,8 @@ class Search extends React.Component{
   }
 
   matches() {
-    let search = this.props.search;
-    if(!isEmpty(search)){
-      this.results = search.map( (user) => {
+    if(!isEmpty(this.props.search)){
+      this.results = this.props.search.map( (user) => {
         let key = Object.keys(user)[0];
         return(
           <li key={user[key]["username"]}>
@@ -43,11 +43,12 @@ class Search extends React.Component{
           </li>
         );
       });
+    } else {
+      this.results = null;
     }
   }
 
   changeResult(e){
-    // e.preventDefault();
     if (this.results) {
       const length = this.results.length;
       if (e.keyCode === 38) {
@@ -58,13 +59,14 @@ class Search extends React.Component{
     }
   }
 
+  setResultHover(){
+
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state.searchIndex);
     const result = this.props.search[this.state.searchIndex];
-    debugger
     const key = Object.keys(result)[0];
-    console.log(key);
     const user = result[key];
     this.props.router.push(`users/${user.id}`);
     this.setState({username: ""});
