@@ -104,10 +104,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-family: signpainter;
     font-size: 35px;
-    padding-left: 60px
+    padding-left: 30px;
+    color: white;
   }
   .upload-form{
     display: flex;
@@ -162,7 +162,6 @@
 
 
   .nav-link{
-    color: antiquewhite;
     padding-right: 5px;
     text-decoration: none;
   }
@@ -241,7 +240,6 @@
         color: #fff;
       }
     }
-    
  }
  .search {
    position: relative;
@@ -288,7 +286,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding-right: 20px;
-    width: 60%;
+    width: 100%;
   }
   .logout-beardme {
     justify-content: flex-end;
@@ -320,7 +318,7 @@
     text-decoration: none;
   }
   .signup:hover, .submit:hover, .photo-form:hover {
-    background-color: #34e034;
+    background-color: #36f936;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   }
   .photo-index {
@@ -396,7 +394,7 @@
     background-color: #269eb8;
   }
   .demo:hover, .logout:hover {
-    background-color: #2bd4b4;
+    background-color: #2ff1cc;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   }
   .login:hover {
@@ -524,15 +522,3 @@
     flex-direction: row;
     justify-content: center;
    }
-  /*.photo-form{
-    padding: 8px 20px 8px 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    border: none;
-    background: none;
-  }*/

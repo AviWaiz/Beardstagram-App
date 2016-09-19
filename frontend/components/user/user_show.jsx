@@ -8,6 +8,38 @@ import ProfilePicture from './profile_picture';
 class UserShow extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      currentUser_following: this.props.currentUser_following,
+      following: this.props.currentUser_following.includes(parseInt(this.props.params.id))
+    };
+    this.followButton = this.followButton.bind(this);
+    this.followToggle = this.followToggle.bind(this);
+  }
+
+  // componentWillReceiveProps(nextProps){
+  //   if (nextProps.currentUser_following.includes(parseInt(this.props.params.id))) {
+  //     this.setState({following: true});
+  //   } else {
+  //     this.setState({following: false});
+  //   }
+  // }
+
+  followButton(){
+    if (this.state.following) {
+      return <div className="demo" onClick={this.followToggle}>Unfollow</div>;
+    } else {
+      return <div className="demo" onClick={this.followToggle}>follow</div>;
+    }
+  }
+
+  followToggle() {
+    if(this.state.following){
+      this.props.unFollow(this.userId);
+      this.setState({following: false});
+    } else {
+      this.props.Follow(this.userId);
+      this.setState({following: true});
+    }
   }
 
   render(){
@@ -46,6 +78,7 @@ class UserShow extends React.Component{
           <div>Photos: {userShow["photos"].length}</div>
           <div>following: {userShow["following"].length}</div>
           <div>followers: {userShow["followers"].length}</div>
+          {this.props.currentUser.user.id == this.props.params.id ? null : this.followButton()}
           <div className="photo-index">
             {
               photosSorted.map( photo =>(

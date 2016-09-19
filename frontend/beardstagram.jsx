@@ -10,7 +10,7 @@ import merge from 'lodash/merge';
 import isEmpty from 'lodash/isEmpty';
 import { signUp, logIn, logOut} from './util/session_api_util';
 import { fetchPhoto, fetchPhotos, removeComment } from './util/photo_api_util';
-import { fetchUser, fetchUsers } from './util/user_api_util';
+import { fetchUser, fetchUsers, createFollow, destroyFollow } from './util/user_api_util';
 import { search } from './util/search_api_util';
 // import { logIn, logOut, signUp, receiveErrors,
 //    receiveCurrentUser } from './actions/session_actions';
@@ -23,15 +23,12 @@ window.logOut = logOut;
 window.fetchPhoto = fetchPhoto;
 window.fetchUser = fetchUser;
 window.fetchUsers = fetchUsers;
-window.fetchPhotos = fetchPhotos;
-window.requestPhotos = requestPhotos;
-window.requestPhoto = requestPhoto;
-window.createPhoto = createPhoto;
-window.removeComment = removeComment;
 window.search = search;
 window.merge = merge;
 window.isEmpty = isEmpty;
-window.logIn = logIn;
+window.createFollow = createFollow;
+window.destroyFollow = destroyFollow;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
