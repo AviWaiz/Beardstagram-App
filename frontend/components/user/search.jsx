@@ -13,6 +13,7 @@ class Search extends React.Component{
       searchIndex: 0.0,
     };
     this.results= null;
+    this.oldIdx= null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
@@ -32,12 +33,16 @@ class Search extends React.Component{
   }
 
   matches() {
+    this.names = [];
     if(!isEmpty(this.props.search)){
       this.results = this.props.search.map( (user) => {
         let key = Object.keys(user)[0];
+        this.names.push(user[key]["username"]);
         return(
           <li key={user[key]["username"]}>
-            <Link to={`/users/${user[key]['id']}`} onClick={this.clearSearch}>
+            <Link to={`/users/${user[key]['id']}`}
+                  onClick={this.clearSearch}
+                  id={user[key]["username"]}>
                 {user[key]['username']}
             </Link>
           </li>
@@ -48,20 +53,28 @@ class Search extends React.Component{
     }
   }
 
+  setResultHover(e) {
+    return e;
+  }
+
+
   changeResult(e){
     if (this.results) {
       const length = this.results.length;
-      if (e.keyCode === 38) {
-        this.setState({searchIndex: (this.state.searchIndex + 1) % length});
-      } else if (e.keyCode === 40) {
-        this.setState({searchIndex: (this.state.searchIndex - 1) < 0 ? length - 1 : this.state.searchIndex - 1 });
+      $(`#${this.names[this.oldIdx]}`).removeClass('selected');
+      if (e.keyCode === 40) {
+        $(`#${this.names[this.state.searchIndex]}`).addClass('selected');
+        this.oldIdx = this.state.searchIndex;
+        this.setState({searchIndex: (this.state.searchIndex + 1) > (this.state.length - 1) ? 0.0 : (this.state.searchIndex + 1)});
+      } else if (e.keyCode === 38) {
+        $(`#${this.names[this.state.searchIndex]}`).addClass('selected');
+        this.oldIdx = this.state.searchIndex;
+        console.log(this.state.searchIndex - 1);
+        this.setState({searchIndex: (this.state.searchIndex - 1) < 0 ? (length - 1) : (this.state.searchIndex - 1) });
       }
     }
   }
 
-  setResultHover(){
-
-  }
 
   handleSubmit(e){
     e.preventDefault();

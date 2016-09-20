@@ -3,14 +3,12 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 //Components
 import App from './app';
-// import Home from './home';
 import SessionFormContainer from './session_form/session_form_container';
 import PhotoIndexContainer from './photos/photo_index/photo_container';
 import PhotoformContainer from './photos/photo_form/photo_form_container';
 import PhotoFeedContainer from './photos/photo_feed/photo_feed_container';
 import requestPhotos from '../actions/photo_actions';
 import UserShowContainer from './user/user_show_container';
-import { Home } from './home';
 import { receiveCurrentUser } from '../actions/session_actions';
 import { requestUser } from '../actions/user_actions';
 
