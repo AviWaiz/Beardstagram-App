@@ -10,10 +10,9 @@ class Search extends React.Component{
     this.state =
     {
       username: '',
-      searchIndex: 0.0,
+      searchIndex: 0,
     };
     this.results= null;
-    this.oldIdx= null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
@@ -21,9 +20,14 @@ class Search extends React.Component{
     this.setResultHover = this.setResultHover.bind(this);
   }
 
+  componentDidUpdate() {
+    if (this.results) {
+      $(`#${this.names[this.state.searchIndex]}`).addClass('selected');
+    }
+  }
   update(property){
     return e =>{
-      this.setState({[property]: e.target.value});
+      this.setState({[property]: e.target.value, searchIndex: 0.0});
       this.props.searchUsers(e.target.value);
     };
   }
@@ -57,22 +61,23 @@ class Search extends React.Component{
     return e;
   }
 
-
   changeResult(e){
     if (this.results) {
       const length = this.results.length;
-      $(`#${this.names[this.oldIdx]}`).removeClass('selected');
       if (e.keyCode === 40) {
-        $(`#${this.names[this.state.searchIndex]}`).addClass('selected');
-        this.oldIdx = this.state.searchIndex;
-        this.setState({searchIndex: (this.state.searchIndex + 1) > (this.state.length - 1) ? 0.0 : (this.state.searchIndex + 1)});
+        $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+        e.preventDefault();
+        this.setState({searchIndex: (this.state.searchIndex + 1) > (length - 1) ? 0.0 : (this.state.searchIndex + 1)});
       } else if (e.keyCode === 38) {
-        $(`#${this.names[this.state.searchIndex]}`).addClass('selected');
-        this.oldIdx = this.state.searchIndex;
-        console.log(this.state.searchIndex - 1);
-        this.setState({searchIndex: (this.state.searchIndex - 1) < 0 ? (length - 1) : (this.state.searchIndex - 1) });
+        $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+        e.preventDefault();
+        this.setState({searchIndex: (this.state.searchIndex - 1) < 0 ? (length - 1) : (this.state.searchIndex - 1)});
       }
     }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    $(`#${this.names[nextState.searchIndex]}`).addClass('selected');
   }
 
 
