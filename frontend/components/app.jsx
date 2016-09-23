@@ -10,16 +10,21 @@ class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname === "/") {
       document.getElementById("background").classList.add("show");
+      $("#logo").css("color", "white");
     } else {
       document.getElementById("background").classList.remove("show");
+      $("#logo").css("color", "black");
+
     }
   }
 
   componentDidMount() {
     if (this.props.location.pathname === "/") {
       document.getElementById("background").classList.add("show");
+      $("#logo").css("color", "white");
     } else {
       document.getElementById("background").classList.remove("show");
+      $("#logo").css("color", "black");
     }
   }
 
@@ -28,7 +33,7 @@ class App extends React.Component {
       <div id='background' className="background">
         <nav className="nav_bar">
           <Link to="/" className="nav-link">
-            <h1 className="logo">
+            <h1 className="logo" id="logo">
               BeardStagram
             </h1>
           </Link>

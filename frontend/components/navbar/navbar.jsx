@@ -24,8 +24,8 @@ const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, search, 
       <h1 className="logo">
         <Icon className="icons"
               src='feed_icon.png'
-              width={36}
-              height={36}/>
+              width={50}
+              height={40}/>
       </h1>
     </Link>
     <Search searchUsers={searchUsers} search={search} location={location} />

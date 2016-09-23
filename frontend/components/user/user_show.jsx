@@ -16,14 +16,6 @@ class UserShow extends React.Component{
     this.followToggle = this.followToggle.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if (nextProps.currentUser_following.includes(parseInt(this.props.params.id))) {
-  //     this.setState({following: true});
-  //   } else {
-  //     this.setState({following: false});
-  //   }
-  // }
-
   followButton(){
     if (this.state.following) {
       return <div className="demo" onClick={this.followToggle}>Unfollow</div>;

@@ -94,8 +94,7 @@
     -webkit-font-smoothing: antialiased;
   }
   img{
-    width: 400px;
-    height: 400px;
+    width: 400px !important;
     background-image: none;
     border-radius: 14px;
   }
@@ -162,7 +161,6 @@
 
 
   .nav-link{
-    padding-right: 5px;
     text-decoration: none;
   }
   .nav-group{
@@ -350,6 +348,20 @@
     flex-direction: row;
     background-color: #fff;
   }
+
+  .index-item{
+    canvas{
+      // border-top-left-radius: 20px;
+      // border-bottom-left-radius: 20px;
+      border-radius: 14px;
+    }
+    // img{
+    //   border-radius: 14px;
+    //   width: 400px !important;
+    //   height: 400px !important;
+    // }
+  }
+
   .index-item:hover{
     box-shadow: 0 10px 20px 10px rgba(0,0,0,0.18),0 10px 20px 10px rgba(0,0,0,0.2);
   }

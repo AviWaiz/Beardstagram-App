@@ -36,7 +36,7 @@ class PhotoIndexItem extends React.Component{
       <div className="index-item">
         <Stage width={400} height={400}>
           <Layer>
-              <Kimage image={imageObj1} width="400" height="400"/>
+              <Kimage image={imageObj1} width="400" height="400" />
               <Kimage image={imageObj2}
                       width={beardWidth}
                       height={beardHeight}
@@ -55,7 +55,7 @@ class PhotoIndexItem extends React.Component{
       } else {
       return(
         <div className="index-item">
-          <img src={photoUrl} />
+          <img src={photoUrl}/>
           <div className="index-item-fields">
             <div className="title">{photo.title}</div>
               <div className="comments">{comments}
