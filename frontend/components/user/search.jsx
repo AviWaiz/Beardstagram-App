@@ -10,13 +10,14 @@ class Search extends React.Component{
     this.state =
     {
       username: '',
-      searchIndex: 0,
+      searchIndex: null,
     };
     this.results= null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
+    this.resetIndex = this.resetIndex.bind(this);
     this.setResultHover = this.setResultHover.bind(this);
   }
 
@@ -33,7 +34,12 @@ class Search extends React.Component{
   }
 
   clearSearch() {
-    this.setState({username: ""});
+    this.setState({username: "", searchIndex: 0.0});
+  }
+
+  resetIndex(e){
+    e.preventDefault();
+    $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
   }
 
   matches() {
@@ -45,8 +51,10 @@ class Search extends React.Component{
         return(
           <li key={user[key]["username"]}>
             <Link to={`/users/${user[key]['id']}`}
+            // once the user clicks a link the search bar will clear
                   onClick={this.clearSearch}
-                  id={user[key]["username"]}>
+                  id={user[key]["username"]}
+                  onMouseOver={this.resetIndex}>
                 {user[key]['username']}
             </Link>
           </li>
@@ -83,11 +91,15 @@ class Search extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const result = this.props.search[this.state.searchIndex];
-    const key = Object.keys(result)[0];
-    const user = result[key];
-    this.props.router.push(`users/${user.id}`);
-    this.setState({username: ""});
+    if (!isEmpty(this.props.search)) {
+      const result = this.props.search[this.state.searchIndex];
+      const key = Object.keys(result)[0];
+      const user = result[key];
+      this.props.router.push(`users/${user.id}`);
+      this.setState({username: ""});
+    } else {
+      this.setState({username: ""});
+    }
   }
 
   render(){
