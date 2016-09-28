@@ -11,6 +11,8 @@ class PhotoIndexItem extends React.Component{
     this.state = {
       modalOpen: false
     };
+    this.photoDetial = this.photoDetial.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
   }
 
   onModalOpen() {
@@ -51,10 +53,12 @@ class PhotoIndexItem extends React.Component{
       let iconUrl = photo.icon_url.toString();
       imageObj2.src = iconUrl;
       return (
+      <div>
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle2}>
-
+            {"hey"}
+      </Modal>
       <div className="index-item" onClick={this.photoDetial}>
         <Stage width={400} height={400}>
           <Layer>
@@ -73,6 +77,7 @@ class PhotoIndexItem extends React.Component{
             </div>
           </div>
         </div>
+      </div>
       );
       } else {
       return(
