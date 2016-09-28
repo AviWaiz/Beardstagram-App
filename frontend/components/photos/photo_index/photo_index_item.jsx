@@ -1,4 +1,6 @@
 import React  from 'react';
+import Modal from 'react-modal';
+import { ModalStyle2 } from '../../../util/modal_style';
 import CommentFormContainer from '../../comment/comment_form_container';
 import Comment from '../../comment/comment';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
@@ -6,6 +8,22 @@ import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
 class PhotoIndexItem extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      modalOpen: false
+    };
+  }
+
+  onModalOpen() {
+    this.setState({modalOpen: true});
+  }
+
+  onModalClose() {
+    this.setState({modalOpen: false});
+  }
+
+  photoDetial(e) {
+    e.preventDefault();
+    this.onModalOpen();
   }
 
   render(){
@@ -33,7 +51,11 @@ class PhotoIndexItem extends React.Component{
       let iconUrl = photo.icon_url.toString();
       imageObj2.src = iconUrl;
       return (
-      <div className="index-item">
+      <Modal isOpen={this.state.modalOpen}
+						 onRequestClose={this.onModalClose}
+						 style={ModalStyle2}>
+
+      <div className="index-item" onClick={this.photoDetial}>
         <Stage width={400} height={400}>
           <Layer>
               <Kimage image={imageObj1} width="400" height="400" />
