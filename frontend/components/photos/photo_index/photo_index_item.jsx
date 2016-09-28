@@ -1,6 +1,6 @@
 import React  from 'react';
 import Modal from 'react-modal';
-import { ModalStyle2 } from '../../../util/modal_style';
+import { ModalStyle3 } from '../../../util/modal_style';
 import CommentFormContainer from '../../comment/comment_form_container';
 import Comment from '../../comment/comment';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
@@ -56,8 +56,25 @@ class PhotoIndexItem extends React.Component{
       <div>
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
-						 style={ModalStyle2}>
-            {"hey"}
+						 style={ModalStyle3}>
+         <div className="index-item" onClick={this.photoDetial}>
+             <Stage width={400} height={400}>
+               <Layer>
+                   <Kimage image={imageObj1} width="400" height="400" />
+                   <Kimage image={imageObj2}
+                           width={beardWidth}
+                           height={beardHeight}
+                           x={x}
+                           y={y} />
+               </Layer>
+             </Stage>
+             <div className="index-item-fields">
+               <div className="title">{photo.title}</div>
+                 <div className="comments">{comments}
+                   <CommentFormContainer photoId={photo.id}/>
+                 </div>
+               </div>
+             </div>
       </Modal>
       <div className="index-item" onClick={this.photoDetial}>
         <Stage width={400} height={400}>
@@ -70,26 +87,14 @@ class PhotoIndexItem extends React.Component{
                       y={y} />
           </Layer>
         </Stage>
-        <div className="index-item-fields">
-          <div className="title">{photo.title}</div>
-            <div className="comments">{comments}
-              <CommentFormContainer photoId={photo.id}/>
-            </div>
-          </div>
         </div>
       </div>
       );
-      } else {
+    } else {
       return(
         <div className="index-item">
           <img src={photoUrl}/>
-          <div className="index-item-fields">
-            <div className="title">{photo.title}</div>
-              <div className="comments">{comments}
-                <CommentFormContainer photoId={photo.id}/>
-              </div>
-            </div>
-          </div>
+        </div>
       );
     }
   }
