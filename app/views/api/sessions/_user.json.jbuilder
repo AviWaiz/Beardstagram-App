@@ -22,6 +22,8 @@ if user
       json.title photo.title
       json.url photo.url
       json.user_id photo.user_id
+      json.user photo.user
+      json.user_profile_picture photo.user.profile_pic
       json.x photo.x
       json.y photo.y
       json.beardWidth photo.beardWidth

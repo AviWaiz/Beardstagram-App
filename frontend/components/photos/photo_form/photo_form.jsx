@@ -24,7 +24,6 @@ class PhotoForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToIndex = this.navigateToIndex.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
-		this.redirectToIntro = this.redirectToIntro.bind(this);
 		this.beardPositionAndSize = this.beardPositionAndSize.bind(this);
   }
 
@@ -95,7 +94,6 @@ class PhotoForm extends React.Component{
         </form>
         </Modal>
       </div>
-
     );
   }
 }

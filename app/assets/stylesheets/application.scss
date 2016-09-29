@@ -85,6 +85,11 @@
     height: 100px !important;
     border-radius: 40px;
   }
+  #profile-icon canvas {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 10px;
+  }
 
 
   body {
@@ -531,4 +536,15 @@
      overflow: hidden;
      width: 105%;
      height: 105%;
+   }
+
+   .user-link {
+     text-decoration: none;
+     list-style: none;
+     display: flex;
+     margin-left: 27px;
+   }
+
+   .user-link a{
+     color: #3a8bbb;
    }

@@ -18,6 +18,7 @@
 class Photo < ActiveRecord::Base
   validates :title, :user_id, :url, presence: true
 
+
   belongs_to :user
   has_many :comments
   has_one(
@@ -26,4 +27,8 @@ class Photo < ActiveRecord::Base
     :foreign_key => :profile_id,
     :primary_key => :id
   )
+
+  def user_name
+    user.username
+  end
 end

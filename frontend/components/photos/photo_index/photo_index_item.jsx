@@ -5,6 +5,7 @@ import CommentFormContainer from '../../comment/comment_form_container';
 import Comment from '../../comment/comment';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
 
+
 class PhotoIndexItem extends React.Component{
   constructor(props){
     super(props);
@@ -89,7 +90,7 @@ class PhotoIndexItem extends React.Component{
         </Stage>
         </div>
       </div>
-      );
+    );
     } else {
       return(
         <div className="index-item">

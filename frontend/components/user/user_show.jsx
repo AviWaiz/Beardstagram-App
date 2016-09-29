@@ -3,7 +3,8 @@ import { withRouter } from 'react-router';
 import PhotoIndexItem from "../photos/photo_index/photo_index_item";
 import isEmpty from "lodash/isEmpty";
 import ProfilePicture from './profile_picture';
-
+import { Link } from 'react-router';
+import ProfileIcon from './profile_icon';
 
 class UserShow extends React.Component{
   constructor(props){
@@ -74,11 +75,23 @@ class UserShow extends React.Component{
           <div className="photo-index">
             {
               photosSorted.map( photo =>(
+                <div>
                 <PhotoIndexItem photo={photo}
                  key={photo.id}
                  requestPhoto={this.props.requestPhoto}
                  removeCommentAction={this.props.removeCommentAction}
                  currentUser={this.props.currentUser}/>
+                 {/* <ProfileIcon photo={photo.user_profile_picture}
+                      key={photo.user_profile_picture.id}
+                      requestPhoto={this.props.requestPhoto}
+                      currentUser={this.props.currentUser}/> */}
+                 <li className="user-link" key={photo.user.username}>
+                   <Link to={`/users/${photo.user.id}`}
+                           id={photo.user.id}>
+                         {photo.user.username}
+                   </Link>
+                 </li>
+                </div>
               ))
             }
           </div>

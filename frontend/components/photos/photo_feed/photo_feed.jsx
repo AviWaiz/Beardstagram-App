@@ -1,6 +1,5 @@
 import React  from 'react';
 import PhotoIndexItem from '../photo_index/photo_index_item';
-// import {dateSort} from '../../../util/photo_api_util';
 
 class PhotoFeed extends React.Component{
   constructor(props){
@@ -24,7 +23,8 @@ class PhotoFeed extends React.Component{
              key={photo.id}
              requestPhoto={this.props.requestPhoto}
              removeCommentAction={this.props.removeCommentAction}
-             currentUser={this.props.currentUser}/>
+             currentUser={this.props.currentUser}
+             user={photo.user}/>
           ))
         }
       </div>

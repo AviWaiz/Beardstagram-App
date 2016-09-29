@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
       follower.photos
     end.flatten.concat(self.photos).sort_by(&:created_at)
   end
-  
+
   def photos_and_profile
     all_photos = self.photos.map do |photo|
       photo
