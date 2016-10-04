@@ -1,5 +1,5 @@
 import React  from 'react';
-import PhotoIndexItem from '../photo_index/photo_index_item';
+import PhotoFeedItem from './photo_feed_item';
 
 class PhotoFeed extends React.Component{
   constructor(props){
@@ -19,7 +19,7 @@ class PhotoFeed extends React.Component{
       <div className="photo-index">
         {
           photosSorted.map( photo =>(
-            <PhotoIndexItem photo={photo}
+            <PhotoFeedItem photo={photo}
              key={photo.id}
              requestPhoto={this.props.requestPhoto}
              removeCommentAction={this.props.removeCommentAction}

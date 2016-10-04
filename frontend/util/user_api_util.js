@@ -30,7 +30,7 @@ export const destroyFollow = (id, success) => {
   $.ajax({
     type: 'DELETE',
     url: `api/users/${id}/follow/`,
-    data: { id: id},
+    data: { id: id },
     success,
     error: () => console.log('error')
   });

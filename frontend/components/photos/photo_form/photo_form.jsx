@@ -22,6 +22,7 @@ class PhotoForm extends React.Component{
       iconUrl: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.navigateToIndex = this.navigateToIndex.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
 		this.beardPositionAndSize = this.beardPositionAndSize.bind(this);
@@ -51,6 +52,13 @@ class PhotoForm extends React.Component{
     this.props.router.push("/photos");
   }
 
+  handleKeyPress(e){
+    if (e.key == "Enter") {
+      e.preventDefault();
+      this.handleSubmit(e);
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const photo = { title: this.state.title,
@@ -71,7 +79,8 @@ class PhotoForm extends React.Component{
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle2}>
       <form onSubmit={this.handleSubmit}
-            className="photo-form-box">
+            className="photo-form-box"
+            onKeyPress={this.handleKeyPress}>
         <h3 className="new-photo-title">Add a Beard</h3>
         <button className="upload-button"
                 onClick={this.upload}>
@@ -81,15 +90,13 @@ class PhotoForm extends React.Component{
                       height={36}/>
         </button>
         <div className="photo-in-modal">
-
           <PhotoEdit url={this.state.url} beardPositionAndSize={this.beardPositionAndSize}/>
         </div>
 
-        <label className="photo-field">title</label>
            <input type="text" value={this.state.title}
-             onChange={this.update("title")} className="photo-field"/>
+             onChange={this.update("title")} className="photo-field" placeholder="Title"/>
            <div className="button-holder">
-             <input className="demo" type="submit" value="Create Photo"/>
+             <input className="demo" type="submit" value="Create Photo" />
            </div>
         </form>
         </Modal>

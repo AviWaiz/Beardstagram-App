@@ -20,7 +20,7 @@ class ProfileIcon extends React.Component{
       let iconUrl = photo.icon_url.toString();
       imageObj2.src = iconUrl;
       return (
-      <div id="profile-icon" >
+      <div id={this.props.className ? "user-icon-modal" : "user-icon"}>
         <Stage  width="400" height="400">
           <Layer>
               <Kimage image={imageObj1}

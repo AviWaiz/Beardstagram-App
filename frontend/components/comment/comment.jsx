@@ -14,9 +14,9 @@ class Comment extends React.Component{
     if (this.props.currentUser.user.id === this.props.comment.user_id) {
       return (
         <li className="list-comment">
-        <div>{this.props.comment.username}</div>
-          :&nbsp;{this.props.comment.body}
-          <button onClick={this.deleteComment}>x</button>
+        <div>{this.props.comment.username}:&nbsp;{this.props.comment.body}</div>
+          &nbsp;
+          <button className="delete-comment" onClick={this.deleteComment}>X</button>
         </li>
       );
     } else{

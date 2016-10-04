@@ -9,7 +9,7 @@ import PhotoformContainer from './photos/photo_form/photo_form_container';
 import PhotoFeedContainer from './photos/photo_feed/photo_feed_container';
 import requestPhotos from '../actions/photo_actions';
 import UserShowContainer from './user/user_show_container';
-import { receiveCurrentUser } from '../actions/session_actions';
+import { receiveCurrentUser, logIn } from '../actions/session_actions';
 import { requestUser } from '../actions/user_actions';
 
 

@@ -4,6 +4,7 @@ import { ModalStyle3 } from '../../../util/modal_style';
 import CommentFormContainer from '../../comment/comment_form_container';
 import Comment from '../../comment/comment';
 import {Layer, Shape, Stage, Image as Kimage} from "react-konva";
+import { Link } from 'react-router';
 
 
 class PhotoIndexItem extends React.Component{
@@ -58,7 +59,7 @@ class PhotoIndexItem extends React.Component{
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle3}>
-         <div className="index-item" onClick={this.photoDetial}>
+         <div className="index-item-modal" onClick={this.photoDetial}>
              <Stage width={400} height={400}>
                <Layer>
                    <Kimage image={imageObj1} width="400" height="400" />
@@ -93,9 +94,24 @@ class PhotoIndexItem extends React.Component{
     );
     } else {
       return(
-        <div className="index-item">
+      <div>
+        <Modal isOpen={this.state.modalOpen}
+  						 onRequestClose={this.onModalClose}
+  						 style={ModalStyle3}>
+         <div className="index-item-modal">
+           <img src={photoUrl}/>
+         </div>
+         <div className="index-item-fields">
+           <div className="title">{photo.title}</div>
+             <div className="comments">{comments}
+               <CommentFormContainer photoId={photo.id}/>
+             </div>
+           </div>
+        </Modal>
+        <div className="index-item" onClick={this.photoDetial}>
           <img src={photoUrl}/>
         </div>
+      </div>
       );
     }
   }
