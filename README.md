@@ -1,130 +1,366 @@
-# Beardstagram
+# BeardStagram
 
-[Heroku link][heroku] **NB:** Beardstagram!
+[Try BeardStagram][heroku]
 
-[heroku]: https://beardstagram-app.herokuapp.com/
-## Minimum Viable Product
-Beardstagram is a web application inspired by Instagram that will be built using Ruby on Rails and React.js. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
-
-- [ ] New account creation, login and guest/demo login
-- [ ] Smooth, bug-free navigation
-- [ ] Hosting on Heroku
-- [ ] Photos
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-  - [ ] title for Photos
-  - [ ] Upload, edit, Photos
-  - [ ] Users can comment on photos of users that they follow
-- [ ] Photos Feed
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-  - [ ] User's Photos Feed has photos of other users that user is following
-- [ ] Beardstagram(drag and drop beard icons on pictures)
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-  - [ ] User's Photos Feed has photos of other users that user is following
-- [ ] follows/search
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Bonus
-  - [ ] follow suggestions
-  - [ ] user search
-  - [ ] tags
-  - [ ] Direct messaging
-  - [ ] hashtags
-  - [ ] likes
-
-## Implementation Timeline
-
-### Phase 1: Backend setup and Front End User Authentication (1 days, W1 W 12pm)
-
-**Objective:** Functioning rails project with front-end Authentication
-
-- [ ] Create new project
-- [ ] Create `User` model
-- [ ] Authentication backend setup
-- [ ] Create `StaticPages` controller and root view
-- [ ] Set up webpack & Redux structure with skeleton files
-- [ ] Set up `APIUtil` to interact with the API
-- [ ] Set up Redux for frontend auth
-- [ ] User signup/signin components
-- [ ] Blank landing component after signin
-- [ ] Style signin/signup components
-- [ ] User show page (contains all the users photos)
-- [ ] Seed users
-
-### Phase 2: Photos Model, API, and components (2 days, W1 F 6pm)
-
-**Objective:** Photos can be created, read, edited and destroyed through
-the API.
-
-- [ ] create `Photo` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for Photos (`PhotosController`)
-- [ ] jBuilder views for Photos
-- [ ] Test out API interaction in the console.
-- [ ] Allow for photo uploads with Cloudinary
-- Implement each Photos component, building out the Redux structure as needed.
-  - [ ] `PhotosIndex`
-  - [ ] `PhotoIndexItem`
-  - [ ] `PhotoForm`
-- [ ] Save Photos to Cloudinary when the form loses focus or is left idle after editing.
-- [ ] Style Photos components
-- [ ] Seed Photos
-- [ ] make sure that when viewing a specific user you can see all of their photos
-
-### Phase 3: Start Styling (0.5 days, W1 Friday 12pm)
-
-**Objective:** Existing pages (including signup/signin) will look good.
-
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
-
-### Phase 4: comments (1 day, W1 weekend)
-
-**Objective:** Add Comments to pictures.
-
-- [ ] create `Comments` model and join table
-- build out API, redux loop, and components for:
-  - [ ] fetching comments for photos
-  - [ ] adding comments to photos
-  - [ ] Home feed displays comments under photos
+[BeardStagram][heroku] is a social web application that allows users add beard icons to their pictures. Inspired by social media sites, BeardStagram is built using Ruby on Rails on the backend with PostgreSQL databased, and React.js with a Redux.js framework in the frontend.
 
 
-### Phase 5: - infinite scroll for Photos Index (1 day, W2 Sunday)
+[heroku]: https://beardstagram-app.herokuapp.com
 
-**objective:** Add infinite scroll to Photos Index
+##Scribbble Preparation
 
-- [ ] Paginate Photos Index API to send 20 results at a time
-- [ ] Append next set of results when user scrolls and is near bottom
-- [ ] Make sure styling still looks good
-- [ ] Ensure we have enough seeded photos to demo infinite scroll
-### Phase 6: follow and likes (2 day, W2 Tu 10pm)
+The following was used to outline my Scribbble project:
 
-**objective:** Make the site feel more cohesive and awesome.
+  [mvpReadme]: ./proposal.md
+  [views]: ./docs/views.md
+  [schema]: ./docs/schema.md
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
-- [ ] follows users follow other users
-  - [ ] follow suggestions friends
-  - [ ] follow search
-- [ ] likes
+* [MVP Readme][mvpReadme]
+* [View Wireframes][views]
+* [Database Schema][schema]
 
-### Bonus Features (TBD)
-- [ ]  Beard portrait.
-  - [ ] Have the ability to drag and drop beard icons on photos
-- [ ] facebook login
-- [ ] tags
-- [ ] search users by comments
+##Scribbble Features
 
-[phase-one]: docs/phases/phase1.md
-[phase-two]: docs/phases/phase2.md
-[phase-three]: docs/phases/phase3.md
-[phase-four]: docs/phases/phase4.md
-[phase-five]: docs/phases/phase5.md
+* Secure user authentication and easy access to explore Scribbble via a demo account
+* Adding new designs to share your current portfolio pieces
+* Browse user uploaded designs
+* Guided tour showcasing experimental UX features
+* View Comments along with a pointer to where they live on the design
+* Comment creation via a location on the design
+
+
+## Scribbble Walk-through
+
+### Scribbble Splash Page
+
+Scribbble's home page layout is intended to immerse the visitor into a colorful and beautiful world that illustrates the work of Scribbble's community.
+
+Scribbble handles secure user authentication and a demo account for quick accessibility to explore. Scribbble is a single-page application in which the root page renders the splash page when 'UserStore.currentUser()' returns nil, and renders the index page otherwise. Various error messages are easily accessible across components via the 'ErrorStore'.
+
+Allowing for multiple sessions creates a bug-free experience regardless of the amount of people using the demo account.
+
+![splash]
+[splash]: ./docs/screenshots/splash.png
+
+
+#### Sample Authentication Code Snippets
+
+```ruby
+class Api::SessionsController < ApplicationController
+
+  def create
+    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    if @user
+      login_user!(@user)
+      render :show
+    else
+      @errors = ["Invalid Username or Password"]
+      render :show, status: 401
+    end
+  end
+
+  ...
+
+end
+
+class ApplicationController < ActionController::Base
+
+  ...
+
+  def current_user
+    return nil unless session[:session_token]
+    @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+  def login_user!(user)
+    user.reset_session_token!
+    session[:session_token] = user.session_token
+  end
+
+  def logout_user!
+    if current_user
+      current_user.reset_session_token!
+    end
+    session[:session_token] = nil
+  end
+
+  ...
+
+end
+
+class User < ActiveRecord::Base
+
+  ...
+
+  def self.generate_session_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def ensure_session_token
+    self.session_token ||= self.class.generate_session_token
+  end
+
+  def reset_session_token!
+    self.session_token = self.class.generate_session_token
+    self.save!
+    self.session_token
+  end
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def self.find_by_credentials(username, password)
+    user = User.find_by(username: username)
+    return nil if user.nil?
+    user.is_password?(password) ? user : nil
+  end
+
+  ...
+
+end
+
+```
+
+### Design creation and browsing
+
+Scribbble takes advantage of Cloudinary's API to upload and host images. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
+
+The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
+
+
+![designIndex]
+[designIndex]: ./docs/screenshots/designIndex.png
+
+![designCreation]
+[designCreation]: ./docs/screenshots/designCreation.png
+
+#### Sample Design Index/Creation Code Snippets
+
+```javascript
+var DesignIndex = React.createClass({
+
+...
+
+componentDidMount: function() {
+  this.designStoreListener = DesignStore.addListener(this.__onDesignsChange);
+  this.userStoreListener = UserStore.addListener(this.__onUserChange);
+  ClientActions.fetchDesigns();
+
+  if (!this.state.currentUser) {
+    HashHistory.push("/");
+  }
+
+  if (this.props.params.designId) {
+    HashHistory.push("/designs/" + this.props.params.designId);
+  }
+
+  $('body').scrollTop(0);
+},
+
+__onDesignsChange: function() {
+  this.setState({designs: DesignStore.all()});
+},
+
+__onUserChange: function() {
+  this.setState({ currentUser: UserStore.currentUser() });
+},
+
+...
+
+render: function() {
+  var designIndexList = this.state.designs.map(function(design) {
+    return <DesignCard key={design.id} design={design}/>;
+  });
+
+  return (
+  <ul className={"design-index-list"}>
+    {designIndexList}
+  </ul>
+  );
+}
+});
+
+```
+
+### Individual Design Page
+
+The 'DesignShow' show component is optimized for multiple screen sizes taking advantage of CSS' media queries. It also contains a guided tour to teach the user how to best interact with the unique comments feature.
+
+'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
+
+![designShow]
+ [designShow]: ./docs/screenshots/designShow.png
+
+![designWalkthrough]
+[designWalkthrough]: ./docs/screenshots/designWalkthrough.png
+
+#### Sample Design Show
+
+```javascript
+var DesignShow = React.createClass({
+
+  ...
+
+  prevDesignHandler: function() {
+    var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
+    if (prevDesignIdx < 0) {
+      var prevDesignId = this.designs[this.designs.length - 1].id.toString();
+    } else {
+      prevDesignId = this.designs[prevDesignIdx].id.toString();
+    }
+
+    HashHistory.push("/designs/" + prevDesignId);
+  },
+
+  nextDesignHandler: function() {
+    var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
+
+    if (nextDesignIdx === this.designs.length) {
+      var nextDesignId = this.designs[0].id;
+    } else {
+      nextDesignId = this.designs[nextDesignIdx].id.toString();
+    }
+
+    HashHistory.push("/designs/" + nextDesignId);
+  },
+
+  ...
+
+  if (this.state.design.design_url) {
+    if (!this.state.commentFormOpen) {
+      var designImgShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+    }
+    var designImage = <img
+      id="design-img"
+      src={this.state.design.design_url}
+      onClick={this.openCommentForm}
+      style={{boxShadow: designImgShadow}}
+    />;
+  }
+
+  ...
+
+});
+```
+
+### Comments
+
+Scribbble comments are unique, each one lives at a specific spot on their respective design. Hovering over comments in the 'commentBox' displays their location on the design while clicking on the design creates a comment at that location.
+
+Green comment pins reference a comment being created, while yellow comment pins reference a comment being viewed.
+
+In addition to having body, design_id, and user_id columns in the database, comments contain X and Y coordinates that eventually pertain to their parent div (the design they belong to).
+
+Scribbble's API efficiently returns each designs' comments through a single query to the database.
+
+Ex. Comment Box
+![commentBox]
+[commentBox]: ./docs/screenshots/commentBox.png
+
+Ex. Comment Pins
+![commentPins]
+[commentPins]: ./docs/screenshots/commentPins.png
+
+
+```javascript
+var DesignShow = React.createClass({
+
+...
+
+openCommentForm: function(e) {
+  $('body').off('keydown', this.handleKey);
+
+  this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
+  this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
+
+  this.setState({
+    commentFormOpen: true,
+    commentFormPos: [this.xPos, this.yPos]
+  });
+},
+
+closeCommentForm: function() {
+  this.setState({ commentFormOpen: false});
+  $('body').on('keydown', this.handleKey);
+},
+
+...
+
+if (this.state.commentPos.length > 0) {
+  //adjust position for image size
+  var left = this.state.commentPos[0] - 13;
+  var top = this.state.commentPos[1] - 25;
+
+  var commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: left,
+      top: top,
+      position: "absolute",
+    }}/>;
+} else {
+  commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      opacity: "0",
+      width: "25px",
+      height: "25px",
+      left: 0,
+      top: 0,
+      position: "absolute",
+    }}/>;
+}
+
+...
+
+if (this.state.commentFormOpen) {
+  var commentForm = <CommentForm
+    closeCommentForm={this.closeCommentForm}
+    xPos={this.xPos}
+    yPos={this.yPos}
+    designId={this.state.design.id}
+    userId={this.state.currentUser.user.id}
+    />;
+  //adjust position for image size
+  var leftFormPin = this.state.commentFormPos[0] - 13;
+  var topFormPin = this.state.commentFormPos[1] - 25;
+  var commentFormPin = <img
+    className="hvr-pulse"
+    src="greenPin.svg"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: leftFormPin,
+      top: topFormPin,
+      position: "absolute",
+    }}/>;
+  var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+}
+
+...
+
+});
+
+```
+
+## Future Directions Scribbble
+
+### Tags
+
+Users can assign various tags to their Designs in 'DesignForm' which will then allow users to search and update 'DesignIndex' based on regex matching.
+
+### Dragable Comments
+
+In addition to clicking on a design to create a comment, users can also drag over a design to create a comment that pertains to a specific area.

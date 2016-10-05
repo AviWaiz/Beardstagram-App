@@ -11,14 +11,15 @@ class Search extends React.Component{
     {
       username: '',
       searchIndex: null,
-      mouseover: false
     };
-    this.results= null;
+    this.results = null;
+    this.mouseover = false;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeResult = this.changeResult.bind(this);
     this.matches = this.matches.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.resetIndex = this.resetIndex.bind(this);
+    this.resetMouseOver = this.resetMouseOver.bind(this);
     this.setResultHover = this.setResultHover.bind(this);
   }
 
@@ -41,7 +42,15 @@ class Search extends React.Component{
   resetIndex(e){
     e.preventDefault();
     $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+    this.resetMouseOver(e);
   }
+
+  resetMouseOver(e) {
+    e.preventDefault();
+    this.mouseover ? this.mouseover = false : this.mouseover = true;
+    console.log(this.mouseover);
+  }
+
 
   matches() {
     this.names = [];
@@ -55,7 +64,8 @@ class Search extends React.Component{
             // once the user clicks a link the search bar will clear
                   onClick={this.clearSearch}
                   id={user[key]["username"]}
-                  onMouseOver={this.resetIndex}>
+                  onMouseOver={this.resetIndex}
+                  onMouseLeave={this.resetMouseOver}>
                 {user[key]['username']}
             </Link>
           </li>
@@ -71,7 +81,7 @@ class Search extends React.Component{
   }
 
   changeResult(e){
-    if (this.results) {
+    if (this.results && !this.mouseover) {
       const length = this.results.length;
       if (e.keyCode === 40) {
         $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
