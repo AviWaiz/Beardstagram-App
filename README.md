@@ -135,7 +135,7 @@ end
 
 ### Photo Upload With Beard Drag and Drop
 
-BeardStagrm takes advantage of Cloudinary's API to upload and host images. Users can upload their photos using the Beard me! option. Once an Image is uploaded to Cloudinary the user may add a beard of their choice. Once submitted a user is redirected to their photo feed where their new bearded photo will appear.
+BeardStagrm takes advantage of Cloudinary's API to upload and host images. Users can upload their photos using the Beard me! option. Once an Image is uploaded to Cloudinary the user may add a beard of their choice. To normalize data and improve efficiency, photos are saved in PostgreSQL as a column with a the photo's url, beard size, and the x/y position of the beard on the photo.  
 
 'PhotoEdit' and 'PhotoForm' handle photo uploads with drag and drop feature.
 
@@ -252,7 +252,7 @@ class PhotoForm extends React.Component{
 
 ```
 
-### User Search, and User Show Page
+### User Search and User Show Page
 
 Users can navigate to other User Show pages through User search bar.
 'Search' component is in charge of the logic for handling real time user search. The Search bar listens to both mouseOver and keyPress events to handle search-result navigation.
@@ -373,13 +373,3 @@ class Search extends React.Component{
 }
   ...
 ```
-
-### Comments
-
-BeardStagrm comments are unique, each one lives at a specific spot on their respective design. Hovering over comments in the 'commentBox' displays their location on the design while clicking on the design creates a comment at that location.
-
-Green comment pins reference a comment being created, while yellow comment pins reference a comment being viewed.
-
-In addition to having body, design_id, and user_id columns in the database, comments contain X and Y coordinates that eventually pertain to their parent div (the design they belong to).
-
-BeardStagrm's API efficiently returns each designs' comments through a single query to the database.
