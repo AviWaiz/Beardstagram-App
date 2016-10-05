@@ -7,40 +7,29 @@
 
 [heroku]: https://beardstagram-app.herokuapp.com
 
-##Scribbble Preparation
 
-The following was used to outline my Scribbble project:
+##Features
 
-  [mvpReadme]: ./proposal.md
-  [views]: ./docs/views.md
-  [schema]: ./docs/schema.md
+* User authentication for secure login and BeardStagrm demo login
+* React modals
+* Uploading pictures
+* Adding beards to pictures through drag and drop feature
+* Realtime user search bar
+* Browse user show pages with the ability to follow other users
+* User home feed contains photos of all other users being followed
+* photos contain user comments
 
-* [MVP Readme][mvpReadme]
-* [View Wireframes][views]
-* [Database Schema][schema]
+## BeardStagrm Walk-through
 
-##Scribbble Features
-
-* Secure user authentication and easy access to explore Scribbble via a demo account
-* Adding new designs to share your current portfolio pieces
-* Browse user uploaded designs
-* Guided tour showcasing experimental UX features
-* View Comments along with a pointer to where they live on the design
-* Comment creation via a location on the design
+### BeardStagrm Splash Page
 
 
-## Scribbble Walk-through
+BeardStagrm has secure user authentication for user login and signup. BeardStagrm also contains a demo login for app exploration. BeardStagrm is a single-page application is handled through react router and front-end auth. Using 'ensureLoggedIn', and 'redirectIfLoggedIn' methods, React-Router checks the redux store if there is a currentUser in state. If the currentUser is nil, the app will render the splash page. Otherwise, it will render the app's index page.
 
-### Scribbble Splash Page
-
-Scribbble's home page layout is intended to immerse the visitor into a colorful and beautiful world that illustrates the work of Scribbble's community.
-
-Scribbble handles secure user authentication and a demo account for quick accessibility to explore. Scribbble is a single-page application in which the root page renders the splash page when 'UserStore.currentUser()' returns nil, and renders the index page otherwise. Various error messages are easily accessible across components via the 'ErrorStore'.
-
-Allowing for multiple sessions creates a bug-free experience regardless of the amount of people using the demo account.
+BeardStagrm can handle multiple sessions to be created allowing for a bug-free experience regardless of the amount of people users logged in.
 
 ![splash]
-[splash]: ./docs/screenshots/splash.png
+[splash]: ./docs/splash.png
 
 
 #### Sample Authentication Code Snippets
@@ -49,13 +38,18 @@ Allowing for multiple sessions creates a bug-free experience regardless of the a
 class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    @user = User.includes(:followees).find_by_credentails(
+    params[:user][:username],
+    params[:user][:password])
+
     if @user
-      login_user!(@user)
+      login(@user)
       render :show
     else
-      @errors = ["Invalid Username or Password"]
-      render :show, status: 401
+      render(
+      json: ["Invalid username/password combination"],
+      status: 401
+      )
     end
   end
 
@@ -72,16 +66,20 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
-  def login_user!(user)
+  def login(user)
     user.reset_session_token!
     session[:session_token] = user.session_token
+    @current_user = user
   end
 
-  def logout_user!
-    if current_user
-      current_user.reset_session_token!
-    end
+  def logout
+    current_user.reset_session_token!
     session[:session_token] = nil
+    @current_user = nil
+  end
+
+  def require_logged_in
+    render json: {base: ['invalid credentails']}, status: 401 if !current_user
   end
 
   ...
@@ -89,278 +87,299 @@ class ApplicationController < ActionController::Base
 end
 
 class User < ActiveRecord::Base
-
   ...
 
-  def self.generate_session_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def ensure_session_token
-    self.session_token ||= self.class.generate_session_token
-  end
-
-  def reset_session_token!
-    self.session_token = self.class.generate_session_token
-    self.save!
-    self.session_token
-  end
-
   def password=(password)
-    @password = password
     self.password_digest = BCrypt::Password.create(password)
+    @password = password
   end
 
-  def is_password?(password)
+  def self.find_by_credentails(username, password)
+    user = User.find_by(username: username)
+    return nil unless user
+    user.password_is?(password) ? user : nil
+  end
+
+  def password_is?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
-    return nil if user.nil?
-    user.is_password?(password) ? user : nil
+  def reset_session_token!
+    self.session_token = new_session_token
+    ensure_session_token_uniqueness
+    self.save
+    self.session_token
+  end
+
+  private
+
+  def ensure_session_token
+    self.session_token ||= new_session_token
+  end
+
+  def new_session_token
+    SecureRandom.base64
+  end
+
+  def ensure_session_token_uniqueness
+    while User.find_by(session_token: self.session_token)
+      self.session_token = new_session_token
+    end
   end
 
   ...
-
 end
-
 ```
 
-### Design creation and browsing
-
-Scribbble takes advantage of Cloudinary's API to upload and host images. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
-
-The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
 
 
-![designIndex]
-[designIndex]: ./docs/screenshots/designIndex.png
+### Photo Upload With Beard Drag and Drop
 
-![designCreation]
-[designCreation]: ./docs/screenshots/designCreation.png
+BeardStagrm takes advantage of Cloudinary's API to upload and host images. Users can upload their photos using the Beard me! option. Once an Image is uploaded to Cloudinary the user may add a beard of their choice. Once submitted a user is redirected to their photo feed where their new bearded photo will appear.
 
-#### Sample Design Index/Creation Code Snippets
+'PhotoEdit' and 'PhotoForm' handle photo uploads with drag and drop feature.
+
+'PhotoFeed' Component listens to photos in the Redux store and re-renders on changes of stores state.
+
+![photofeed]
+[photofeed]: ./docs/photofeed.png
+
+![photoupload]
+[photoupload]: ./docs/photoupload.png
+
+#### Sample Photo upload Code Snippets
 
 ```javascript
-var DesignIndex = React.createClass({
 
-...
-
-componentDidMount: function() {
-  this.designStoreListener = DesignStore.addListener(this.__onDesignsChange);
-  this.userStoreListener = UserStore.addListener(this.__onUserChange);
-  ClientActions.fetchDesigns();
-
-  if (!this.state.currentUser) {
-    HashHistory.push("/");
+class PhotoForm extends React.Component{
+  constructor(props){
+    super(props);
+    this.upload = this.upload.bind(this);
+    this.state = {
+      title: '',
+      user_id: this.props.currentUser.user.id,
+      url: '',
+      modalOpen: true,
+      x: '',
+      y: '',
+      beardWidth: '',
+      beardHeight: '',
+      iconUrl: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.navigateToIndex = this.navigateToIndex.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
+		this.beardPositionAndSize = this.beardPositionAndSize.bind(this);
   }
 
-  if (this.props.params.designId) {
-    HashHistory.push("/designs/" + this.props.params.designId);
+  onModalClose() {
+	  this.setState({modalOpen: false});
+    this.navigateToIndex();
+	}
+
+  beardPositionAndSize(x, y, beardWidth, beardHeight, iconUrl) {
+    this.setState({x: x, y: y, beardWidth: beardWidth,
+                   beardHeight: beardHeight, iconUrl: iconUrl});
+  }
+  upload(e) {
+    e.preventDefault();
+    window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
+      if(!error){
+        this.setState({url: results[0].url});
+      }
+    });
+  }
+  update(property){
+    return e => this.setState({[property]: e.target.value});
+  }
+  navigateToIndex() {
+    this.props.router.push("/photos");
   }
 
-  $('body').scrollTop(0);
-},
+  handleKeyPress(e){
+    if (e.key == "Enter") {
+      e.preventDefault();
+      this.handleSubmit(e);
+    }
+  }
 
-__onDesignsChange: function() {
-  this.setState({designs: DesignStore.all()});
-},
+  handleSubmit(e){
+    e.preventDefault();
+    const photo = { title: this.state.title,
+                    user_id: this.state.user_id,
+                    url: this.state.url,
+                    x: this.state.x,
+                    y: this.state.y,
+                    beardWidth: this.state.beardWidth,
+                    beardHeight: this.state.beardHeight,
+                    icon_url: this.state.iconUrl };
+    this.props.createPhoto(photo);
+    this.navigateToIndex();
+  }
+  render(){
+    return (
+      <div >
+      <Modal isOpen={this.state.modalOpen}
+						 onRequestClose={this.onModalClose}
+						 style={ModalStyle2}>
+      <form onSubmit={this.handleSubmit}
+            className="photo-form-box"
+            onKeyPress={this.handleKeyPress}>
+        <h3 className="new-photo-title">Add a Beard</h3>
+        <button className="upload-button"
+                onClick={this.upload}>
+                <Icon className="icons"
+                      src='upload.png'
+                      width={36}
+                      height={36}/>
+        </button>
+        <div className="photo-in-modal">
+          <PhotoEdit url={this.state.url} beardPositionAndSize={this.beardPositionAndSize}/>
+        </div>
 
-__onUserChange: function() {
-  this.setState({ currentUser: UserStore.currentUser() });
-},
-
-...
-
-render: function() {
-  var designIndexList = this.state.designs.map(function(design) {
-    return <DesignCard key={design.id} design={design}/>;
-  });
-
-  return (
-  <ul className={"design-index-list"}>
-    {designIndexList}
-  </ul>
-  );
+           <input type="text" value={this.state.title}
+             onChange={this.update("title")} className="photo-field" placeholder="Title"/>
+           <div className="button-holder">
+             <input className="demo" type="submit" value="Create Photo" />
+           </div>
+        </form>
+        </Modal>
+      </div>
+    );
+  }
 }
-});
 
 ```
 
-### Individual Design Page
+### User Search, and User Show Page
 
-The 'DesignShow' show component is optimized for multiple screen sizes taking advantage of CSS' media queries. It also contains a guided tour to teach the user how to best interact with the unique comments feature.
+Users can navigate to other User Show pages through User search bar.
+'Search' component is in charge of the logic for handling real time user search. The Search bar listens to both mouseOver and keyPress events to handle search-result navigation.
 
-'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
+Once a search-result is chosen the user is navigated through react-router's 'Link' tag to that specific user show page.
+'UserShow' is where a specific users profile is displayed with all of that users photos, photo count, profile picture, follow counts, and follow/unfollow button.
 
-![designShow]
- [designShow]: ./docs/screenshots/designShow.png
 
-![designWalkthrough]
-[designWalkthrough]: ./docs/screenshots/designWalkthrough.png
 
-#### Sample Design Show
+#### Sample Search
 
 ```javascript
-var DesignShow = React.createClass({
-
+class Search extends React.Component{
   ...
-
-  prevDesignHandler: function() {
-    var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
-    if (prevDesignIdx < 0) {
-      var prevDesignId = this.designs[this.designs.length - 1].id.toString();
-    } else {
-      prevDesignId = this.designs[prevDesignIdx].id.toString();
-    }
-
-    HashHistory.push("/designs/" + prevDesignId);
-  },
-
-  nextDesignHandler: function() {
-    var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
-
-    if (nextDesignIdx === this.designs.length) {
-      var nextDesignId = this.designs[0].id;
-    } else {
-      nextDesignId = this.designs[nextDesignIdx].id.toString();
-    }
-
-    HashHistory.push("/designs/" + nextDesignId);
-  },
-
-  ...
-
-  if (this.state.design.design_url) {
-    if (!this.state.commentFormOpen) {
-      var designImgShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-    }
-    var designImage = <img
-      id="design-img"
-      src={this.state.design.design_url}
-      onClick={this.openCommentForm}
-      style={{boxShadow: designImgShadow}}
-    />;
+  update(property){
+    return e =>{
+      this.setState({[property]: e.target.value, searchIndex: 0.0});
+      this.props.searchUsers(e.target.value);
+    };
   }
 
-  ...
+  clearSearch() {
+    this.setState({username: "", searchIndex: 0.0});
+  }
 
-});
+  resetIndex(e){
+    e.preventDefault();
+    $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+    this.resetMouseOver(e);
+  }
+
+  resetMouseOver(e) {
+    e.preventDefault();
+    this.mouseover ? this.mouseover = false : this.mouseover = true;
+  }
+
+
+  matches() {
+    this.names = [];
+    if(!isEmpty(this.props.search)){
+      this.results = this.props.search.map( (user) => {
+        let key = Object.keys(user)[0];
+        this.names.push(user[key]["username"]);
+        return(
+          <li key={user[key]["username"]}>
+            <Link to={`/users/${user[key]['id']}`}
+            // once the user clicks a link the search bar will clear
+                  onClick={this.clearSearch}
+                  id={user[key]["username"]}
+                  onMouseOver={this.resetIndex}
+                  onMouseLeave={this.resetMouseOver}>
+                {user[key]['username']}
+            </Link>
+          </li>
+        );
+      });
+    } else {
+      this.results = null;
+    }
+  }
+
+  setResultHover(e) {
+    return e;
+  }
+
+  changeResult(e){
+    if (this.results && !this.mouseover) {
+      const length = this.results.length;
+      if (e.keyCode === 40) {
+        $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+        e.preventDefault();
+        this.setState({searchIndex: (this.state.searchIndex + 1) > (length - 1) ? 0.0 : (this.state.searchIndex + 1)});
+      } else if (e.keyCode === 38) {
+        $(`#${this.names[this.state.searchIndex]}`).removeClass('selected');
+        e.preventDefault();
+        this.setState({searchIndex: (this.state.searchIndex - 1) < 0 ? (length - 1) : (this.state.searchIndex - 1)});
+      }
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    $(`#${this.names[nextState.searchIndex]}`).addClass('selected');
+  }
+
+
+  handleSubmit(e){
+    e.preventDefault();
+    if (!isEmpty(this.props.search)) {
+      const result = this.props.search[this.state.searchIndex];
+      const key = Object.keys(result)[0];
+      const user = result[key];
+      this.props.router.push(`users/${user.id}`);
+      this.setState({username: ""});
+    } else {
+      this.setState({username: ""});
+    }
+  }
+
+  render(){
+    this.matches();
+    if (!this.state.username){
+      this.results = null;
+    }
+    return (
+      <div className="search">
+        <form onSubmit={this.handleSubmit}>
+            <input className="search-form"
+                   type="text"
+                   value={this.state.username}
+                   onChange={this.update('username')}
+                   placeholder="SEARCH USERS"
+                   onKeyDown={this.changeResult}/>
+        </form>
+        <ul className="search-results">{this.results}</ul>
+      </div>
+    );
+  }
+}
+  ...
 ```
 
 ### Comments
 
-Scribbble comments are unique, each one lives at a specific spot on their respective design. Hovering over comments in the 'commentBox' displays their location on the design while clicking on the design creates a comment at that location.
+BeardStagrm comments are unique, each one lives at a specific spot on their respective design. Hovering over comments in the 'commentBox' displays their location on the design while clicking on the design creates a comment at that location.
 
 Green comment pins reference a comment being created, while yellow comment pins reference a comment being viewed.
 
 In addition to having body, design_id, and user_id columns in the database, comments contain X and Y coordinates that eventually pertain to their parent div (the design they belong to).
 
-Scribbble's API efficiently returns each designs' comments through a single query to the database.
-
-Ex. Comment Box
-![commentBox]
-[commentBox]: ./docs/screenshots/commentBox.png
-
-Ex. Comment Pins
-![commentPins]
-[commentPins]: ./docs/screenshots/commentPins.png
-
-
-```javascript
-var DesignShow = React.createClass({
-
-...
-
-openCommentForm: function(e) {
-  $('body').off('keydown', this.handleKey);
-
-  this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
-  this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
-
-  this.setState({
-    commentFormOpen: true,
-    commentFormPos: [this.xPos, this.yPos]
-  });
-},
-
-closeCommentForm: function() {
-  this.setState({ commentFormOpen: false});
-  $('body').on('keydown', this.handleKey);
-},
-
-...
-
-if (this.state.commentPos.length > 0) {
-  //adjust position for image size
-  var left = this.state.commentPos[0] - 13;
-  var top = this.state.commentPos[1] - 25;
-
-  var commentPin = <img
-    src="yellowPin.svg"
-    id="yellow-comment-pin"
-    className="hvr-pulse"
-    style={{
-      width: "25px",
-      height: "25px",
-      left: left,
-      top: top,
-      position: "absolute",
-    }}/>;
-} else {
-  commentPin = <img
-    src="yellowPin.svg"
-    id="yellow-comment-pin"
-    className="hvr-pulse"
-    style={{
-      opacity: "0",
-      width: "25px",
-      height: "25px",
-      left: 0,
-      top: 0,
-      position: "absolute",
-    }}/>;
-}
-
-...
-
-if (this.state.commentFormOpen) {
-  var commentForm = <CommentForm
-    closeCommentForm={this.closeCommentForm}
-    xPos={this.xPos}
-    yPos={this.yPos}
-    designId={this.state.design.id}
-    userId={this.state.currentUser.user.id}
-    />;
-  //adjust position for image size
-  var leftFormPin = this.state.commentFormPos[0] - 13;
-  var topFormPin = this.state.commentFormPos[1] - 25;
-  var commentFormPin = <img
-    className="hvr-pulse"
-    src="greenPin.svg"
-    style={{
-      width: "25px",
-      height: "25px",
-      left: leftFormPin,
-      top: topFormPin,
-      position: "absolute",
-    }}/>;
-  var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-}
-
-...
-
-});
-
-```
-
-## Future Directions Scribbble
-
-### Tags
-
-Users can assign various tags to their Designs in 'DesignForm' which will then allow users to search and update 'DesignIndex' based on regex matching.
-
-### Dragable Comments
-
-In addition to clicking on a design to create a comment, users can also drag over a design to create a comment that pertains to a specific area.
+BeardStagrm's API efficiently returns each designs' comments through a single query to the database.

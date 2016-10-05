@@ -48,7 +48,6 @@ class Search extends React.Component{
   resetMouseOver(e) {
     e.preventDefault();
     this.mouseover ? this.mouseover = false : this.mouseover = true;
-    console.log(this.mouseover);
   }
 
 
