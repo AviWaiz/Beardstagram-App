@@ -11,6 +11,7 @@ class Search extends React.Component{
     {
       username: '',
       searchIndex: null,
+      mouseover: false
     };
     this.results= null;
     this.handleSubmit = this.handleSubmit.bind(this);

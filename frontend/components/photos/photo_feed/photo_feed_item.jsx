@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 import UserIcon from './user_icon';
 import Icon from '../photo_form/icon.jsx';
 
-class PhotoIndexItem extends React.Component{
+class PhotoFeedItem extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -62,6 +62,7 @@ class PhotoIndexItem extends React.Component{
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle3}>
+             <button className="close-modal" onClick={this.onModalClose}>X</button>
         <div className="align-icon">
          <UserIcon className="user-icon-modal"
                    photo={userIcon}
@@ -189,4 +190,4 @@ class PhotoIndexItem extends React.Component{
   }
 }
 
-export default PhotoIndexItem;
+export default PhotoFeedItem;

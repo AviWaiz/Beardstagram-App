@@ -21,12 +21,12 @@ const SessionLinks = () => (
 const LoggedInNavBar = ({currentUser, logOut, createPhoto, searchUsers, search, location}) => (
 	<section className="logout-beardme-search">
     <Link to="/photos" className="nav-link">
-      <h1 className="logo">
+      {/* <h1 className="logo">
         <Icon className="icons"
               src='feed_icon.png'
               width={50}
               height={40}/>
-      </h1>
+      </h1> */}
     </Link>
     <Search searchUsers={searchUsers} search={search} location={location} />
     <div className="logout-beardme">

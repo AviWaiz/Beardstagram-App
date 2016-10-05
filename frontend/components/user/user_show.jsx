@@ -57,17 +57,22 @@ class UserShow extends React.Component{
     }
     if(userShow) {
       return(
+      <div>
         <div>
+        <div className="user-show">
           <div>{<ProfilePicture photo={userShow["profile_pic"]}
                  key={userShow["profile_pic"]["id"]} />
                }
           </div>
-
+          &nbsp;
+          <div className="show-fields">
           <div>{userShow["username"]}</div>
-          <div>Photos: {userShow["photos"].length}</div>
-          <div>following: {userShow["following"].length}</div>
-          <div>followers: {userShow["followers"].length}</div>
+          <div>{userShow["photos"].length}  Photos</div>
+          <div>{userShow["following"].length} following</div>
+          <div>{userShow["followers"].length} followers</div>
           {this.props.currentUser.user.id == this.props.params.id ? null : this.followButton()}
+          </div>
+        </div>
           <div className="photo-index">
             {
               photosSorted.map( photo =>(
@@ -82,6 +87,7 @@ class UserShow extends React.Component{
             }
           </div>
         </div>
+      </div>
       );
     } else {
       return <div>no Photos</div>;

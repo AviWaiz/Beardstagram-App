@@ -29,19 +29,33 @@ class App extends React.Component {
   }
 
   render(){
+    if(this.props.location.pathname === "/"){
     return(
       <div id='background' className="background">
         <nav className="nav_bar">
-          <Link to="/" className="nav-link">
             <h1 className="logo" id="logo">
               BeardStagram
             </h1>
-          </Link>
           <NavBarContainer location={this.props.location}/>
           </nav>
           {this.props.children}
       </div>
     );
+    } else {
+      return(
+        <div id='background' className="background">
+          <nav className="nav_bar">
+            <Link to="/photos" className="nav-link">
+              <h1 className="logo" id="logo">
+                BeardStagram
+              </h1>
+            </Link>
+            <NavBarContainer location={this.props.location}/>
+            </nav>
+            {this.props.children}
+        </div>
+      );
+    }
   }
 }
 
