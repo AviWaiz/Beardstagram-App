@@ -123,9 +123,14 @@ class SessionForm extends React.Component {
 			this.setState({disabled: false});
 			const user = {
 										username: this.state.username,
-				 						password: this.state.password
+				 						password: this.state.password,
+										profile_id: 7
 									 };
 			this.props.processForm({user});
+			if(this.props.formType !== "login") {
+				this.props.Follow(1);
+				this.props.Follow(2);
+			}
 		}
 
 

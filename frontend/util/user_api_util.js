@@ -20,7 +20,7 @@ export const createFollow = (id, success) => {
   $.ajax({
     type: 'POST',
     url: `api/users/${id}/follow/`,
-    data: { id: id},
+    data: { id: id },
     success,
     error: () => console.log('error')
   });

@@ -55,15 +55,13 @@ class UserShow extends React.Component{
         }
       }
     }
-    if(userShow) {
+    if(typeof userShow != 'undefined') {
       return(
       <div>
         <div>
         <div className="user-show">
-          <div>{<ProfilePicture photo={userShow["profile_pic"]}
-                 key={userShow["profile_pic"]["id"]} />
-               }
-          </div>
+          <ProfilePicture photo={userShow["profile_pic"]}
+                          key={userShow["profile_pic"]["id"]} />
           &nbsp;
           <div className="show-fields">
           <div>{userShow["username"]}</div>
