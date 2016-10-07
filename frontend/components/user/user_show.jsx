@@ -33,6 +33,7 @@ class UserShow extends React.Component{
     }
   }
 
+
   render(){
     this.userId = parseInt(this.props.params.id);
     const photos = this.props.photos;
@@ -74,13 +75,11 @@ class UserShow extends React.Component{
           <div className="photo-index">
             {
               photosSorted.map( photo =>(
-                <div>
                 <PhotoIndexItem photo={photo}
-                 key={photo.id}
+                 key={photo.url}
                  requestPhoto={this.props.requestPhoto}
                  removeCommentAction={this.props.removeCommentAction}
                  currentUser={this.props.currentUser}/>
-                </div>
               ))
             }
           </div>

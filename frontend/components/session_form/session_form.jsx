@@ -127,10 +127,6 @@ class SessionForm extends React.Component {
 										profile_id: 7
 									 };
 			this.props.processForm({user});
-			if(this.props.formType !== "login") {
-				this.props.Follow(1);
-				this.props.Follow(2);
-			}
 		}
 
 

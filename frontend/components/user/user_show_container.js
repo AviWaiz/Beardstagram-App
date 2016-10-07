@@ -1,6 +1,7 @@
 import { connect }  from 'react-redux';
 import { requestUser, Follow, unFollow } from '../../actions/user_actions';
 import { removeCommentAction } from '../../actions/photo_actions';
+import { requestCurrentUser } from '../../actions/session_actions';
 import UserShow  from './user_show';
 
 const mapStateToProps = state => ({
@@ -11,6 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  requestCurrentUser: user => dispatch(requestCurrentUser(user)),
   requestUser: id => dispatch(requestUser(id)),
   removeCommentAction: id => dispatch(removeCommentAction(id)),
   unFollow: id => dispatch(unFollow(id)),

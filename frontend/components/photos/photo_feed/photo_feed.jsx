@@ -6,7 +6,11 @@ class PhotoFeed extends React.Component{
     super(props);
   }
 
-  render(){
+  componentDidMount() {
+    this.forceUpdate();
+  }
+
+  render() {
     const photos = this.props.photos;
     const photoKeys = Object.keys(photos);
     const photosSorted = photoKeys.map( key => (photos[key])).sort(

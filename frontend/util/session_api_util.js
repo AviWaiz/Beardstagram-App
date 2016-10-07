@@ -18,6 +18,15 @@ export const logIn = (user, success, error) => {
   });
 };
 
+export const requestCurrentUser = (success, error) => {
+  $.ajax({
+    type: 'GET',
+    url: 'api/session',
+    success,
+    error
+  });
+};
+
 export const logOut = (success) => {
   $.ajax({
     type: 'DELETE',
