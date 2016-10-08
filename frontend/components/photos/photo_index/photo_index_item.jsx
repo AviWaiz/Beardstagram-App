@@ -16,6 +16,8 @@ class PhotoIndexItem extends React.Component{
     };
     this.photoDetial = this.photoDetial.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
+    this.profileChangeTag = this.profileChangeTag.bind(this);
   }
 
   onModalOpen() {
@@ -30,7 +32,21 @@ class PhotoIndexItem extends React.Component{
     this.onModalOpen();
   }
 
+  profileChangeTag(){
+    return(<div className="user-profile-toggle" key={this.props.photo.user.username} onClick={this.updateProfile}>
+       Make Profile
+    </div>);
+  }
+  updateProfile(e){
+    e.preventDefault();
+    this.props.updateUser({
+      id: this.props.user.id,
+      profile_id: this.props.photo.id
+    });
+  }
+
   render(){
+    console.log(this.props.currentUser.user.id == this.props.paramsId);
     const photo = this.props.photo;
     const photoUrl = photo.url;
     const userIcon = photo.user_profile_picture;
@@ -89,6 +105,7 @@ class PhotoIndexItem extends React.Component{
                            y={y} />
                </Layer>
              </Stage>
+            {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag() : null}
          </div>
          <div className="index-item-fields">
            <div className="comments">{comments}
@@ -151,6 +168,7 @@ class PhotoIndexItem extends React.Component{
            </div>
            <div className="index-item-modal">
              <img src={photoUrl}/>
+             {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag() : null}
            </div>
           <div className="index-item-fields">
               <div className="comments">{comments}

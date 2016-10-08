@@ -76,10 +76,13 @@ class UserShow extends React.Component{
             {
               photosSorted.map( photo =>(
                 <PhotoIndexItem photo={photo}
-                 key={photo.url}
+                 key={photo.created_at}
                  requestPhoto={this.props.requestPhoto}
                  removeCommentAction={this.props.removeCommentAction}
-                 currentUser={this.props.currentUser}/>
+                 currentUser={this.props.currentUser}
+                 updateUser={this.props.updateUser}
+                 user={userShow}
+                 paramsId={this.props.params.id}/>
               ))
             }
           </div>

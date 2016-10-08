@@ -10,7 +10,7 @@ class Api::PhotosController < ApplicationController
     if @photo.save
       render :show
     else
-      @errors = @design.errors.full_messages
+      @errors = @photo.errors.full_messages
       render :show, status: 401
     end
   end
@@ -20,7 +20,7 @@ class Api::PhotosController < ApplicationController
     if @photo.update(photo_params)
       render :show
     else
-      @errors = @design.errors.full_messages
+      @errors = @photo.errors.full_messages
       render :show, status: 401
     end
   end

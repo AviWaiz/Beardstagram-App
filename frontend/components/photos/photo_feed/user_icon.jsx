@@ -37,7 +37,7 @@ class ProfileIcon extends React.Component{
       );
       } else {
       return(
-        <div className="index-item">
+        <div id={this.props.className ? "user-icon-modal" : "user-icon"} width='400' height='400'>
           <img src={photoUrl} />
         </div>
       );

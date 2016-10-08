@@ -86,33 +86,36 @@
     border-radius: 96px;
     padding-right: 40px;
   }
-  #user-icon canvas {
+  #profile img {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 96px;
+  }
+
+  #user-icon canvas, #user-icon img {
     width: 50px !important;
     height: 50px !important;
     border-radius: 50px;
   }
-  #user-icon-modal canvas {
+
+  #user-icon-modal canvas, #user-icon-modal img {
     width: 80px !important;
     height: 80px !important;
     border-radius: 50px;
   }
+
   #user-icon {
     width: 50px !important;
     height: 50px !important;
     margin-left: 30px;
   }
+
   #user-icon-modal {
     width: 50px !important;
     height: 50px !important;
     margin-left: -96px;
     margin-bottom: -47px;
   }
-  // #user-icon konvajs-content{
-  //   width: 50px !important;
-  //   height: 50px !important;
-  //   margin-left: 30px;
-  // }
-
 
   body {
     min-height: 100%;
@@ -400,6 +403,7 @@
     background: #fff;
   }
 
+
   // .index-item:hover{
   //   box-shadow: 0 10px 20px 10px rgba(0,0,0,0.18),0 10px 20px 10px rgba(0,0,0,0.2);
   // }
@@ -602,14 +606,17 @@
     overflow: hidden;
     margin: 40px !important;
    }
-
+  .index-item-modal div{
+    display: flex;
+    margin: -33px 36px;
+  }
    .index-item img{
     width: 400px;
     height: 400px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    padding-top: 30px !important;
+    margin-top: 30px;
     cursor: pointer;
     z-index: 1;
    }
@@ -622,6 +629,28 @@
      justify-content: flex-start;
      margin: -13px 95px;
      color: #444
+   }
+   .user-profile-toggle {
+     text-decoration: none;
+     list-style: none;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     margin: 54px 39px;
+     color: #6ba7ca;
+     cursor: pointer;
+     width: 30%;
+   }
+   .user-profile-toggle-image {
+     text-decoration: none;
+     list-style: none;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     margin: -33px 39px;
+     color: #6ba7ca;
+     cursor: pointer;
+     width: 30%;
    }
    .user-link-modal {
      text-decoration: none;
@@ -645,11 +674,14 @@
      flex-direction: row;
      justify-content: flex-end;
      padding-right: 50px;
-     margin-top: -30px;
+     margin-top: -15px;
    }
 
   .align-user-fields {
-    margin-top: -19px
+    margin-top: -19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .align-fields{
     display: flex;

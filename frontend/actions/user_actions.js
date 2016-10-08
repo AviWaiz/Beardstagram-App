@@ -4,6 +4,7 @@ export const UserConstants = {
   RECEIVE_USER: "RECEIVE_USER",
   REQUEST_USER: "REQUEST_USER",
   SEARCH_USERS: "SEARCH_USERS",
+  UPDATE_USER: "UPDATE_USER",
   FOLLOW: "FOLLOW",
   UNFOLLOW: "UNFOLLOW"
 };
@@ -17,6 +18,11 @@ export const receiveUser = (user) => ({
 export const requestUser = (id) => ({
     type: UserConstants.REQUEST_USER,
     id
+});
+
+export const updateUser = (data) => ({
+    type: UserConstants.UPDATE_USER,
+    data
 });
 
 export const receiveUsers = (users) => ({

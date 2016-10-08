@@ -2,7 +2,8 @@
 import { fetchUser,
          fetchUsers,
          createFollow,
-         destroyFollow
+         destroyFollow,
+         updateUser
        } from '../util/user_api_util';
 // Action
 import { receiveUser,
@@ -18,6 +19,9 @@ export default ({getState, dispatch}) => next => action => {
   switch(action.type){
     case UserConstants.REQUEST_USER:
       fetchUser(action.id, receiveUserSuccess);
+      break;
+    case UserConstants.UPDATE_USER:
+      updateUser(action.data, receiveUserSuccess);
       break;
     case UserConstants.REQUEST_USERS:
       fetchUsers(action, receiveUsersSuccess);

@@ -36,7 +36,7 @@ class ProfilePicture extends React.Component{
       );
       } else {
       return(
-        <div className="index-item">
+        <div id="profile">
           <img src={photoUrl} />
         </div>
       );

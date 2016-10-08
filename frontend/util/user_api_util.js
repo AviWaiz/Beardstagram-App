@@ -15,6 +15,15 @@ export const fetchUsers = (success) => {
     error: () => console.log('error')
   });
 };
+export const updateUser = (data,success) => {
+  $.ajax({
+    type: 'PATCH',
+    url: `api/users/${data.id}`,
+    data: {user: {profile_id : data.profile_id }},
+    success,
+    error: () => console.log('error')
+  });
+};
 
 export const createFollow = (id, success) => {
   $.ajax({
