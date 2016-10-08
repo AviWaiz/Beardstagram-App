@@ -32,8 +32,8 @@ class PhotoIndexItem extends React.Component{
     this.onModalOpen();
   }
 
-  profileChangeTag(){
-    return(<div className="user-profile-toggle" key={this.props.photo.user.username} onClick={this.updateProfile}>
+  profileChangeTag(classname){
+    return(<div className={`${classname}`} key={this.props.photo.user.username} onClick={this.updateProfile}>
        Make Profile
     </div>);
   }
@@ -46,7 +46,6 @@ class PhotoIndexItem extends React.Component{
   }
 
   render(){
-    console.log(this.props.currentUser.user.id == this.props.paramsId);
     const photo = this.props.photo;
     const photoUrl = photo.url;
     const userIcon = photo.user_profile_picture;
@@ -78,6 +77,7 @@ class PhotoIndexItem extends React.Component{
       <Modal isOpen={this.state.modalOpen}
              onRequestClose={this.onModalClose}
              style={ModalStyle3}>
+      <button className="close-modal" onClick={this.onModalClose}>X</button>
         <div className="align-icon">
          <UserIcon className="user-icon-modal"
                    photo={userIcon}
@@ -105,7 +105,7 @@ class PhotoIndexItem extends React.Component{
                            y={y} />
                </Layer>
              </Stage>
-            {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag() : null}
+            {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag("user-profile-toggle") : null}
          </div>
          <div className="index-item-fields">
            <div className="comments">{comments}
@@ -150,6 +150,7 @@ class PhotoIndexItem extends React.Component{
       <Modal isOpen={this.state.modalOpen}
            onRequestClose={this.onModalClose}
            style={ModalStyle3}>
+           <button className="close-modal" onClick={this.onModalClose}>X</button>
            <div className="align-icon">
             <UserIcon className="user-icon-modal"
                       photo={userIcon}
@@ -168,7 +169,7 @@ class PhotoIndexItem extends React.Component{
            </div>
            <div className="index-item-modal">
              <img src={photoUrl}/>
-             {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag() : null}
+             {this.props.currentUser.user.id == this.props.paramsId ? this.profileChangeTag("user-profile-toggle-image") : null}
            </div>
           <div className="index-item-fields">
               <div className="comments">{comments}
