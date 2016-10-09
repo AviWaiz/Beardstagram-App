@@ -78,6 +78,7 @@ class PhotoForm extends React.Component{
       <Modal isOpen={this.state.modalOpen}
 						 onRequestClose={this.onModalClose}
 						 style={ModalStyle2}>
+      <button className="close-modal" onClick={this.onModalClose}>X</button>
       <form onSubmit={this.handleSubmit}
             className="photo-form-box"
             onKeyPress={this.handleKeyPress}>

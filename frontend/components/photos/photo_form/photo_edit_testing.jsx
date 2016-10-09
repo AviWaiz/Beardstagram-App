@@ -47,7 +47,7 @@ class PhotoEditTest extends React.Component {
     const imageObj1 = new Image();
     imageObj1.src = this.state.src;
     const imageObj2 = new Image();
-    imageObj2.src = "http://res.cloudinary.com/drql6e2wm/image/upload/v1473346789/k5rw98diulfkmtjjznpi.jpg";
+    imageObj2.src = "https://res.cloudinary.com/drql6e2wm/image/upload/v1473346789/k5rw98diulfkmtjjznpi.jpg";
     let x = this.state.beardWidth.toString();
     let y = this.state.beardHeight.toString();
     const iX = 50;
