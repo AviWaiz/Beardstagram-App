@@ -41,7 +41,7 @@ class PhotoForm extends React.Component{
     e.preventDefault();
     window.cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
       if(!error){
-        this.setState({url: results[0].url});
+        this.setState({url: results[0].secure_url});
       }
     });
   }
